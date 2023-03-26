@@ -19,6 +19,9 @@ $newAccountStatus = CheckNewAccountForm();
 <?php
     if($newAccountStatus[1]){
         echo '<h3 class="successMessage">Nouveau compte crée avec succès!</h3>';
+        
+        header('Location: ./connexion.php');
+        Exit();
     }
     elseif ($newAccountStatus[0]){
         echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
@@ -41,6 +44,7 @@ $newAccountStatus = CheckNewAccountForm();
 
         <button type="submit" name="sign_up" id="sign_up"> Inscription</button>
     </form>
+    
     
 </body>
 </html>

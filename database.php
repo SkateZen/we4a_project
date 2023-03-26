@@ -26,7 +26,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "root";
-        $dbname = "td3";
+        $dbname = "we4a_project";
         global $conn;
         
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -41,7 +41,7 @@
     }
 
 
-    // Function to check a new account form
+    // Fonction permettant de s'inscrire sur le site
     //--------------------------------------------------------------------------------
     function CheckNewAccountForm(){
         global $conn;
@@ -65,7 +65,7 @@
             if(!empty($mail) && !empty($pseudo) && !empty($name) && !empty($firstname)){
 
                 //Form is only valid if password == confirm, and username is at least 4 char long
-                if ( strlen($_POST["name"]) < 4 ){
+                if ( strlen($_POST["pseudo"]) < 4 ){
                     $error = "Un nom utilisateur doit avoir une longueur d'au moins 4 lettres";
                 }
                 elseif ( $_POST["password"] != $_POST["confirm"] ){
@@ -86,12 +86,80 @@
                     else{
                         $creationSuccessful = true;
                     }
-                    
                 }
             }
-
         return array($creationAttempted, $creationSuccessful, $error);
         }
     }
+
+
+    function CheckLogin(){
+
+        global $conn, $username, $userID;
+
+        $error = NULL; 
+        $loginSuccessful = false;
+        $loginAttempted = false;
+
+        if (isset($_POST['login'])){
+            echo "login attempted";
+
+            $mail = $_POST["mail"];
+            $password = md5($_POST["password"]);
+
+            if(!empty($mail) && !empty($password)){
+
+                echo "<br>information entered";
+
+                echo "<br> mail entered : ".$mail;
+
+                $loginAttempted = true;
+            }
+            else{
+                echo "no information entered";
+                $loginAttempted = false;
+            }
+        }
+
+        /*elseif (isset($_COOKIE['login'])){
+            echo "login attempted with cookie";
+
+            if(isset($_COOKIE["mail"]) && isset($_COOKIE["password"])){
+
+                echo "information entered";
+            }
+        }*/
+        if ($loginAttempted){
+            $query = "SELECT * FROM users WHERE email = '".$mail."' AND password ='".$password."'";
+            $result = $conn->query($query);
+    
+            if ( $result ){
+                //echo $result;
+                $row = $result->fetch_assoc();
+                echo "<br>".$row["pseudo"];
+                $userID = $row["id"];
+                //CreateLoginCookie($username, $password);
+                $loginSuccessful = true;
+            }
+            else {
+                $error = "Ce couple login/mot de passe n'existe pas. Créez un Compte";
+            }
+        }
+    
+        return array($loginSuccessful, $loginAttempted, $error, $userID);
+    }
+
+/*
+    function TestSQL(){
+        global $conn;
+
+        
+        if ( isset($_POST['test'])){
+        
+            $query= "SELECT * FROM `users` ";
+
+
+        }
+    }*/
 ?>
 

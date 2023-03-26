@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<?php
+    include("./database.php");
+    connect_db();
+    $newAccountStatus = CheckLogin();
+    
+?>
+
 <body>
     <h1>Formulaire</h1>
 
@@ -19,40 +27,5 @@
         <button type="submit" name="login" id="login" > Connect</button>
     </form>
 
-    <?php
-        if (isset($_POST['login'])){
-            echo "login attempted";
-
-            $mail = $_POST["mail"];
-            $password = $_POST["password"];
-
-            if(!empty($mail) && !empty($password)){
-
-                echo "<br>information entered";
-
-                
-
-                echo "<br> mail entered : ".$mail;
-            }
-            else{
-                echo "no information entered";
-            }
-        }
-
-        elseif (isset($_COOKIE['login'])){
-            echo "login attempted with cookie";
-
-            if(isset($_COOKIE["mail"]) && isset($_COOKIE["password"])){
-
-                echo "information entered";
-            }
-        }
-    
-    ?>
-
-    
-
-    
-    
 </body>
 </html>
