@@ -1,32 +1,18 @@
 <?php 
 
-    define('HOST', 'localhost');
-    define('DB_NAME', 'we4a_project');
+    define('SERVER', 'localhost');
+    define('DB_NAME', 'socialnetwork');
     define('USER', 'root');
-    define('PASS', 'root');
+    define('PASSWD', 'root');
 
-    /*function connect_db(){
-
-        $dsn = "mysql:host=".HOST.";dbname=".DB_NAME;
-
-        try{
-
-            $db = new PDO($dsn, USER, PASS);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            echo "Connection OK !";
-        
-        }catch(PDOException $e){
-            echo $e;
-        }
-    }*/
-
+    // Function to open a connexion to the database
+    //--------------------------------------------------------------------------------
     function connect_db(){
         // Create connection
         $servername = "localhost";
         $username = "root";
         $password = "root";
-        $dbname = "we4a_project";
+        $dbname = "socialnetwork";
         global $conn;
         
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -41,6 +27,22 @@
     }
 
 
+    //Function to clean up an user input for safety reasons
+    //--------------------------------------------------------------------------------
+    function SecurizeString_ForSQL($string) {
+        $string = trim($string);
+        $string = stripcslashes($string);
+        $string = addslashes($string);
+        $string = htmlspecialchars($string);
+        return $string;
+    }
+
+    // Function to check if the specified field is set and not empty
+    //--------------------------------------------------------------------------------
+    function CheckPostFieldSetAndNotEmpty($field){
+        return isset($_POST[$field]) && !empty($_POST[$field]);
+    }
+
     // Fonction permettant de s'inscrire sur le site
     //--------------------------------------------------------------------------------
     function CheckNewAccountForm(){
@@ -51,43 +53,41 @@
         $error = NULL;
 
         //Données reçues via formulaire?
-
-        if ( isset($_POST['sign_up'])){
+        if (CheckPostFieldSetAndNotEmpty("name") && CheckPostFieldSetAndNotEmpty("firstname") &&
+            CheckPostFieldSetAndNotEmpty("pseudo") && CheckPostFieldSetAndNotEmpty("mail") &&
+            CheckPostFieldSetAndNotEmpty("password") && CheckPostFieldSetAndNotEmpty("confirm")){
 
             echo "creation account attempted";
             $creationAttempted = true;
 
-            $mail = $_POST["mail"];
-            $pseudo = $_POST["pseudo"];
-            $name = $_POST["name"];
-            $firstname = $_POST["firstname"];
+            //Form is only valid if password == confirm, and username is at least 4 char long
+            if ( strlen($_POST["pseudo"]) < 4 ){
+                $error = "Un nom utilisateur doit avoir une longueur d'au moins 4 lettres";
+            }
+            elseif ( $_POST["password"] != $_POST["confirm"] ){
+                $error = "Le mot de passe et sa confirmation sont différents";
+            }
+            else {
 
-            if(!empty($mail) && !empty($pseudo) && !empty($name) && !empty($firstname)){
+                $name = SecurizeString_ForSQL($_POST["name"]);
+                $firstname = SecurizeString_ForSQL($_POST["firstname"]);
+                $pseudo = SecurizeString_ForSQL($_POST["pseudo"]);
+                $mail = $_POST["mail"];
+                $password = md5($_POST["password"]);
 
-                //Form is only valid if password == confirm, and username is at least 4 char long
-                if ( strlen($_POST["pseudo"]) < 4 ){
-                    $error = "Un nom utilisateur doit avoir une longueur d'au moins 4 lettres";
+                $query = "INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`) VALUES (NULL, '$name', '$firstname', '$pseudo', '$mail', '$password', NULL)";
+                echo $query."<br>";
+                $result = $conn->query($query);
+
+                if( mysqli_affected_rows($conn) == 0 )
+                {
+                    $error = "Erreur lors de l'insertion SQL. Essayez un nom/password sans caractères spéciaux";
                 }
-                elseif ( $_POST["password"] != $_POST["confirm"] ){
-                    $error = "Le mot de passe et sa confirmation sont différents";
-                }
-                else {
-                    //$username = SecurizeString_ForSQL($_POST["name"]);
-                    $password = md5($_POST["password"]);
-
-                    $query = "INSERT INTO `users`(`id`, `pseudo`, `email`, `password`) VALUES (NULL, '$pseudo', '$mail', '$password')";
-                    echo $query."<br>";
-                    $result = $conn->query($query);
-
-                    if( mysqli_affected_rows($conn) == 0 )
-                    {
-                        $error = "Erreur lors de l'insertion SQL. Essayez un nom/password sans caractères spéciaux";
-                    }
-                    else{
-                        $creationSuccessful = true;
-                    }
+                else{
+                    $creationSuccessful = true;
                 }
             }
+        
         return array($creationAttempted, $creationSuccessful, $error);
         }
     }
