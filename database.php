@@ -103,7 +103,7 @@
         $loginSuccessful = false;
         $loginAttempted = false;
 
-        
+        //Données reçues via formulaire?
         if (isset($_POST['mail']) && isset($_POST['password'])){
             echo "<br>login attempted";
 
@@ -118,32 +118,29 @@
 
                 $loginAttempted = true;
             }
-            else{
-                echo "no information entered";
-                $loginAttempted = false;
-            }
+            
         }
 
-            
-        
+        //Données reçues via cookie?
+        elseif ( isset($_COOKIE['mail']) && isset($_COOKIE['password']) ){
+            echo "<br>login attempted with cookie";
 
-        /*elseif (isset($_COOKIE['login'])){
-            echo "login attempted with cookie";
+            $mail = $_COOKIE['mail'];
+            $password = $_COOKIE['password'];
 
-            if(isset($_COOKIE["mail"]) && isset($_COOKIE["password"])){
+            $loginAttempted = true;
+        }
 
-                echo "information entered";
-            }
-        }*/
 
         if ($loginAttempted){
             $query = "SELECT * FROM users WHERE email = '".$mail."' AND password ='".$password."'";
             $result = $conn->query($query);
-
+            
             //echo "<br>" .$result;
-
+            
             $row = $result->fetch_assoc();
-    
+            
+            
             if ( $row ){
                 //echo $result;
                 
@@ -157,7 +154,7 @@
                 
                 $userID = $row["id"];
 
-                //CreateLoginCookie($mail, $password);
+                CreateLoginCookie($mail, $password);
 
                 $loginSuccessful = true;
             }   
@@ -165,8 +162,17 @@
                 $error = "Ce couple login/mot de passe n'existe pas. Créez un Compte";
             }
         }
+        else{
+            echo "no login attempted";
+        }
     
         return array($loginSuccessful, $loginAttempted, $error, $userID);
+    }
+
+    // Fonction permettant de créer un cookie
+    function CreateLoginCookie($mail, $password){
+        setcookie("mail", $mail, time() + 3600*24);
+        setcookie("password", $password, time() + 3600*24);
     }
 
     

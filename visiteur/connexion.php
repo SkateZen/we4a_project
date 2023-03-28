@@ -18,8 +18,8 @@
     if($newAccountStatus[0]){
         echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
         
-        //header('Location: ../utilisateur/acceuil.php');
-        //Exit();
+        header('Location: ../utilisateur/acceuil.php');
+        Exit();
     }
     elseif ($newAccountStatus[2]){
         echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';

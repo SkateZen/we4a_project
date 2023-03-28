@@ -8,6 +8,13 @@
 </head>
 <body>
 
+
+    <?php
+    include("../database.php");
+    connect_db();
+    CheckLogin();
+    ?>
+
     <header>
         <nav>
             <a href="profil.php">Profil</a>
