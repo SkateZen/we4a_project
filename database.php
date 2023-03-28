@@ -1,31 +1,28 @@
 <?php
 
-define('SERVER', 'localhost');
-define('DB_NAME', 'socialnetwork');
-define('USER', 'root');
-define('PASSWD', 'root');
-// mb_internal_encoding('UTF-8');
+    define('HOST', 'localhost');
+    define('DB_NAME', 'we4a_project');
+    define('USER', 'root');
+    define('PASS', 'root');
 
-// Function to open a connexion to the database
-//--------------------------------------------------------------------------------
-function connect_db(){
-    // Create connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "socialnetwork";
-    global $conn;
+    function connect_db(){
+        // Create connection
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = "we4a_project";
+        global $conn;
+        
+        $conn = new mysqli($servername, $username, $password, $dbname);
     
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        else{
+            echo "Connection OK !";
+        }
     }
-    else{
-        echo "Connection DB OK !";
-    }
-}
 
 
 //Function to clean up an user input for safety reasons
@@ -121,6 +118,7 @@ function CheckNewAccountForm(){
 function CheckLogin(){
 
     global $conn, $mail, $userID;
+        
 
     $error = NULL; 
     $loginSuccessful = false;
@@ -171,5 +169,18 @@ function CheckLogin(){
     return array($loginSuccessful, $loginAttempted, $error, $userID);
 }
 
+    
 
+/*
+    function TestSQL(){
+        global $conn;
+
+        
+        if ( isset($_POST['test'])){
+        
+            $query= "SELECT * FROM `users` ";
+
+
+        }
+    }*/
 ?>
