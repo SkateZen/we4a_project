@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 define('SERVER', 'localhost');
 define('DB_NAME', 'socialnetwork');
 define('USER', 'root');
 define('PASSWD', 'root');
+// mb_internal_encoding('UTF-8');
 
 // Function to open a connexion to the database
 //--------------------------------------------------------------------------------
@@ -37,59 +38,80 @@ function SecurizeString_ForSQL($string) {
     return $string;
 }
 
-// Function to check if the specified field is set and not empty
+// Fonction pour vérifier si un champs a été rempli par des données non vides
 //--------------------------------------------------------------------------------
 function CheckPostFieldSetAndNotEmpty($field){
     return isset($_POST[$field]) && !empty($_POST[$field]);
+}
+
+//Méthode pour créer/mettre à jour le cookie de Login
+//--------------------------------------------------------------------------------
+function CreateLoginCookie($mail, $encryptedPasswd){
+    setcookie("mail", $mail, time() + 3600  ); // Durée des cookies normalement :24 * 3600 
+    setcookie("password", $encryptedPasswd, time() + 3600);
 }
 
 // Fonction permettant de s'inscrire sur le site
 //--------------------------------------------------------------------------------
 function CheckNewAccountForm(){
     global $conn;
-
     $creationAttempted = false;
     $creationSuccessful = false;
     $error = NULL;
 
-    //Données reçues via formulaire?
-    if (CheckPostFieldSetAndNotEmpty("name") && CheckPostFieldSetAndNotEmpty("firstname") &&
-        CheckPostFieldSetAndNotEmpty("pseudo") && CheckPostFieldSetAndNotEmpty("mail") &&
-        CheckPostFieldSetAndNotEmpty("password") && CheckPostFieldSetAndNotEmpty("confirm")){
-
-        echo "creation account attempted";
+    // Vérifier que le formulaire a été envoyé avec la méthode POST et que le bouton d'inscription a été cliqué
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sign_up"])){
         $creationAttempted = true;
 
-        //Form is only valid if password == confirm, and username is at least 4 char long
-        if ( strlen($_POST["pseudo"]) < 4 ){
-            $error = "Un nom utilisateur doit avoir une longueur d'au moins 4 lettres";
-        }
-        elseif ( $_POST["password"] != $_POST["confirm"] ){
-            $error = "Le mot de passe et sa confirmation sont différents";
-        }
-        else {
+        // Vérifier si chacun des champs a été rempli par des données non vides
+        if (CheckPostFieldSetAndNotEmpty("name") && CheckPostFieldSetAndNotEmpty("firstname") &&
+            CheckPostFieldSetAndNotEmpty("pseudo") && CheckPostFieldSetAndNotEmpty("mail") &&
+            CheckPostFieldSetAndNotEmpty("password") && CheckPostFieldSetAndNotEmpty("confirm")){
 
+            // Sécurisation des données saisies par l'utilisateur
             $name = SecurizeString_ForSQL($_POST["name"]);
             $firstname = SecurizeString_ForSQL($_POST["firstname"]);
             $pseudo = SecurizeString_ForSQL($_POST["pseudo"]);
             $mail = SecurizeString_ForSQL($_POST["mail"]);
             $password = md5($_POST["password"]);
 
-            $query = "INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`) 
-                    VALUES (NULL, '$name', '$firstname', '$pseudo', '$mail', '$password', NULL)";
-            echo $query."<br>";
+            // Vérifier si le nom d'utilisateur existe déjà dans la base de données
+            $query = "SELECT COUNT(*) FROM utilisateur WHERE email='$mail'";
             $result = $conn->query($query);
+            $row = $result->fetch_assoc();
 
-            if( mysqli_affected_rows($conn) == 0 ) {
-                $error = "Erreur lors de l'insertion SQL. Essayez un nom/password sans caractères spéciaux";
+            // Le formulaire est valide seulement s'il n'existe pas déjà un compte avec l'email renseigné,
+            // si le pseudo a au moins 4 caractères et si password == confirm
+            if ($row > 0) {
+                $error = "Le nom d'utilisateur est déjà utilisé";
+                echo $error;
             } 
-            else{
-                $creationSuccessful = true;
+            elseif (strlen($_POST["pseudo"]) < 4 ){
+                $error = "Le nom d'utilisateur doit avoir une longueur d'au moins 4 lettres";
             }
+            elseif ($_POST["password"] != $_POST["confirm"]){
+                $error = "Le mot de passe et sa confirmation sont différents";
+            }
+            else {
+                // Création du compte dans la base de données
+                $query = "INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `email`, `password`) 
+                        VALUES ('$name', '$firstname', '$pseudo', '$mail', '$password')";
+                $result = $conn->query($query);
+
+                if (!$result) {
+                    $error = "Erreur lors de l'insertion SQL. Essayez un nom/prenom/password sans caractères spéciaux";
+                } 
+                else {
+                    $creationSuccessful = true;
+                }
+            }
+        } 
+        else {
+            $error = "Tous les champs doivent être remplis";
         }
-    
-    return array($creationAttempted, $creationSuccessful, $error);
     }
+
+    return array($creationAttempted, $creationSuccessful, $error);
 }
 
 
@@ -104,70 +126,50 @@ function CheckLogin(){
     $loginSuccessful = false;
     $loginAttempted = false;
 
-    if (!isset($_POST["login"])) {
-        return;
+    // Données reçues via formulaire
+    // Vérifier que le formulaire a été envoyé avec la méthode POST et que le bouton de connexion a été cliqué
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
+        // Vérifier si chacun des champs a été rempli par des données non vides
+        if (CheckPostFieldSetAndNotEmpty("mail") && CheckPostFieldSetAndNotEmpty("password")){
+            $mail = SecurizeString_ForSQL($_POST["mail"]);
+            $password = md5($_POST["password"]);
+            $loginAttempted = true;
+            echo "<br>Connexion tentée avec des informations envoyées via le formulaire";
+            echo "<br>Adresse e-mail : ".$mail;
+        }
     }
-
-    // Données reçues via formulaire?
-    if (CheckPostFieldSetAndNotEmpty($_POST["mail"]) && CheckPostFieldSetAndNotEmpty($_POST["password"])){
-        $mail = SecurizeString_ForSQL($_POST["mail"]);
-        $password = md5($_POST["password"]);
-        $loginAttempted = true;
-        echo "login attempted";
-        echo "<br>information entered";
-        echo "<br> mail entered : ".$mail;
-
-    }
-    //Données via le cookie?
+    // Données reçues via les cookies
     elseif (isset($_COOKIE['mail']) && isset($_COOKIE["password"])){
         $mail = $_COOKIE["mail"];
         $password = $_COOKIE["password"];
         $loginAttempted = true;
-        echo "login attempted with cookie";
-        echo "information entered";
+        echo "<br>Connexion tentée avec des informations stockées dans les cookies";
+        echo "<br>Adresse e-mail : ".$mail;
 
     }
 
+    
     // Si tentative de connexion, on interroge la BDD
     if ($loginAttempted){
-        $query = "SELECT * FROM users WHERE email = '".$mail."' AND password ='".$password."'";
+        $query = "SELECT * FROM utilisateur WHERE email = '".$mail."' AND password ='".$password."'";
         $result = $conn->query($query);
+        $row = $result->fetch_assoc();
 
-        if ( $result ){
-            //echo $result;
-            $row = $result->fetch_assoc();
-            echo "<br>".$row["pseudo"];
-            $userID = $row["id"];
+        if ( $row ){
+            echo "<br>Pseudo : ".$row["pseudo"];
+            echo "<br>Prénom : ".$row["prenom"];
+            $userID = $row["id_utilisateur"];
             CreateLoginCookie($mail, $password);
             $loginSuccessful = true;
         }
         else {
-            $error = "Ce couple login/mot de passe n'existe pas. Créez un Compte";
+            $error = "Ce couple identifiant/mot de passe n'existe pas. Veuillez créer un compte.";
+            echo "<br>".$error;
         }
     }
 
     return array($loginSuccessful, $loginAttempted, $error, $userID);
 }
 
-//Méthode pour créer/mettre à jour le cookie de Login
-//--------------------------------------------------------------------------------
-function CreateLoginCookie($mail, $encryptedPasswd){
-setcookie("mail", $mail, time() + 60*60  ); /* 24 * 3600 */
-    setcookie("password", $encryptedPasswd, time() + 24*3600);
-}
-
-/*
-function TestSQL(){
-    global $conn;
-
-    
-    if ( isset($_POST['test'])){
-    
-        $query= "SELECT * FROM `users` ";
-
-
-    }
-}*/
 
 ?>
-
