@@ -103,8 +103,9 @@
         $loginSuccessful = false;
         $loginAttempted = false;
 
-        if (isset($_POST['login'])){
-            echo "login attempted";
+        
+        if (isset($_POST['mail']) && isset($_POST['password'])){
+            echo "<br>login attempted";
 
             $mail = $_POST["mail"];
             $password = md5($_POST["password"]);
@@ -123,6 +124,9 @@
             }
         }
 
+            
+        
+
         /*elseif (isset($_COOKIE['login'])){
             echo "login attempted with cookie";
 
@@ -131,22 +135,32 @@
                 echo "information entered";
             }
         }*/
+
         if ($loginAttempted){
             $query = "SELECT * FROM users WHERE email = '".$mail."' AND password ='".$password."'";
             $result = $conn->query($query);
+
+            //echo "<br>" .$result;
+
+            $row = $result->fetch_assoc();
     
-            if ( $result ){
+            if ( $row ){
                 //echo $result;
-                $row = $result->fetch_assoc();
+                
+
+                echo "connexion réussie";
+
                 echo "<br>".$row["pseudo"];
 
                 $pseudo = $row["pseudo"];
-                $name = $row["name"];
+                //$name = $row["name"];
                 
                 $userID = $row["id"];
-                //CreateLoginCookie($username, $password);
+
+                //CreateLoginCookie($mail, $password);
+
                 $loginSuccessful = true;
-            }
+            }   
             else {
                 $error = "Ce couple login/mot de passe n'existe pas. Créez un Compte";
             }
