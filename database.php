@@ -1,9 +1,9 @@
 <?php 
 
-    define('HOST', 'localhost');
+    /*define('HOST', 'localhost');
     define('DB_NAME', 'we4a_project');
     define('USER', 'root');
-    define('PASS', 'root');
+    define('PASS', 'root');*/
 
     /*function connect_db(){
 
@@ -96,6 +96,8 @@
     function CheckLogin(){
 
         global $conn, $username, $userID;
+        global $pseudo, $name, $firstname;
+        
 
         $error = NULL; 
         $loginSuccessful = false;
@@ -137,6 +139,10 @@
                 //echo $result;
                 $row = $result->fetch_assoc();
                 echo "<br>".$row["pseudo"];
+
+                $pseudo = $row["pseudo"];
+                $name = $row["name"];
+                
                 $userID = $row["id"];
                 //CreateLoginCookie($username, $password);
                 $loginSuccessful = true;
@@ -148,6 +154,8 @@
     
         return array($loginSuccessful, $loginAttempted, $error, $userID);
     }
+
+    
 
 /*
     function TestSQL(){

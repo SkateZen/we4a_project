@@ -10,8 +10,8 @@
 
     <header>
         <nav>
-            <a href="connexion.php">Se connecter</a>
-            <a href="inscription.php">S'inscrire</a>
+            <a href="visiteur/connexion.php">Se connecter</a>
+            <a href="visiteur/inscription.php">S'inscrire</a>
         </nav>
     </header>
 

@@ -8,10 +8,22 @@
 </head>
 
 <?php
-    include("./database.php");
+    include("../database.php");
     connect_db();
     $newAccountStatus = CheckLogin();
     
+?>
+
+<?php
+    if($newAccountStatus[1]){
+        echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+        
+        header('Location: ../utilisateur/acceuil.php');
+        Exit();
+    }
+    elseif ($newAccountStatus[0]){
+        echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+    }
 ?>
 
 <body>
