@@ -1,31 +1,33 @@
 <?php
 
-    define('HOST', 'localhost');
-    define('DB_NAME', 'we4a_project');
-    define('USER', 'root');
-    define('PASS', 'root');
+define('HOST', 'localhost');
+define('DB_NAME', 'we4a_project');
+define('USER', 'root');
+define('PASS', 'root');
 
-    function connect_db(){
-        // Create connection
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "we4a_project";
-        global $conn;
-        
-        $conn = new mysqli($servername, $username, $password, $dbname);
+// Connexion à la base de données
+//--------------------------------------------------------------------------------
+function connect_db(){
+    // Create connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "we4a_project";
+    global $conn;
     
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        else{
-            echo "Connection OK !";
-        }
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
+    else{
+        echo "Connection OK !";
+    }
+}
 
 
-//Function to clean up an user input for safety reasons
+// Fonction pour nettoyer l'entrée utilisateur pour des raisons de sécurité
 //--------------------------------------------------------------------------------
 function SecurizeString_ForSQL($string) {
     $string = trim($string);
