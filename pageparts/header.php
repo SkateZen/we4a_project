@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,13 @@
 
     <header>
         <nav>
-            <a href="connexion.php">Se connecter</a>
-            <a href="inscription.php">S'inscrire</a>
+            <a href="profil.php">Profil</a>
+            <a href="">Messages</a>
+            <a href="">Mes Evenements</a>
+            <a href="accueil.php">Accueil</a>
         </nav>
     </header>
 
-    <h1>Titre de notre Reseau</h1>
-
-    <p>Ceci est la page d'acceuil de notre réseau social. L'idée est de faire un site permettant de faciliter la recherche d'évènements</p>
     
 </body>
 </html>

@@ -1,18 +1,32 @@
-<?php
+<?php 
 
-define('HOST', 'localhost');
+/*define('HOST', 'localhost');
 define('DB_NAME', 'we4a_project');
 define('USER', 'root');
-define('PASS', 'root');
+define('PASS', 'root');*/
 
-// Connexion à la base de données
-//--------------------------------------------------------------------------------
+/*function connect_db(){
+
+    $dsn = "mysql:host=".HOST.";dbname=".DB_NAME;
+
+    try{
+
+        $db = new PDO($dsn, USER, PASS);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        echo "Connection OK !";
+    
+    }catch(PDOException $e){
+        echo $e;
+    }
+}*/
+
 function connect_db(){
     // Create connection
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "we4a_project";
+    $dbname = "socialnetwork";
     global $conn;
     
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,7 +36,7 @@ function connect_db(){
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        echo "Connection OK !";
+        echo "Connection DB OK !";
     }
 }
 
@@ -171,18 +185,5 @@ function CheckLogin(){
     return array($loginSuccessful, $loginAttempted, $error, $userID);
 }
 
-    
-
-/*
-    function TestSQL(){
-        global $conn;
-
-        
-        if ( isset($_POST['test'])){
-        
-            $query= "SELECT * FROM `users` ";
-
-
-        }
-    }*/
 ?>
+
