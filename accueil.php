@@ -39,9 +39,18 @@
 
     <!-- Ajout d'événements -->
 
-    <button>
-        Ajouter
-    </button>
+    <form action="./ajout_event.php" method="POST">
+
+            
+        <div id="ID_logout">
+            <!-- <input type="hidden" value="logout" name="logout"></input> -->
+            <button type="submit">Ajouter</button>
+        </div>
+        
+        <!-- <div style="clear:both"></div> -->
+    </form>
+
+
 
     <?php
         }

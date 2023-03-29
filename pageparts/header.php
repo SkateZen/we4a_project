@@ -12,7 +12,7 @@
         <nav>
             <a href="profil.php">Profil</a>
             <a href="">Messages</a>
-            <a href="">Evenements</a>
+            <a href="">Mes Evenements</a>
             <a href="accueil.php">Accueil</a>
         </nav>
     </header>
