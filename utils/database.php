@@ -122,7 +122,7 @@
         }
 
         //Données reçues via cookie?
-        else if ( isset($_COOKIE['mail']) && isset($_COOKIE['password']) ){
+        elseif ( isset($_COOKIE['mail']) && isset($_COOKIE['password']) ){
             echo "<br>login attempted with cookie";
             print_r($_COOKIE);
 

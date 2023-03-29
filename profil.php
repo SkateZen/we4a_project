@@ -18,9 +18,19 @@
     <!-- pseudo -->
 
     <?php
-    include("database.php");
-    connect_db();
-    CheckLogin();
+        include("./utils/database.php");
+        connect_db();
+        $newAccountStatus = CheckLogin();
+    
+        if($newAccountStatus[0]){
+            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+    ?>
+
+    <?php
+        include("./pageparts/header.php");  
+    ?>
+
+    <?php
 
     if ( isset($pseudo) || isset($userID) ) {
     ?>
@@ -28,7 +38,7 @@
         <form action="./logout.php" method="POST">
 
             <div id="ID_name">
-                <p> Bienvenue, <?php echo $username; ?> !</p>
+                <p> Bienvenue, <?php echo $pseudo; ?> !</p>
             </div>
             <div id="ID_logout">
                 <input type="hidden" value="logout" name="logout"></input>
@@ -43,6 +53,21 @@
     <?php
     }
     ?>
+
+
+
+    <?php
+        }
+        elseif ($newAccountStatus[2]){
+            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        }
+        else{
+            echo"Vous n'êtes pas connecté";
+        }
+    ?>
+
+
+    
 
 
 

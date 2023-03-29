@@ -10,34 +10,17 @@
 
 
     <?php
-    include("database.php");
-    connect_db();
-    $newAccountStatus = CheckLogin();
+        include("./utils/database.php");
+        connect_db();
+        $newAccountStatus = CheckLogin();
     
+        if($newAccountStatus[0]){
+            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     ?>
 
     <?php
-        if($newAccountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-            
-            //header('Location: ../utilisateur/acceuil.php');
-            //Exit();
-        }
-        elseif ($newAccountStatus[2]){
-            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
-        }
-        else{
-            echo"Vous n'êtes pas connecté";
-        }
+        include("./pageparts/header.php");  
     ?>
-
-    <header>
-        <nav>
-            <a href="profil.php">Profil</a>
-            <a href="">Messages</a>
-            <a href="">Evenements</a>
-        </nav>
-    </header>
 
     <h1>Titre de notre Reseau</h1>
 
@@ -59,8 +42,16 @@
     <button>
         Ajouter
     </button>
-    
 
+    <?php
+        }
+        elseif ($newAccountStatus[2]){
+            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        }
+        else{
+            echo"Vous n'êtes pas connecté";
+        }
+    ?>
     
 </body>
 </html>

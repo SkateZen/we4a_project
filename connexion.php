@@ -8,7 +8,7 @@
 </head>
 
 <?php
-    include("database.php");
+    include("./utils/database.php");
     connect_db();
     $newAccountStatus = CheckLogin();
     
@@ -18,7 +18,7 @@
     if($newAccountStatus[0]){
         echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
         
-        header('Location: acceuil.php');
+        header('Location: accueil.php');
         //Exit();
     }
     elseif ($newAccountStatus[2]){

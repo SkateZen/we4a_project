@@ -8,7 +8,7 @@
 </head>
 
 <?php
-include("database.php");
+include("./utils/database.php");
 connect_db();
 $newAccountStatus = CheckNewAccountForm();
 
