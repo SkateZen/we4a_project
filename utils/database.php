@@ -57,11 +57,18 @@ function CheckPostFieldSetAndNotEmpty($field){
     return isset($_POST[$field]) && !empty($_POST[$field]);
 }
 
-//Méthode pour créer/mettre à jour le cookie de Login
+//Méthode pour créer/mettre à jour des cookies de Login
 //--------------------------------------------------------------------------------
 function CreateLoginCookie($mail, $encryptedPasswd){
     setcookie("mail", $mail, time() + 3600  ); // Durée des cookies normalement :24 * 3600 
     setcookie("password", $encryptedPasswd, time() + 3600);
+}
+
+//Méthode pour détruire les cookies de Login
+//--------------------------------------------------------------------------------
+function DestroyLoginCookie(){
+    setcookie("mail", NULL, -1);
+    setcookie("password", NULL, -1);
 }
 
 // Fonction permettant de s'inscrire sur le site
@@ -133,7 +140,8 @@ function CheckNewAccountForm(){
 //--------------------------------------------------------------------------------
 function CheckLogin(){
 
-    global $conn, $mail, $userID;
+    global $conn, $userID;
+    global $name, $firstname, $pseudo;
         
 
     $error = NULL; 
@@ -170,9 +178,14 @@ function CheckLogin(){
         $row = $result->fetch_assoc();
 
         if ( $row ){
-            echo "<br>Pseudo : ".$row["pseudo"];
-            echo "<br>Prénom : ".$row["prenom"];
+            $pseudo = $row["pseudo"];
+            $name = $row["nom"];
+            $firstname = $row["prenom"];
             $userID = $row["id_utilisateur"];
+
+            echo "<br>Pseudo : ".$pseudo;
+            echo "<br>Prénom : ".$firstname;
+
             CreateLoginCookie($mail, $password);
             $loginSuccessful = true;
         }
