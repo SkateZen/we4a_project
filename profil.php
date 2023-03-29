@@ -34,20 +34,48 @@
 
     if ( isset($pseudo) || isset($userID) ) {
     ?>
-    <div class="IDzone">   
+
+    <div>
+        <h1>Infos utilisateur</h1>
+        
+        <p> Nom : <?php echo $name; ?> </p>
+        
+        <p> Prénom : <?php echo $firstname; ?> </p>
+
+        <p> Pseudo : <?php echo $pseudo; ?> </p>
+        
+    </div>
+
+
+    <!-- <div>
+        <h1>Modifier infos utilisateur</h1>
+        
+        <form action="./updateUser.php" method="POST">
+            <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
+
+            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="<?php echo $pseudo; ?>">
+
+
+            <input type="text" name="password" id="password" placeholder="Mot de passe">
+            <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
+
+            <button type="submit" name="update" id="update"> Modifier</button>
+        </form>
+    </div> -->
+
+    <div>
+        
+    
         <form action="./logout.php" method="POST">
 
-            <div id="ID_name">
-                <p> Bienvenue, <?php echo $pseudo; ?> !</p>
-            </div>
+            
             <div id="ID_logout">
                 <input type="hidden" value="logout" name="logout"></input>
                 <button type="submit">Se déconnecter</button>
             </div>
-            <div id="ID_myblog">
-                <p><a href="./showBlog.php?userID=<?php echo $userID; ?>">Mon Blog Personnel</a></p>
-            </div>
-            <div style="clear:both"></div>
+            
+            <!-- <div style="clear:both"></div> -->
         </form>
     </div>
     <?php

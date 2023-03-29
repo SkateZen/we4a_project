@@ -26,7 +26,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "root";
-        $dbname = "we4a_project";
+        $dbname = "socialnetwork";
         global $conn;
         
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -75,7 +75,7 @@
                     //$username = SecurizeString_ForSQL($_POST["name"]);
                     $password = md5($_POST["password"]);
 
-                    $query = "INSERT INTO `users`(`id`, `pseudo`, `email`, `password`) VALUES (NULL, '$pseudo', '$mail', '$password')";
+                    $query = "INSERT INTO `utilisateur`(`id_utilisateur`, `nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`) VALUES (NULL, '$name', '$firstname', '$pseudo', '$mail', '$password', NULL)";
                     echo $query."<br>";
                     $result = $conn->query($query);
 
@@ -95,7 +95,7 @@
 
     function CheckLogin(){
 
-        global $conn, $username, $userID;
+        global $conn, $userID;
         global $pseudo, $name, $firstname;
         
 
@@ -134,7 +134,7 @@
 
 
         if ($loginAttempted){
-            $query = "SELECT * FROM users WHERE email = '".$mail."' AND password ='".$password."'";
+            $query = "SELECT * FROM utilisateur WHERE email = '".$mail."' AND password ='".$password."'";
             $result = $conn->query($query);
             
             //echo "<br>" .$result;
@@ -151,9 +151,10 @@
                 echo "<br>".$row["pseudo"];
 
                 $pseudo = $row["pseudo"];
-                //$name = $row["name"];
-                
-                $userID = $row["id"];
+                $name = $row["nom"];
+                $firstname = $row["prenom"];
+
+                $userID = $row["id_utilisateur"];
 
                 CreateLoginCookie($mail, $password);
 
@@ -174,6 +175,11 @@
     function CreateLoginCookie($mail, $password){
         setcookie("mail", $mail, time() + 3600*24);
         setcookie("password", $password, time() + 3600*24);
+    }
+
+    function DestroyLoginCookie(){
+        setcookie("mail", NULL, -1);
+        setcookie("password", NULL, -1);
     }
 
     
