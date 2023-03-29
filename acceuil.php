@@ -10,9 +10,25 @@
 
 
     <?php
-    include("../database.php");
+    include("database.php");
     connect_db();
-    CheckLogin();
+    $newAccountStatus = CheckLogin();
+    
+    ?>
+
+    <?php
+        if($newAccountStatus[0]){
+            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            
+            //header('Location: ../utilisateur/acceuil.php');
+            //Exit();
+        }
+        elseif ($newAccountStatus[2]){
+            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        }
+        else{
+            echo"Vous n'êtes pas connecté";
+        }
     ?>
 
     <header>
