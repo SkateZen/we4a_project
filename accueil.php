@@ -22,7 +22,7 @@
         include("./pageparts/header.php");  
     ?>
 
-    <h1>Titre de notre Reseau</h1>
+    <h1>Eventum</h1>
 
     <p>Bravo, vous vous êtes connecté sur notre réseau social. Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !</p>
     
@@ -33,8 +33,6 @@
         
         <input type="search" placeholder="Cherchez des évènements ou amis">
     </button>
-
-    <!-- Proposition d'événements -->
 
 
     <!-- Ajout d'événements -->
@@ -49,6 +47,17 @@
         
         <!-- <div style="clear:both"></div> -->
     </form>
+
+    <!-- Proposition d'événements -->
+
+    <h2>Événements disponibles</h2>
+
+    <?php
+        include("./utils/gestion_event.php");
+        ShowEvent();
+    ?>
+
+    
 
 
 
