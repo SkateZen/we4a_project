@@ -98,13 +98,15 @@ function CheckNewAccountForm(){
             // Vérifier si le nom d'utilisateur existe déjà dans la base de données
             $query = "SELECT COUNT(*) FROM utilisateur WHERE email='$mail'";
             $result = $conn->query($query);
-            $row = $result->fetch_assoc();
+            $row = $result->fetch_row()[0];
 
+            
             // Le formulaire est valide seulement s'il n'existe pas déjà un compte avec l'email renseigné,
             // si le pseudo a au moins 4 caractères et si password == confirm
             if ($row > 0) {
-                $error = "Le nom d'utilisateur est déjà utilisé";
+                $error = "Le mail est déjà utilisé";
                 echo $error;
+                echo $row;
             } 
             elseif (strlen($_POST["pseudo"]) < 4 ){
                 $error = "Le nom d'utilisateur doit avoir une longueur d'au moins 4 lettres";

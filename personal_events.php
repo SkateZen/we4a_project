@@ -34,6 +34,11 @@
 
     <h2>Événements inscrits</h2>
 
+    <?php
+        //include("./utils/gestion_event.php");
+        ShowEventWithIdUser();
+    ?>
+
     
 
 

@@ -37,27 +37,28 @@ function AjoutEvent(){
     }
 }
 
+include("pageparts/affichage_event.php");
 
 function ShowEvent(){
 
-    global $conn;
+    global $conn, $userID;
 
-    $query = "SELECT * FROM `evenement`";
+    //$query = "SELECT * FROM `evenement`";
+
+    $query = "SELECT * FROM `evenement` WHERE id_evenement NOT IN (SELECT id_evenement FROM `inscription_evenement` WHERE id_utilisateur = '$userID') AND id_createur != '$userID'";
+
     $result = $conn->query($query);
 
     if( mysqli_affected_rows($conn) == 0 )
     {
-        echo "Erreur lors de l'insertion SQL. Essayez un nom/password sans caractères spéciaux";
+        echo "Aucun evenement disponible";
     }
     else{
         while($row = mysqli_fetch_array($result)){
-            echo "<div class='event'>";
-            echo "<h3>".$row['titre']."</h3>";
-            echo "<p>".$row['description']."</p>";
-            echo "<p>".$row['date']."</p>";
-            echo "<p>".$row['heure']."</p>";
-            echo "<p>".$row['lieu']."</p>";
-            echo "</div>";
+            
+            //fonction qui affiche les events
+            CardEvent($row);
+            InscriptionButton($row);
         }
     }
 }
@@ -71,17 +72,51 @@ function ShowEventWithIdCreator(){
 
     if( mysqli_affected_rows($conn) == 0 )
     {
-        echo "Erreur lors de l'insertion SQL. Essayez un nom/password sans caractères spéciaux";
+        echo "Aucun evenement";
     }
     else{
         while($row = mysqli_fetch_array($result)){
-            echo "<div class='event'>";
-            echo "<h3>".$row['titre']."</h3>";
-            echo "<p>".$row['description']."</p>";
-            echo "<p>".$row['date']."</p>";
-            echo "<p>".$row['heure']."</p>";
-            echo "<p>".$row['lieu']."</p>";
-            echo "</div>";
+            CardEvent($row);
+        }
+    }
+}
+
+function ShowEventWithIdUser(){
+
+    global $conn, $userID;
+
+    $query = "SELECT * FROM `evenement` WHERE id_evenement IN (SELECT id_evenement FROM `inscription_evenement` WHERE id_utilisateur = '$userID')";
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        echo "Aucun evenement";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){
+            CardEvent($row);
+        }
+    }
+}
+
+function InscriptionIntoEvent(){
+
+    global $conn, $userID;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["inscription_event"])){
+
+        $id_event = $_POST["id_event"];
+
+        $query = "INSERT INTO `inscription_evenement`(`id_relation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$userID', '$id_event')";
+
+        $result = $conn->query($query);
+
+        if (!$result) {
+            $error = "Erreur lors de l'insertion SQL.";
+            echo $error;
+        }    
+        else{
+            echo "Inscription réussie";
         }
     }
 }
