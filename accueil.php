@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="./javascript/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -31,8 +34,24 @@
     <!-- Recherche d'événements ou amis -->
     <button>
         
-        <input type="search" placeholder="Cherchez des évènements ou amis">
+        <input type="search" placeholder="Cherchez des évènements">
     </button>
+
+    <?php 
+    
+    //include("./utils/gestion_amis.php");
+    
+
+    ?>
+
+    <form action="" method="POST">
+
+        <input type="search" id="search_ami" name="search_ami" placeholder="Cherchez des amis">
+
+        <div id="results">
+            
+        </div>
+    </form>
 
 
     <!-- Ajout d'événements -->
