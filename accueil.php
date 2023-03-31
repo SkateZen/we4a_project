@@ -69,6 +69,9 @@
         }
         else{
             echo"Vous n'êtes pas connecté";
+
+            header('Location: ./index.php');
+            Exit();
         }
     ?>
     
