@@ -28,6 +28,7 @@
 
     <?php
         include("./pageparts/header.php");  
+        include("./utils/gestion_amis.php");
     ?>
 
     <?php
@@ -77,6 +78,16 @@
             
             <!-- <div style="clear:both"></div> -->
         </form>
+    </div>
+
+   
+   
+
+    <div>
+        <h2>Amis</h2>
+        <h2>Amis en attente</h2>
+
+        <?php ShowDemandeAmis();?>
     </div>
     <?php
     }

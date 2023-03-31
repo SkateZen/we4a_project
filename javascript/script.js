@@ -31,7 +31,7 @@ $(document).ready(function() {
       }); */
       $.ajax({
         type: 'GET',
-        url: 'utils/gestion_amis.php',
+        url: 'utils/search_amis.php',
         data: 'user=' + encodeURIComponent(query_search),
         success: function(data){
           if(data != ""){

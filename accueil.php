@@ -38,9 +38,8 @@
     </button>
 
     <?php 
-    
-    //include("./utils/gestion_amis.php");
-    
+        include("./utils/gestion_amis.php");
+        AjoutAmi();
 
     ?>
 
@@ -61,7 +60,7 @@
             
         <div id="ID_logout">
             <!-- <input type="hidden" value="logout" name="logout"></input> -->
-            <button type="submit">Ajouter</button>
+            <button type="submit">Ajouter événement</button>
         </div>
         
         <!-- <div style="clear:both"></div> -->
