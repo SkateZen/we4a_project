@@ -1,11 +1,11 @@
 <?php
 
+include("pageparts/affichage_amis.php");
+
 function AjoutAmi(){
     global $conn, $userID;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ajout_ami"])){
-
-        
 
         $id_ami = $_POST["id_ami"];
 
@@ -16,7 +16,6 @@ function AjoutAmi(){
 
         $row = $result->fetch_row()[0];
 
-       
 
         if ($row > 0) {
             $error = "Deja amis";
@@ -35,10 +34,6 @@ function AjoutAmi(){
                 echo "Ajout réussie";
             }
         } 
-
-
-
-        
     }
 }
 
@@ -94,16 +89,6 @@ function ShowDemandeAmis(){
 }
 
 
-function AcceptAmiButton($row){
-    ?>
-    <form action="" method="post">
-        <!-- <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>"> -->
-        <button type="submit" name="accept_ami" id="accept_ami"> Accepter</button>
-    </form>
-
-    <?php
-}
-
 function AcceptAmi($id_ami){
     global $conn, $userID;
 
@@ -123,4 +108,54 @@ function AcceptAmi($id_ami){
     }
 }
 
+function ContactAmi(){
+    global $conn, $userID;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["contact_ami"])){
+
+        
+    }
+}
+
+
+function ShowConversationAmi(){
+    global $conn, $userID;
+
+    //requete qui récupère les amis
+
+    $query = "SELECT * FROM `utilisateur` WHERE id_utilisateur IN (SELECT id_utilisateur1 FROM `relation` WHERE id_utilisateur2 = '$userID' AND statut = 'accepte') OR 
+                                                id_utilisateur IN (SELECT id_utilisateur2 FROM `relation` WHERE id_utilisateur1 = '$userID' AND statut = 'accepte')";
+
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        $error = "Aucun utilisateur trouvé";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){ 
+
+
+            $id_ami = $row['id_utilisateur'];
+            echo "<br>".$row['pseudo'];
+
+            //requete qui recupère les conversations avec l'ami
+
+            $query2 = "SELECT * FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami' OR 
+                                                                id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID')";
+
+            $result3 = $conn->query($query3);
+
+            $row3 = $result3->fetch_row()[0];
+
+            if ($row3 > 0) {
+                echo "Conversation déjà existante";
+            }
+            else{
+                ContactAmiButton($row);
+            } 
+              
+        }
+    }
+}
 ?>

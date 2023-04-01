@@ -1,4 +1,8 @@
 <?php
+
+include("pageparts/affichage_event.php");
+
+
 function AjoutEvent(){
     global $conn;
     global $userID;
@@ -37,7 +41,7 @@ function AjoutEvent(){
     }
 }
 
-include("pageparts/affichage_event.php");
+
 
 function ShowEvent(){
 

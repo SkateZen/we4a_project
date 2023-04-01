@@ -1,9 +1,13 @@
 <?php
 
-include("database.php");
+include("../utils/database.php");
 connect_db();
 CheckLogin();
-//Permet de chercher ses amis, ne marche pas en fonction
+
+include("../pageparts/affichage_amis.php");
+
+
+//Permet de chercher des utilisateurs et de les ajouter en amis
 
 global $conn, $userID;
 
@@ -51,14 +55,6 @@ if(isset($_GET['user'])){
     }
 }
 
-function AjoutAmiButton($row){
-    ?>
-    <form action="" method="post">
-        <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>">
-        <button type="submit" name="ajout_ami" id="ajout_ami"> Ajouter</button>
-    </form>
 
-    <?php
-}
 
 ?>

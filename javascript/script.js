@@ -7,7 +7,7 @@ $(document).ready(function() {
         // Récupération de la valeur de l'input de recherche
         var query_search = $(this).val();
   
-        searchUser(query_search, 'utils/search_utilisateurs.php');
+        searchUser(query_search, 'search_bar/search_utilisateurs.php');
     });
 });
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
         // Récupération de la valeur de l'input de recherche
         var query_search = $(this).val();
 
-        searchUser(query_search, 'utils/search_amis.php');
+        searchUser(query_search, 'search_bar/search_amis.php');
   
         // Si l'input de recherche est vide, on ne fait rien
         

@@ -24,17 +24,11 @@
 
     <?php
         include("./pageparts/header.php");  
+        include("./utils/gestion_amis.php");
     ?>
 
     <h1>Messagerie</h1>
 
-    <!-- Recherche d'événements ou amis -->
-
-    <?php 
-        include("./utils/gestion_amis.php");
-        AjoutAmi();
-
-    ?>
 
     <form action="" method="POST">
 
@@ -45,20 +39,11 @@
         </div>
     </form>
 
+    <h2>Conversations</h2>
 
-    <!-- Ajout d'événements -->
+    <?php ShowConversationAmi();?>
 
-    <form action="./ajout_event.php" method="POST">
-
-            
-        <div id="ID_logout">
-            <!-- <input type="hidden" value="logout" name="logout"></input> -->
-            <button type="submit">Ajouter événement</button>
-        </div>
-        
-        <!-- <div style="clear:both"></div> -->
-    </form>
-
+    <h2>Conversation en cours</h2>
     
 
 
