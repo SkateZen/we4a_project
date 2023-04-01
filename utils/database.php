@@ -156,7 +156,6 @@ function CheckLogin(){
     $error = NULL; 
     $loginSuccessful = false;
     $loginAttempted = false;
-    $loginAttemptedWithCookie = false;
 
     // Données reçues via formulaire
     // Vérifier que le formulaire a été envoyé avec la méthode POST et que le bouton de connexion a été cliqué
@@ -182,7 +181,7 @@ function CheckLogin(){
     }
 
     // Si tentative de connexion, on interroge la BDD
-    if ($loginAttempted || $loginAttemptedWithCookie){
+    if ($loginAttempted){
         $query = "SELECT * FROM utilisateur WHERE email = '".$mail."' AND password ='".$password."'";
         $result = $conn->query($query);
         $row = $result->fetch_assoc();
@@ -196,9 +195,10 @@ function CheckLogin(){
             echo "<br>Pseudo : ".$pseudo;
             echo "<br>Prénom : ".$firstname;
 
-            if (!$loginAttemptedWithCookie){
-                CreateLoginCookie($mail, $password);
-            }
+            
+            DestroyLoginCookie();
+            CreateLoginCookie($mail, $password);
+            
             
             $loginSuccessful = true;
         }
