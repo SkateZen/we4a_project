@@ -41,9 +41,15 @@
 
     <h2>Conversations</h2>
 
-    <?php ShowConversationAmi();?>
+    <?php ShowAmisWithConversation();?>
 
     <h2>Conversation en cours</h2>
+    
+    <?php 
+    ShowConversation();
+    SendMessage();    
+    ?>
+    <!-- <div id="messages"></div> -->
     
 
 

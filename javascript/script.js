@@ -7,7 +7,7 @@ $(document).ready(function() {
         // Récupération de la valeur de l'input de recherche
         var query_search = $(this).val();
   
-        searchUser(query_search, 'search_bar/search_utilisateurs.php');
+        searchUser(query_search, 'ajax_to_php/search_utilisateurs.php');
     });
 });
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
         // Récupération de la valeur de l'input de recherche
         var query_search = $(this).val();
 
-        searchUser(query_search, 'search_bar/search_amis.php');
+        searchUser(query_search, 'ajax_to_php/search_amis.php');
   
         // Si l'input de recherche est vide, on ne fait rien
         
@@ -50,3 +50,30 @@ function searchUser(query_search, link) {
         }
     });
 }
+
+
+setInterval('load_messages()', 1000);
+
+$(document).ready(function() {
+    // Lorsqu'un utilisateur modifie l'input de recherche
+    $('#pseudo_ami').onchange(load_messages);
+
+});
+
+function load_messages() {
+
+    var pseudo_ami = $("#pseudo_ami_ajax").val();
+
+    $.ajax({
+        type: 'GET',
+        url: "ajax_to_php/load_messages.php",
+        cache: false,
+        data: 'pseudo=' + encodeURIComponent(pseudo_ami),
+        success: function(data){
+
+            if(data != ""){
+                $('#messages').html(data);
+            }
+        }
+    });
+}   
