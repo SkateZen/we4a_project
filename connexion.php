@@ -45,7 +45,7 @@
 
         <input type="text" name="password" id="password" placeholder="Mot de passe" required>
 
-        <button type="submit" name="login" id="login" > Connect</button>
+        <button type="submit" name="login" id="login" > Connexion</button>
 
     </form>
 
