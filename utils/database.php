@@ -21,8 +21,11 @@ define('PASS', 'root');*/
     }
 }*/
 
+
+// Fonction pour ouvrir une connexion avec la base de données
+//--------------------------------------------------------------------------------
 function connect_db(){
-    // Create connection
+    // Création de la connexion
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -31,7 +34,7 @@ function connect_db(){
     
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+    // Vérifier la connexion
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -51,25 +54,29 @@ function SecurizeString_ForSQL($string) {
     return $string;
 }
 
+
 // Fonction pour vérifier si un champs a été rempli par des données non vides
 //--------------------------------------------------------------------------------
 function CheckPostFieldSetAndNotEmpty($field){
     return isset($_POST[$field]) && !empty($_POST[$field]);
 }
 
-//Méthode pour créer/mettre à jour des cookies de Login
+
+// Fontion pour créer/mettre à jour les cookies de connexion
 //--------------------------------------------------------------------------------
 function CreateLoginCookie($mail, $encryptedPasswd){
     setcookie("mail", $mail, time() + 3600  ); // Durée des cookies normalement :24 * 3600 
     setcookie("password", $encryptedPasswd, time() + 3600);
 }
 
-//Méthode pour détruire les cookies de Login
+
+// Fonction pour détruire les cookies de connexion
 //--------------------------------------------------------------------------------
 function DestroyLoginCookie(){
     setcookie("mail", NULL, -1);
     setcookie("password", NULL, -1);
 }
+
 
 // Fonction permettant de s'inscrire sur le site
 //--------------------------------------------------------------------------------
@@ -154,6 +161,7 @@ function CheckLogin(){
     // Données reçues via formulaire
     // Vérifier que le formulaire a été envoyé avec la méthode POST et que le bouton de connexion a été cliqué
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
+
         // Vérifier si chacun des champs a été rempli par des données non vides
         if (CheckPostFieldSetAndNotEmpty("mail") && CheckPostFieldSetAndNotEmpty("password")){
             $mail = SecurizeString_ForSQL($_POST["mail"]);
@@ -173,7 +181,6 @@ function CheckLogin(){
 
     }
 
-    
     // Si tentative de connexion, on interroge la BDD
     if ($loginAttempted || $loginAttemptedWithCookie){
         $query = "SELECT * FROM utilisateur WHERE email = '".$mail."' AND password ='".$password."'";
