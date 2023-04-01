@@ -15,6 +15,7 @@
         </nav>
     </header>
 
+    <!-- Titre de notre Réseau social -->
     <h1>Eventum</h1>
 
     <p>Ceci est la page d'acceuil de notre réseau social. L'idée est de faire un site permettant de faciliter la recherche d'évènements</p>

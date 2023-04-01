@@ -10,16 +10,15 @@
 <?php
     include("./utils/database.php");
     connect_db();
-    $newAccountStatus = CheckLogin();
+    $newAccountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
 ?>
 
 <?php
+    // Redirection vers la page d'accueil si la connexion est réussie
     if($newAccountStatus[0]){
         echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-        
         header('Location: accueil.php');
-        //Exit();
     }
     elseif ($newAccountStatus[2]){
         echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';

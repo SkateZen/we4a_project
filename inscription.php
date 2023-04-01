@@ -7,31 +7,30 @@
     <title>Document</title>
 </head>
 
-<?php
-include("./utils/database.php");
-connect_db();
-$newAccountStatus = CheckNewAccountForm();
-
-
-?>
-
-<h1>Création d'un nouveau compte</h1>
-<?php
-    if($newAccountStatus[1]){
-        echo '<h3 class="successMessage">Nouveau compte crée avec succès!</h3>';
-        
-        header('Location: ./connexion.php');
-        Exit();
-    }
-    elseif ($newAccountStatus[0]){
-        echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
-    }
-?>
 
 <body>
+    <?php
+        include("./utils/database.php");
+        connect_db();
+        $newAccountStatus = CheckNewAccountForm(); // <-- array($creationAttempted, $creationSuccessful, $error)
+    ?>
+
+    <h1>Création d'un nouveau compte</h1>
+    <?php
+        // Redirection vers la page connexion si l'inscription est réussie
+        if($newAccountStatus[1]){
+            echo '<h3 class="successMessage">Nouveau compte crée avec succès!</h3>';
+            header('Location: ./connexion.php');
+        }
+        elseif ($newAccountStatus[0]){
+            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        }
+    ?>
+
 
     <h2>S'inscrire</h2>
 
+    <!-- Formulaire d'inscription -->
     <form action="" method="post">
         <input type="text" name="name" id="name" placeholder="Nom">
         <input type="text" name="firstname" id="firstname" placeholder="Prénom">
@@ -42,7 +41,7 @@ $newAccountStatus = CheckNewAccountForm();
         <input type="text" name="password" id="password" placeholder="Mot de passe">
         <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
 
-        <button type="submit" name="sign_up" id="sign_up"> Inscription</button>
+        <button type="submit" name="sign_up" id="sign_up">Inscription</button>
     </form>
     
     
