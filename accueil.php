@@ -64,7 +64,7 @@
         <!-- <div style="clear:both"></div> -->
     </form>
 
-    
+
     <!-- Proposition d'événements -->
     <h2>Événements disponibles</h2>
 
@@ -74,8 +74,8 @@
             ShowEvent();
 
         }
-        elseif ($newAccountStatus[2]){
-            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        elseif ($accountStatus[2]){
+            echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';
         }
         else{
             echo"Vous n'êtes pas connecté";

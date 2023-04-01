@@ -20,20 +20,16 @@
     <?php
         include("./utils/database.php");
         connect_db();
-        $newAccountStatus = CheckLogin();
+        $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
-        if($newAccountStatus[0]){
+        if($accountStatus[0]){
             echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-    ?>
+    
+            include("./pageparts/header.php");  
+            include("./utils/gestion_amis.php");
+    
 
-    <?php
-        include("./pageparts/header.php");  
-        include("./utils/gestion_amis.php");
-    ?>
-
-    <?php
-
-    if ( isset($pseudo) || isset($userID) ) {
+            if ( isset($pseudo) || isset($userID) ) {
     ?>
 
     <div>
@@ -92,15 +88,11 @@
         <?php ShowDemandeAmis();?>
     </div>
     <?php
-    }
-    ?>
-
-
-
-    <?php
+            }
+    
         }
-        elseif ($newAccountStatus[2]){
-            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        elseif ($accountStatus[2]){
+            echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';
         }
         else{
             echo"Vous n'êtes pas connecté";
@@ -109,10 +101,6 @@
             Exit();
         }
     ?>
-
-
-    
-
 
 
 </body>

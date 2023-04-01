@@ -7,31 +7,27 @@
     <title>Document</title>
 </head>
 
-<?php
-include("./utils/database.php");
-include("./utils/gestion_event.php");
-connect_db();
-$newAccountStatus = CheckLogin();
-
-AjoutEvent();
-
-if($newAccountStatus[0]){
-    echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-?>
-
-<?php
-include("./pageparts/header.php");  
-?>
-
-
-
-
 
 <body>
 
+    <?php
+        include("./utils/database.php");
+        include("./utils/gestion_event.php");
+        connect_db();
+        $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
+
+        AjoutEvent();
+
+        if($accountStatus[0]){
+            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+
+            include("./pageparts/header.php");  
+    ?>
+
+
     <h1>Ajouter un événement</h1>
 
-
+    <!-- Formulaire ajout d'un évenement -->
     <form action="" method="post">
         <input type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
 
@@ -46,19 +42,18 @@ include("./pageparts/header.php");
     </form>
     
     
-</body>
-
-<?php
+    <?php
         }
-        elseif ($newAccountStatus[2]){
-            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+        elseif ($accountStatus[2]){
+            echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';
         }
         else{
             echo"Vous n'êtes pas connecté";
 
             header('Location: ./index.php');
-            Exit();
         }
     ?>
+
+</body>
 
 </html>

@@ -24,7 +24,7 @@
             header('Location: accueil.php');
         }
         elseif ($accountStatus[2]){
-            echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
+            echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';
         }
     ?>
 
