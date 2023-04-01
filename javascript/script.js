@@ -35,10 +35,12 @@ function searchUser(query_search, link) {
         return;
     }
 
+    console.log(query_search);
+
     $.ajax({
         type: 'GET',
         url: link,
-        data: 'id=' + encodeURIComponent(query_search),
+        data: 'user=' + encodeURIComponent(query_search),
         success: function(data){
             if(data != ""){
                 $('#results').html(data);
