@@ -67,7 +67,7 @@ function ChatBox($row){
     ?>
     <form action="" method="post">
 
-         <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>">
+        <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>">
         <h3><?php echo $row['pseudo']; ?></h3>
 
 

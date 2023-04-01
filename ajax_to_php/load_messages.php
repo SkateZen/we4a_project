@@ -2,9 +2,9 @@
 
 include("../utils/database.php");
 connect_db();
-CheckLogin();
 
-global $conn, $userID;
+
+global $conn;
 
 if (isset($_GET['pseudo'])) {
 
@@ -19,6 +19,13 @@ if (isset($_GET['pseudo'])) {
     $row = $result->fetch_assoc();
 
     $id_ami = $row['id_utilisateur'];
+
+    $mail = $_COOKIE['mail'];
+
+    $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
+    $result_userID = $conn->query($query_userID);
+
+    $userID = $result_userID->fetch_assoc()['id_utilisateur'];
 
     $query2 = "SELECT * FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami') OR 
                                                     (id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID') ORDER BY date_envoi ASC";

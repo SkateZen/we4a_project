@@ -54,11 +54,7 @@ function searchUser(query_search, link) {
 
 setInterval('load_messages()', 1000);
 
-$(document).ready(function() {
-    // Lorsqu'un utilisateur modifie l'input de recherche
-    $('#pseudo_ami').onchange(load_messages);
 
-});
 
 function load_messages() {
 

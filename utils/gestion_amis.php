@@ -183,8 +183,6 @@ function ShowConversation(){
 
         if ($row){
             ChatBox($row);
-            setcookie("pseudo_ami", NULL, -1);
-            setcookie("pseudo_ami", $pseudo, time() + 3600);
 
         }
         else{

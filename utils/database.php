@@ -174,7 +174,7 @@ function CheckLogin(){
     elseif (isset($_COOKIE['mail']) && isset($_COOKIE["password"])){
         $mail = $_COOKIE["mail"];
         $password = $_COOKIE["password"];
-        $loginAttemptedWithCookie = true;
+        $loginAttempted = true;
         echo "<br>Connexion tentée avec des informations stockées dans les cookies";
         echo "<br>Adresse e-mail : ".$mail;
 
