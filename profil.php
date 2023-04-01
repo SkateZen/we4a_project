@@ -85,6 +85,8 @@
 
     <div>
         <h2>Amis</h2>
+        <?php ShowAmis();?>
+
         <h2>Amis en attente</h2>
 
         <?php ShowDemandeAmis();?>

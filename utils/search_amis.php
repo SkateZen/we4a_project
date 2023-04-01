@@ -2,14 +2,13 @@
 
 include("database.php");
 connect_db();
+CheckLogin();
 //Permet de chercher ses amis, ne marche pas en fonction
 
-global $conn;
+global $conn, $userID;
 
 if(isset($_GET['user'])){
     $input = $_GET['user'];
-    
-    //echo $input;
 
     $query = "SELECT * FROM `utilisateur` WHERE (pseudo LIKE '%$input%' OR prenom LIKE '%$input%' OR nom LIKE '%$input%') ";
 
@@ -21,13 +20,34 @@ if(isset($_GET['user'])){
     }
     else{
         while($row = mysqli_fetch_array($result)){
+
             
-            //fonction qui affiche les events
+            
+            $id_ami = $row['id_utilisateur'];
+
+
             echo "<br>".$row['pseudo'];
-            AjoutAmiButton($row);
+            echo "<br>".$row['prenom'];
+            echo "<br>".$row['nom'];
+
+            $query2 = "SELECT COUNT(*) FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
+                                                                id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
+
+            $result2 = $conn->query($query2);
+
+            $row2 = $result2->fetch_row()[0];
+
+            
+
+            if ($row2 > 0) {
+                $error = "Deja amis";
+                echo $error;
+            }
+            else{
+                echo "Pas encore amis";
+                AjoutAmiButton($row);
+            } 
         }
-        
-        
     }
 }
 
