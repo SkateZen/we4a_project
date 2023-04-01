@@ -11,23 +11,23 @@
 </head>
 <body>
 
-
     <?php
         include("./utils/database.php");
         connect_db();
-        $newAccountStatus = CheckLogin();
+        $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
-        if($newAccountStatus[0]){
+        if($accountStatus[0]){
             echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-    ?>
-
-    <?php
-        include("./pageparts/header.php");  
+    
+            include("./pageparts/header.php");  
     ?>
 
     <h1>Eventum</h1>
 
-    <p>Bravo, vous vous êtes connecté sur notre réseau social. Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !</p>
+    <p>
+        Bravo, vous vous êtes connecté sur notre réseau social. 
+        Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !
+    </p>
     
     
 

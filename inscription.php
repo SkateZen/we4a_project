@@ -15,6 +15,12 @@
         $newAccountStatus = CheckNewAccountForm(); // <-- array($creationAttempted, $creationSuccessful, $error)
     ?>
 
+    <header>
+        <nav>
+            <a href="./index.php">Accueil visiteur</a>
+        </nav>
+    </header>
+
     <h1>Création d'un nouveau compte</h1>
     <?php
         // Redirection vers la page connexion si l'inscription est réussie
@@ -44,6 +50,7 @@
         <button type="submit" name="sign_up" id="sign_up">Inscription</button>
     </form>
     
+    <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
     
 </body>
 </html>
