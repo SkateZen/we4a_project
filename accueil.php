@@ -28,69 +28,58 @@
         Bravo, vous vous êtes connecté sur notre réseau social. 
         Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !
     </p>
-    
-    
 
-    <!-- Recherche d'événements ou amis -->
+
+    <!-- Recherche d'événements -->
     <button>
-        
         <input type="search" placeholder="Cherchez des évènements">
     </button>
 
+
+
     <?php 
-        include("./utils/gestion_amis.php");
-        AjoutAmi();
+            include("./utils/gestion_amis.php");
+            AjoutAmi();
 
     ?>
 
+    <!-- Recherche d'utilisateurs -->
     <form action="" method="POST">
-
         <input type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Cherchez des amis">
 
         <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
         <div id="results">
-            
+
         </div>
+
     </form>
 
 
     <!-- Ajout d'événements -->
-
     <form action="./ajout_event.php" method="POST">
-
-            
-        <div id="ID_logout">
-            <!-- <input type="hidden" value="logout" name="logout"></input> -->
-            <button type="submit">Ajouter événement</button>
-        </div>
+        
+        <!-- <input type="hidden" value="logout" name="logout"></input> -->
+        <button type="submit">Ajouter événement</button>
         
         <!-- <div style="clear:both"></div> -->
     </form>
 
+    
     <!-- Proposition d'événements -->
-
     <h2>Événements disponibles</h2>
 
     <?php
-        include("./utils/gestion_event.php");
-        InscriptionIntoEvent();
-        ShowEvent();
-    ?>
+            include("./utils/gestion_event.php");
+            InscriptionIntoEvent();
+            ShowEvent();
 
-    
-
-
-
-    <?php
         }
         elseif ($newAccountStatus[2]){
             echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
         }
         else{
             echo"Vous n'êtes pas connecté";
-
             header('Location: ./index.php');
-            Exit();
         }
     ?>
     
