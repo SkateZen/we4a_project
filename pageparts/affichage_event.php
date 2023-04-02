@@ -5,13 +5,25 @@
 <?php   
 
 function CardEvent($row){
-    echo "<div class='event'>";
-    echo "<h3>".$row['titre']."</h3>";
-    echo "<p>".$row['description']."</p>";
-    echo "<p>".$row['date']."</p>";
-    echo "<p>".$row['heure']."</p>";
-    echo "<p>".$row['lieu']."</p>";
-    echo "</div>";
+    ?>
+
+    <form action="./evenement.php" method="get">
+        <button type="submit">
+
+            <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
+
+            <div class="event">
+                <h3><?php echo $row['titre']; ?></h3>
+                <p><?php echo $row['description']; ?></p>
+                <p><?php echo $row['date']; ?></p>
+                <p><?php echo $row['heure']; ?></p>
+                <p><?php echo $row['lieu']; ?></p>
+            </div>
+
+        </button>
+    </form>
+
+    <?php
 }
 
 

@@ -125,4 +125,31 @@ function InscriptionIntoEvent(){
     }
 }
 
+function PageEvent(){
+
+    global $conn, $userID;
+
+    if ( isset($_GET["id_event"])){
+
+        echo "Evenement trouvé";
+
+        $id_event = $_GET["id_event"];
+
+        $query = "SELECT * FROM `evenement` WHERE id_evenement = '$id_event'";
+        $result = $conn->query($query);
+
+        $row = $result->fetch_assoc();
+
+        if ($row){
+            return $row;
+
+        }
+        else{
+            $error = "Aucun evenement trouvé";
+            echo $error;
+            return null;
+        }
+    }
+}
+
 ?>
