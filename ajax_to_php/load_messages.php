@@ -10,7 +10,7 @@ if (isset($_GET['pseudo'])) {
 
     $pseudo_ami = $_GET['pseudo'];
 
-    echo $pseudo_ami;
+    // echo $pseudo_ami;
 
     $query = "SELECT * FROM `utilisateur` WHERE pseudo = '$pseudo_ami'";
 
@@ -20,7 +20,9 @@ if (isset($_GET['pseudo'])) {
 
     $id_ami = $row['id_utilisateur'];
 
-    $mail = $_COOKIE['mail'];
+    if (isset($_COOKIE['mail'])) {
+        $mail = $_COOKIE['mail'];
+    }
 
     $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
     $result_userID = $conn->query($query_userID);
@@ -41,6 +43,7 @@ if (isset($_GET['pseudo'])) {
             echo "<br>".$row2['contenu'];
         }
     }
+    
 }
 
 

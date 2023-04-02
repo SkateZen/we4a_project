@@ -39,7 +39,7 @@ function connect_db(){
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        echo "Connection DB OK !";
+        // echo "Connection DB OK !";
     }
 }
 

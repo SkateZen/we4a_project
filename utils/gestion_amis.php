@@ -149,14 +149,11 @@ function ShowAmisWithConversation(){
             $row2 = $result2->fetch_row()[0];
 
             if ($row2) {
-                echo $row['pseudo'];
+                
                 SelectConversation($row);
                 
             }
-            else{
-                echo $row['pseudo'];
-                SelectConversation($row);
-            }
+            
         }
     }
 }
@@ -165,13 +162,9 @@ function ShowConversation(){
 
     global $conn, $userID;
 
-    echo "TESST";
+    if (isset($_POST["pseudo_ami"])){
 
-    if (isset($_GET["pseudo_ami"])){
-
-        echo "TESST";
-
-        $pseudo = $_GET["pseudo_ami"];
+        $pseudo = $_POST["pseudo_ami"];
 
         $showAttempted = true;
 
@@ -193,76 +186,33 @@ function ShowConversation(){
 }
 
 
-// function ShowConversation(){
-
+// function SendMessage(){
 //     global $conn, $userID;
 
-//     $showAttempted = false;
-//     $showAttemptedWithCookie = false;
+//     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send_message_ami"])){
 
-//     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["select_conversation"])){
+//         $message = $_POST["message"];
 
 //         $pseudo = $_POST["pseudo_ami"];
 
-//         $showAttempted = true;
-//     }
-//     elseif (isset($_COOKIE['pseudo_ami'])){
-
-//         $pseudo = $_COOKIE["pseudo_ami"];
-        
-//         $showAttemptedWithCookie = true;
-//     }
-
-//     if ($showAttempted && $showAttemptedWithCookie) {
-
-//         $query = "SELECT * FROM `utilisateur` WHERE pseudo = '$pseudo'";
+//         $query = "SELECT id_utilisateur FROM `utilisateur` WHERE pseudo = '$pseudo'";
 
 //         $result = $conn->query($query);
 
-//         $row = $result->fetch_assoc();
+//         $id_ami = $result->fetch_assoc()['id_utilisateur'];
 
-//         if ($row){
-//             ChatBox($row);
-//             setcookie("pseudo_ami", NULL, -1);
-//             setcookie("pseudo_ami", $pseudo, time() + 3600);
+    
+//         $query2 = "INSERT INTO `message_prive`(`id_message`, `id_utilisateur_envoyeur`, `id_utilisateur_destinataire`, `date_envoi`, `contenu`) VALUES (NULL,'$userID', '$id_ami', CURRENT_TIMESTAMP, '$message')";
 
-//         }
-//         else{
-//             $error = "Aucun utilisateur trouvé";
+//         $result2 = $conn->query($query2);
+
+//         if (!$result2) {
+//             $error = "Erreur lors de l'insertion SQL.";
 //             echo $error;
+//         }    
+//         else{
+//             echo "Message envoyé";
 //         }
 //     }
 // }
-
-
-
-function SendMessage(){
-    global $conn, $userID;
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send_message_ami"])){
-
-        $message = $_POST["message"];
-
-        $pseudo = $_POST["pseudo_ami"];
-
-        $query = "SELECT id_utilisateur FROM `utilisateur` WHERE pseudo = '$pseudo'";
-
-        $result = $conn->query($query);
-
-        $id_ami = $result->fetch_assoc()['id_utilisateur'];
-
-    
-        $query2 = "INSERT INTO `message_prive`(`id_message`, `id_utilisateur_envoyeur`, `id_utilisateur_destinataire`, `date_envoi`, `contenu`) VALUES (NULL,'$userID', '$id_ami', CURRENT_TIMESTAMP, '$message')";
-
-        $result2 = $conn->query($query2);
-
-        if (!$result2) {
-            $error = "Erreur lors de l'insertion SQL.";
-            echo $error;
-        }    
-        else{
-            echo "Message envoyé";
-        }
-    }
-}
 ?>

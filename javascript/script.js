@@ -68,8 +68,53 @@ function load_messages() {
         success: function(data){
 
             if(data != ""){
-                $('#messages').html(data);
+                $('#messages-content').html(data);
             }
         }
     });
 }   
+
+
+function sendMessage() {
+
+    console.log("sending message 2");
+
+    const formData = new FormData(document.getElementById('message-form'));
+    const messageInput = $('#msg');
+    const fileInput = $('#img');
+
+    $.ajax({
+        type: 'POST',
+        url: 'ajax_to_php/send_message.php',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+
+            $('#debug').html(response);
+            
+            messageInput.val('');
+            fileInput.val('');
+            load_messages();
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });
+    return false;
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('message-form');
+    const sendButton = document.getElementById('send_message');
+
+    console.log("sending message 1");
+    
+    sendButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        sendMessage(event);
+    });
+});
+
+

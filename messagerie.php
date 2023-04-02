@@ -47,7 +47,7 @@
     
     <?php 
     ShowConversation();
-    SendMessage();    
+    //SendMessage();    
     ?>
     <!-- <div id="messages"></div> -->
     
