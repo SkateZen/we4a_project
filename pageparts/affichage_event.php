@@ -38,4 +38,33 @@ function InscriptionButton($row){
 }
 
 
+function ForumBox($row_event){
+
+    global $conn, $userID;
+
+    ?>
+    
+
+    <!-- <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>"> -->
+    <div id="messages-content"></div>
+
+    <form id="message-form" enctype="multipart/form-data">
+
+        <input type="hidden" id="id_evenement_forum" name="id_evenement_forum" value="<?php echo $row_event['id_evenement']; ?>">
+        
+        <input type="file" id="img" name="picture" accept="image/png, image/jpeg"><br>
+
+        <textarea  id="msg" name="message" placeholder="Message" required></textarea>
+
+        <button type="button" id="send_message">Send</button>
+
+    </form>
+
+    <div id="debug"></div>
+
+    <?php
+}
+
+
+
 ?>

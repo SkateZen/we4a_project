@@ -191,4 +191,12 @@ function CreatorEvent($row_event){
     }
 }
 
+
+function ShowParticipants($row_event){
+
+    if (isset($_POST["infos_participants"])){
+        echo"infos";
+    }
+}
+
 ?>

@@ -41,6 +41,7 @@
         if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
 
             //participants non inscrits
+            InscriptionIntoEvent();
             InscriptionButton($row_event);
         }
         else{
@@ -48,7 +49,23 @@
 
                 //createur
                 echo "<br>modifier";
-                echo "<br>infos participants";
+                ?>
+                
+
+                <form id="infos-participants-form" action="">
+        
+                    <input type="hidden" id="id_event_ajax" name="id_event_ajax" value="<?php echo $row_event['id_evenement']; ?>" ></input>
+                    <button type="button" id="infos_participants" name="infos_participants">Infos participants</button>
+                    
+                    <!-- <div style="clear:both"></div> -->
+                </form>
+
+                <div id=participants-content></div>
+
+                <?php
+
+
+                
             }
             else if (UserInEvent($row_event)){
 
@@ -57,11 +74,14 @@
             }
 
             //createur et participant
-            echo "<br>Conversation groupe";
-        }
+            ?>
 
-        
-        
+                <h2>Forum</h2>
+
+                
+            <?php
+            ForumBox($row_event);
+        }
         ?>
 
   

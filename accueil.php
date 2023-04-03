@@ -70,7 +70,6 @@
 
     <?php
             include("./utils/gestion_event.php");
-            InscriptionIntoEvent();
             ShowEvent();
 
         }
