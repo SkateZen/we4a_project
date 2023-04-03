@@ -31,12 +31,37 @@
         
 
         echo "<div class='event'>";
-        echo "<h3>".$row_event['titre']."</h3>";
+        echo "<h2>".$row_event['titre']."</h2>";
         echo "<p>".$row_event['description']."</p>";
         echo "<p>".$row_event['date']."</p>";
         echo "<p>".$row_event['heure']."</p>";
         echo "<p>".$row_event['lieu']."</p>";
         echo "</div>";
+
+        if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
+
+            //participants non inscrits
+            InscriptionButton($row_event);
+        }
+        else{
+            if (CreatorEvent($row_event)){
+
+                //createur
+                echo "<br>modifier";
+                echo "<br>infos participants";
+            }
+            else if (UserInEvent($row_event)){
+
+                //participant
+                echo"<br>Vous êtes inscrits";
+            }
+
+            //createur et participant
+            echo "<br>Conversation groupe";
+        }
+
+        
+        
         ?>
 
   

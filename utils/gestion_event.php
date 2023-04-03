@@ -62,7 +62,7 @@ function ShowEvent(){
             
             //fonction qui affiche les events
             CardEvent($row);
-            InscriptionButton($row);
+            //InscriptionButton($row);
         }
     }
 }
@@ -131,8 +131,6 @@ function PageEvent(){
 
     if ( isset($_GET["id_event"])){
 
-        echo "Evenement trouvé";
-
         $id_event = $_GET["id_event"];
 
         $query = "SELECT * FROM `evenement` WHERE id_evenement = '$id_event'";
@@ -149,6 +147,47 @@ function PageEvent(){
             echo $error;
             return null;
         }
+    }
+}
+
+
+function UserInEvent($row_event){
+
+    global $conn, $userID;
+
+    $id_event = $row_event['id_evenement'];
+
+    $query = "SELECT COUNT(*) FROM `inscription_evenement` WHERE id_evenement = '$id_event' AND id_utilisateur = '$userID'";
+
+    $result = $conn->query($query);
+    $row = $result->fetch_row()[0];
+
+    if ($row > 0) {
+        
+        return true;
+    } 
+    else{
+        return false;
+    }
+
+}
+
+function CreatorEvent($row_event){
+
+    global $conn, $userID;
+
+    $id_event = $row_event['id_evenement'];
+
+    $query = "SELECT COUNT(*) FROM `evenement` WHERE id_evenement = '$id_event' AND id_createur = '$userID'";
+
+    $result = $conn->query($query);
+    $row = $result->fetch_row()[0];
+
+    if ($row > 0) {
+        return true;
+    } 
+    else{
+        return false;
     }
 }
 
