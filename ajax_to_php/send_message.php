@@ -5,11 +5,8 @@ connect_db();
 
 global $conn;
 
-echo"ookk";
 
 if (isset($_POST["pseudo_ami_ajax"])){
-
-    echo"find pseudo";
 
     $pseudo = $_POST["pseudo_ami_ajax"];
 
@@ -20,16 +17,7 @@ if (isset($_POST["pseudo_ami_ajax"])){
 
     $id_ami = $result_id_ami->fetch_assoc()['id_utilisateur'];
 
-    // $id_profil = GetIdFromPseudo();
-
-    if (isset($_COOKIE['mail'])) {
-        $mail = $_COOKIE['mail'];
-    }
-
-    $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
-    $result_userID = $conn->query($query_userID);
-
-    $userID = $result_userID->fetch_assoc()['id_utilisateur'];
+    $userID = GetIdWithCookie();
 
     echo $_POST["message"];
 

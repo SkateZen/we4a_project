@@ -2,15 +2,17 @@
 
 include("../utils/database.php");
 connect_db();
-CheckLogin();
 
 include("../pageparts/affichage_amis.php");
 
 //Permet de chercher ses amis, leur envoyer un nouveau message ou aller sur une conversation déjà existante
 
-global $conn, $userID;
+global $conn;
 
 if(isset($_GET['user'])){
+
+    $userID = GetIdWithCookie();
+    
     $input = $_GET['user'];
 
     //requete qui récupère les utilisateurs qui ont un pseudo, prenom ou nom qui contient l'input

@@ -78,6 +78,24 @@ function DestroyLoginCookie(){
 }
 
 
+//Fonction pour récupérer l'id en utilisant le cookie du mail
+function GetIdWithCookie(){
+
+    global $conn;
+
+    if (isset($_COOKIE['mail'])) {
+        $mail = $_COOKIE['mail'];
+
+        $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
+        $result_userID = $conn->query($query_userID);
+
+        $userID = $result_userID->fetch_assoc()['id_utilisateur'];
+        return $userID;
+    }
+    return null;
+}
+
+
 // Fonction permettant de s'inscrire sur le site
 //--------------------------------------------------------------------------------
 function CheckNewAccountForm(){
