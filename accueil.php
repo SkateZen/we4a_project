@@ -31,9 +31,15 @@
 
 
     <!-- Recherche d'événements -->
-    <button>
-        <input type="search" placeholder="Cherchez des évènements">
-    </button>
+    <form action="" method="POST">
+        <input type="search" id="search_evenement" name="search_evenement" placeholder="Cherchez des événements">
+
+        <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
+        <div id="results_event">
+
+        </div>
+
+    </form>
 
 
 

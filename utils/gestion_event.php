@@ -125,6 +125,28 @@ function InscriptionIntoEvent(){
     }
 }
 
+function DesinscriptionFromEvent(){
+
+    global $conn, $userID;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["desinscription_event"])){
+
+        $id_event = $_POST["id_event"];
+
+        $query = "DELETE FROM `inscription_evenement` WHERE id_evenement = '$id_event' AND id_utilisateur = '$userID'";
+
+        $result = $conn->query($query);
+
+        if (!$result) {
+            $error = "Erreur lors de l'insertion SQL.";
+            echo $error;
+        }    
+        else{
+            echo "Desinscription réussie";
+        }
+    }
+}
+
 function PageEvent(){
 
     global $conn, $userID;

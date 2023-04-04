@@ -70,6 +70,8 @@
             else if (UserInEvent($row_event)){
 
                 //participant
+                DesinscriptionFromEvent();
+                DesinscriptionButton($row_event);
                 echo"<br>Vous êtes inscrits";
             }
 
