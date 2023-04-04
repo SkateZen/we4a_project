@@ -144,29 +144,42 @@ function showParticipants(event) {
 
     const id_event = $("#id_event_ajax").val();
 
-    // Remplacer texte et id du bouton
     const bouton = event.target;
+
+    if (bouton.id == 'fermer_participants') {
+        $('#participants-content').empty();
+        bouton.textContent = 'Voir les participants';
+        bouton.id = 'infos_participants';
+        return;
+    }
+    else{
+        $.ajax({
+            type: 'POST',
+            url: 'ajax_to_php/infos_participants.php',
+            data: 'id_event=' + encodeURIComponent(id_event),
+            // processData: false,
+            // contentType: false,
+            success: function(data){
+    
+                if(data != ""){
+                    $('#participants-content').html(data);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Error:', textStatus, errorThrown);
+            }
+        });
+    }
+
+    
+
+    // Remplacer texte et id du bouton
+    
     bouton.textContent = 'Effacer';
     bouton.id = 'fermer_participants';
 
     console.log("show participants");
 
-    $.ajax({
-        type: 'POST',
-        url: 'ajax_to_php/infos_participants.php',
-        data: 'id_event=' + encodeURIComponent(id_event),
-        // processData: false,
-        // contentType: false,
-        success: function(data){
-
-            if(data != ""){
-                $('#participants-content').html(data);
-            }
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            console.error('Error:', textStatus, errorThrown);
-        }
-    });
     return false;
 }
 
