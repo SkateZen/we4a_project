@@ -140,17 +140,28 @@ function InscriptionIntoEvent(){
 
         $id_event = $_POST["id_event"];
 
-        $query = "INSERT INTO `inscription_evenement`(`id_relation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$userID', '$id_event')";
+        $query_verify = "SELECT COUNT(*) FROM `inscription_evenement` WHERE id_evenement = '$id_event' AND id_utilisateur = '$userID'";
 
-        $result = $conn->query($query);
+        $result_verify = $conn->query($query_verify);
 
-        if (!$result) {
-            $error = "Erreur lors de l'insertion SQL.";
-            echo $error;
-        }    
-        else{
-            echo "Inscription réussie";
-            //header('Location: ./evenement.php');
+        $row = $result_verify->fetch_row()[0];
+
+        if ($row > 0){
+            echo "Vous êtes déjà inscrit à cet évènement";
+            return;
+        }else{
+            $query = "INSERT INTO `inscription_evenement`(`id_relation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$userID', '$id_event')";
+
+            $result = $conn->query($query);
+
+            if (!$result) {
+                $error = "Erreur lors de l'insertion SQL.";
+                echo $error;
+            }    
+            else{
+                echo "Inscription réussie";
+                //header('Location: ./evenement.php');
+            }
         }
     }
 }
