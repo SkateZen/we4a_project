@@ -51,8 +51,8 @@
     </form>
 
 
-    <!-- <div>
-        <h1>Modifier infos utilisateur</h1>
+    <div>
+        <h2>Modifier infos utilisateur</h2>
         
         <form action="./updateUser.php" method="POST">
             <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
@@ -64,9 +64,9 @@
             <input type="text" name="password" id="password" placeholder="Mot de passe">
             <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
 
-            <button type="submit" name="update" id="update"> Modifier</button>
+            <button type="submit" name="update_profil" id="update_profil"> Modifier</button>
         </form>
-    </div> -->
+    </div>
 
     <div>
         

@@ -23,6 +23,47 @@ function load_messages_forum() {
 } 
 
 
+function sendMessage() {
+
+    const formData = new FormData(document.getElementById('message-form'));
+    const messageInput = $('#msg');
+    const fileInput = $('#img');
+
+    $.ajax({
+        type: 'POST',
+        url: 'ajax_to_php/send_message.php',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+
+            $('#debug').html(response);
+            
+            messageInput.val('');
+            fileInput.val('');
+            load_messages();
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });
+    return false;
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    
+    const sendButton = document.getElementById('send_message');
+
+    console.log("sending message in forum");
+    
+    sendButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        sendMessage(event);
+    });
+});
+
+
 function showParticipants(event) {
 
     // const formData = new FormData(document.getElementById('infos-participants-form'));
@@ -75,19 +116,4 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         showParticipants(event);
     });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    
-    const inscriptionButton = document.getElementById('inscription_event');
-    const desinscriptionButton = document.getElementById('desinscription_event');
-    
-    // inscriptionButton.addEventListener('click', function (event) {
-    //     event.preventDefault();
-    //     location.reload();
-    // });
-    // desinscriptionButton.addEventListener('click', function (event) {
-    //     event.preventDefault();
-    //     location.reload();
-    // });
 });
