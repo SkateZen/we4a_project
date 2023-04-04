@@ -43,6 +43,13 @@
         
     </div>
 
+    <form action="./modif_profil.php" method="POST">
+                    
+        <input type="hidden" name="id_profil" value="<?php echo $userID;?>">
+        <button type="submit">Modifier profil</button>
+    
+    </form>
+
 
     <!-- <div>
         <h1>Modifier infos utilisateur</h1>

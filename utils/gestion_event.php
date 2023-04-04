@@ -19,12 +19,20 @@ function AjoutEvent(){
         $creationAttempted = true;
 
         $titre = $_POST["titre"];
+        $id_categorie = $_POST["categorie"];
         $description = $_POST["description"];
         $date = $_POST["date"];
         $heure = $_POST["heure"];
         $lieu = $_POST["lieu"];
+        $is_public = $_POST["is_public"];
+        $max_participants = $_POST["max_participants"];
 
-        $query = "INSERT INTO `evenement`(`id_evenement`, `titre`, `description`, `date`, `heure`, `lieu`, `id_createur`) VALUES (NULL, '$titre', '$description', '$date', '$heure', '$lieu', '$userID')";
+        if ($max_participants == 0){
+            $max_participants = NULL;
+        }
+
+        $query = "INSERT INTO `evenement`(`id_evenement`, `id_createur`, `titre`, `id_categorie`, `description`, `date`, `heure`, `lieu`, `is_public`, `nb_participants`) 
+                                VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$date', '$heure', '$lieu', '$is_public', '$max_participants')";
         echo $query."<br>";
         $result = $conn->query($query);
 
@@ -38,6 +46,22 @@ function AjoutEvent(){
 
         
         return array($creationAttempted, $creationSuccessful, $error);
+    }
+}
+
+
+function ShowCategories(){
+    global $conn;
+
+    $query = "SELECT * FROM `categorie`";
+    $result = $conn->query($query);
+
+    while ($row = $result->fetch_assoc()) {
+        ?>
+            <option value="<?php echo $row['id_categorie']; ?>"> 
+                "<?php echo $row['categorie']; ?>"
+            </option>
+        <?php
     }
 }
 
@@ -107,9 +131,9 @@ function InscriptionIntoEvent(){
 
     global $conn, $userID;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["inscription_event"])){
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["inscription_event"])){
 
-        $id_event = $_POST["id_event"];
+        $id_event = $_GET["id_event"];
 
         $query = "INSERT INTO `inscription_evenement`(`id_relation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$userID', '$id_event')";
 
@@ -121,6 +145,7 @@ function InscriptionIntoEvent(){
         }    
         else{
             echo "Inscription réussie";
+            //header('Location: ./evenement.php');
         }
     }
 }

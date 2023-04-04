@@ -29,7 +29,7 @@ function CardEvent($row){
 
 function InscriptionButton($row){
     ?>
-    <form action="" method="post">
+    <form action="./evenement.php" method="get">
         <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']; ?>">
         <button type="submit" name="inscription_event" id="inscription_event"> S'inscrire</button>
     </form>

@@ -33,28 +33,10 @@
 
         <textarea name="description" id="description" placeholder="Description"></textarea>
 
-        
-        <select name="categorie"  id="categorie" required>
-            <?php 
-                ShowCategories();
-            ?>
-        </select>
-
         <input type="date" name="date" id="date" placeholder="Date" required>
         <input type="time" name="heure" id="heure" placeholder="Heure" required>
 
         <input type="text" name="lieu" id="lieu" placeholder="Lieu" required>
-
-        <select name="is_public" required>
-            <option value="1"> 
-                public
-            </option>
-            <option value="0"> 
-                privé
-            </option>
-        </select>
-
-        <input type="number" name="max_participants" value=0 placeholder="Max participants">
 
         <button type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
     </form>

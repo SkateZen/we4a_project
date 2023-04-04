@@ -48,8 +48,15 @@
             if (CreatorEvent($row_event)){
 
                 //createur
-                echo "<br>modifier";
+                // echo "<br>modifier";
                 ?>
+                <!-- Ajout d'événements -->
+                <form action="./modif_event.php" method="POST">
+                    
+        
+                    <button type="submit">Modifier événement</button>
+                
+                </form>
                 
 
                 <form id="infos-participants-form" action="">
