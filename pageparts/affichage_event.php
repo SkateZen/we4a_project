@@ -29,7 +29,7 @@ function CardEvent($row){
 
 function InscriptionButton($row){
     ?>
-    <form action="./evenement.php" method="get">
+    <form action="" method="post">
         <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']; ?>">
         <button type="submit" name="inscription_event" id="inscription_event"> S'inscrire</button>
     </form>
@@ -55,7 +55,7 @@ function ForumBox($row_event){
     ?>
     
     <!-- <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>"> -->
-    <div id="messages-content"></div>
+    <div id="messages-content-forum"></div>
 
     <form id="message-form" enctype="multipart/form-data">
 

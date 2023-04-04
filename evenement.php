@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="./javascript/script.js"></script>
+    <script src="./javascript/script_evenement.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -21,6 +21,9 @@
     
             include("./pageparts/header.php");  
             include("./utils/gestion_event.php");
+
+            InscriptionIntoEvent();
+            DesinscriptionFromEvent();
             
     ?>
 
@@ -41,7 +44,7 @@
         if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
 
             //participants non inscrits
-            InscriptionIntoEvent();
+            
             InscriptionButton($row_event);
         }
         else{
@@ -77,17 +80,14 @@
             else if (UserInEvent($row_event)){
 
                 //participant
-                DesinscriptionFromEvent();
+                
                 DesinscriptionButton($row_event);
                 echo"<br>Vous êtes inscrits";
             }
 
             //createur et participant
             ?>
-
                 <h2>Forum</h2>
-
-                
             <?php
             ForumBox($row_event);
         }

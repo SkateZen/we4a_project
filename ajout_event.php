@@ -54,7 +54,7 @@
             </option>
         </select>
 
-        <input type="number" name="max_participants" value=0 placeholder="Max participants">
+        <input type="number" name="max_participants" value='0' placeholder="Max participants">
 
         <button type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
     </form>

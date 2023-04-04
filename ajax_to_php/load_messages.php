@@ -42,12 +42,26 @@ if (isset($_GET['pseudo'])) {
                 echo "<br>".$row2['contenu'];
             }
         }
-    }
-
-    
-    
+    }   
 }
+else if(isset($_GET['id_event'])){
 
+    $id_event = $_GET['id_event'];
 
+    echo "tentative de chargement des messages de l'event $id_event";
 
+    $query = "SELECT * FROM `message_groupe` WHERE id_evenement = '$id_event' ORDER BY date_envoi ASC";
+
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        echo "Aucun message enregistré";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){
+            echo "<br>".$row['contenu'];
+        }
+    }
+}
 ?>
