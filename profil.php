@@ -54,7 +54,7 @@
     <div>
         <h2>Modifier infos utilisateur</h2>
         
-        <form action="./updateUser.php" method="POST">
+        <form action="./updateUser.php" method="POST" enctype="multipart/form-data">
             <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
             <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
 
