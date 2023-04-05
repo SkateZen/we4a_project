@@ -6,7 +6,6 @@
 
 function CardEvent($row){
     ?>
-    clickable card
     <form action="./evenement.php" method="get">
         <button type="submit">
 

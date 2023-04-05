@@ -186,6 +186,37 @@ function ShowConversation(){
 }
 
 
+function ShowInvitationAmis(){
+
+    global $conn, $userID;
+
+    //requete qui affiche les amis
+
+    $query = "SELECT * FROM `utilisateur` WHERE id_utilisateur IN (SELECT id_utilisateur2 FROM `relation` WHERE id_utilisateur1 = '$userID' AND statut = 'accepte') OR 
+                                                id_utilisateur IN (SELECT id_utilisateur1 FROM `relation` WHERE id_utilisateur2 = '$userID' AND statut = 'accepte')";
+
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        $error = "Aucun utilisateur trouvé";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){
+            
+            //fonction qui affiche les events
+            $id_ami = $row['id_utilisateur'];
+            $pseudo_ami = $row['pseudo'];
+            
+            ?>
+            <input type="checkbox" name=<?php echo $pseudo_ami;?> value=<?php echo $id_ami;?>>
+            <label for=""><?php echo $pseudo_ami;?></label>
+        <?php
+        }
+    }
+}
+
+
 // function SendMessage(){
 //     global $conn, $userID;
 

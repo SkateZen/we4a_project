@@ -36,7 +36,6 @@ function AjoutEvent(){
                     VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$date', '$heure', '$lieu', '$is_public', '$max_participants')";
         }
 
-       
         echo $query."<br>";
         $result = $conn->query($query);
 
@@ -46,12 +45,74 @@ function AjoutEvent(){
             echo $error;
         }
         else{
+
+            if (!$is_public){
+
+                // $query_recup = "SELECT * FROM `evenement` WHERE id_createur = '$userID' AND titre = '$titre' AND id_categorie = '$id_categorie' AND `description` = '$description' AND `date` = '$date' AND heure = '$heure' AND lieu = '$lieu' AND is_public = '$is_public' AND nb_participants = '$max_participants'";
+                // $result_recup = $conn->query($query_recup);
+
+
+                // $id_event = $result_recup->fetch_assoc()['id_evenement'];
+
+                // echo "titre =".$titre;
+                // echo "id_event =".$id_event;
+                // echo "event trouvé =".count($result_recup);
+
+                $id_event = mysqli_insert_id($conn);
+                echo "id_event =".$id_event;
+                //On invite les amis
+                InviteAmis($id_event);
+            }
             echo"creation réussie";
             $creationSuccessful = true;
         }
 
-        
         return array($creationAttempted, $creationSuccessful, $error);
+    }
+}
+
+
+function InviteAmis($id_event){
+    global $conn, $userID;
+
+    //requete qui affiche les amis
+
+    $query = "SELECT * FROM `utilisateur` WHERE id_utilisateur IN (SELECT id_utilisateur2 FROM `relation` WHERE id_utilisateur1 = '$userID' AND statut = 'accepte') OR 
+                                                id_utilisateur IN (SELECT id_utilisateur1 FROM `relation` WHERE id_utilisateur2 = '$userID' AND statut = 'accepte')";
+
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        $error = "Aucun utilisateur trouvé";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){
+            
+            //fonction qui affiche les events
+            $id_ami = $row['id_utilisateur'];
+            $pseudo_ami = $row['pseudo'];
+            echo "<br>".$pseudo_ami;
+
+            if (isset($_POST[$pseudo_ami])){
+
+                //Cette ami est invité
+                echo "ami invité";
+                echo $id_ami;
+                echo $id_event;
+
+                $query2 = "INSERT INTO `invitation_evenement` (`id_invitation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$id_ami', '$id_event')";
+                $result2 = $conn->query($query2);
+
+                if (!$result2) {
+                    $error = "Erreur lors de l'insertion SQL.";
+                    echo $error;
+                }    
+                else{
+                    echo "Invitation réussie";
+                }
+            }
+        }
     }
 }
 

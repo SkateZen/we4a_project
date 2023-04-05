@@ -13,6 +13,7 @@
     <?php
         include("./utils/database.php");
         include("./utils/gestion_event.php");
+        include("./utils/gestion_amis.php");
         connect_db();
         $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
 
@@ -54,7 +55,17 @@
             </option>
         </select>
 
+        <button type="button">Inviter amis</button>
+        <?php
+            ShowInvitationAmis();
+        ?>
+
+        <!-- Evenements publics ou privés à actualiser avec ajax -->
+
         <input type="number" name="max_participants" value='0' placeholder="Max participants">
+
+        
+        
 
         <button type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
     </form>
