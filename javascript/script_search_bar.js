@@ -75,9 +75,21 @@ $(document).ready(function() {
             data: 'event=' + encodeURIComponent(query_search),
             success: function(data){
                 if(data != ""){
-                    $('#results_event').html(data);
-                }else{
-                    document.getElementById('result-search').innerHTML = "<div style='font-size: 20px; text-align: center; margin-top: 10px'>Aucun utilisateur</div>"
+
+                    // Créer un nouvel élément HTML avec la propriété innerHTML
+                    var newElement = $('<div>')[0];
+                    newElement.innerHTML = data;
+
+                    // Conserver les propriétés de l'élément #results_event existant
+                    var oldElement = $('#results_event')[0];
+                    $.each(oldElement.attributes, function() {
+                    newElement.setAttribute(this.name, this.value);
+                    });
+
+                    // Remplacer l'élément #results_event existant par le nouvel élément
+                    $('#results_event').replaceWith(newElement);
+
+                    //$('#results_event').html(data);
                 }
             }
         });

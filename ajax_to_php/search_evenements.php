@@ -26,7 +26,7 @@ if(isset($_GET['event'])){
     else{
         while($row = mysqli_fetch_array($result)){
 
-           CardEvent($row);
+            CardEvent($row);
         }
     }
 }

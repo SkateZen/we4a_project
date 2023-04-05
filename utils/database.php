@@ -39,7 +39,7 @@ function connect_db(){
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        echo "Connection DB OK !";
+        // echo "Connection DB OK !";
     }
 }
 
@@ -184,8 +184,8 @@ function CheckLogin(){
             $mail = SecurizeString_ForSQL($_POST["mail"]);
             $password = md5($_POST["password"]);
             $loginAttempted = true;
-            echo "<br>Connexion tentée avec des informations envoyées via le formulaire";
-            echo "<br>Adresse e-mail : ".$mail;
+            // echo "<br>Connexion tentée avec des informations envoyées via le formulaire";
+            // echo "<br>Adresse e-mail : ".$mail;
         }
     }
     // Données reçues via les cookies
@@ -193,8 +193,8 @@ function CheckLogin(){
         $mail = $_COOKIE["mail"];
         $password = $_COOKIE["password"];
         $loginAttempted = true;
-        echo "<br>Connexion tentée avec des informations stockées dans les cookies";
-        echo "<br>Adresse e-mail : ".$mail;
+        // echo "<br>Connexion tentée avec des informations stockées dans les cookies";
+        // echo "<br>Adresse e-mail : ".$mail;
 
     }
 
@@ -210,8 +210,8 @@ function CheckLogin(){
             $firstname = $row["prenom"];
             $userID = $row["id_utilisateur"];
 
-            echo "<br>Pseudo : ".$pseudo;
-            echo "<br>Prénom : ".$firstname;
+            // echo "<br>Pseudo : ".$pseudo;
+            // echo "<br>Prénom : ".$firstname;
 
             
             DestroyLoginCookie();

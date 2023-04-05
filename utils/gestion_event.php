@@ -46,6 +46,7 @@ function AjoutEvent(){
             echo $error;
         }
         else{
+            echo"creation réussie";
             $creationSuccessful = true;
         }
 

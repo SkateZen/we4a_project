@@ -6,12 +6,13 @@
 
 function CardEvent($row){
     ?>
-
+    clickable card
     <form action="./evenement.php" method="get">
         <button type="submit">
 
             <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
 
+            
             <div class="event">
                 <h3><?php echo $row['titre']; ?></h3>
                 <p><?php echo $row['description']; ?></p>
