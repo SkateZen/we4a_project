@@ -10,4 +10,4 @@ Nouvelles étapes :
 
 événement privés 
  -> invités personnes
-   -> ajax à rajouter
+   -> ajax à rajouter pour afficher public / privé

@@ -46,18 +46,11 @@ function AjoutEvent(){
         }
         else{
 
+            //Si l'event est privé, on invite les amis
+
             if (!$is_public){
 
-                // $query_recup = "SELECT * FROM `evenement` WHERE id_createur = '$userID' AND titre = '$titre' AND id_categorie = '$id_categorie' AND `description` = '$description' AND `date` = '$date' AND heure = '$heure' AND lieu = '$lieu' AND is_public = '$is_public' AND nb_participants = '$max_participants'";
-                // $result_recup = $conn->query($query_recup);
-
-
-                // $id_event = $result_recup->fetch_assoc()['id_evenement'];
-
-                // echo "titre =".$titre;
-                // echo "id_event =".$id_event;
-                // echo "event trouvé =".count($result_recup);
-
+                //On récupère l'id de l'event créé
                 $id_event = mysqli_insert_id($conn);
                 echo "id_event =".$id_event;
                 //On invite les amis
@@ -65,6 +58,8 @@ function AjoutEvent(){
             }
             echo"creation réussie";
             $creationSuccessful = true;
+
+            header("Location: personal_events.php");
         }
 
         return array($creationAttempted, $creationSuccessful, $error);

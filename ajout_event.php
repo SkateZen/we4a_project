@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./javascript/script_ajout_event.js"></script>
     <title>Document</title>
 </head>
 
@@ -46,7 +49,7 @@
 
         <input type="text" name="lieu" id="lieu" placeholder="Lieu" required>
 
-        <select name="is_public" required>
+        <select name="is_public" id="is_public" required>
             <option value="1"> 
                 public
             </option>
@@ -56,9 +59,12 @@
         </select>
 
         <button type="button">Inviter amis</button>
+        <div id="invitation_amis">
         <?php
             ShowInvitationAmis();
         ?>
+        </div>
+        
 
         <!-- Evenements publics ou privés à actualiser avec ajax -->
 
@@ -69,6 +75,7 @@
 
         <button type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
     </form>
+
     
     
     <?php
