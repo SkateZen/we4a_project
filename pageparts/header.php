@@ -10,10 +10,12 @@
 
     <header>
         <nav>
+            <!-- TODO mettre un EventumLogo -->
+            <a href="accueil.php"><img src="" alt="EventumLogo"></a>
+            <a href="accueil.php">Accueil</a>
             <a href="profil.php">Profil</a>
             <a href="messagerie.php">Messages</a>
             <a href="personal_events.php">Mes Evenements</a>
-            <a href="accueil.php">Accueil</a>
         </nav>
     </header>
 
