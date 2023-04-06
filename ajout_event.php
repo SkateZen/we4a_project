@@ -7,6 +7,8 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./javascript/script_ajout_event.js"></script>
+
+    <link rel="stylesheet" href="./css/effect.css">
     <title>Document</title>
 </head>
 
@@ -49,6 +51,8 @@
 
         <input type="text" name="lieu" id="lieu" placeholder="Lieu" required>
 
+         <!-- Evenements publics ou privés à actualiser avec ajax -->
+
         <select name="is_public" id="is_public" required>
             <option value="1"> 
                 public
@@ -58,17 +62,16 @@
             </option>
         </select>
 
-        <button type="button">Inviter amis</button>
-        <div id="invitation_amis">
+        <button type="button" id="invite_button">Inviter amis</button>
+        <div id="invitation_amis" class="hide">
         <?php
             ShowInvitationAmis();
         ?>
         </div>
         
 
-        <!-- Evenements publics ou privés à actualiser avec ajax -->
-
-        <input type="number" name="max_participants" value='0' placeholder="Max participants">
+        <button type="button" id="max_button">Max participants</button>
+        <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
 
         
         

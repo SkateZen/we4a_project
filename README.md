@@ -10,7 +10,7 @@ Nouvelles étapes :
 
 événement privés 
  -> invités personnes
-   -> ajax à rajouter pour afficher public / privé
+      -> notifs d'invitation
 
 rajoutés catégories pour utilisateurs
 
