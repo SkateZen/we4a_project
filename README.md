@@ -11,3 +11,9 @@ Nouvelles étapes :
 événement privés 
  -> invités personnes
    -> ajax à rajouter pour afficher public / privé
+
+rajoutés catégories pour utilisateurs
+
+voir pour co-création d'événements ?
+
+voir possibilité covoiturage ?
