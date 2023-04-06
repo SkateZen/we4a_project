@@ -96,7 +96,7 @@ function InviteAmis($id_event){
                 echo $id_ami;
                 echo $id_event;
 
-                $query2 = "INSERT INTO `invitation_evenement` (`id_invitation`, `id_utilisateur`, `id_evenement`) VALUES (NULL, '$id_ami', '$id_event')";
+                $query2 = "INSERT INTO `invitation_evenement` (`id_invitation`, `id_utilisateur`, `id_evenement`, `date_invitation`) VALUES (NULL, '$id_ami', '$id_event', CURRENT_TIMESTAMP())";
                 $result2 = $conn->query($query2);
 
                 if (!$result2) {
