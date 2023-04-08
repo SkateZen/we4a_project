@@ -29,7 +29,7 @@ function ModifyProfil(){
             $query_update = "UPDATE utilisateur SET nom = '$name', prenom = '$firstname', pseudo = '$pseudo' WHERE id_utilisateur = $userID";
             $result = $conn->query($query_update);
 
-            if (isset($_FILES['avatar']) AND $_FILES['avatar']['error'] == 0)
+            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0)
             {
                 // Testons si le fichier n'est pas trop gros (2Mo max)
                 if ($_FILES['avatar']['size'] <= 2097152)
@@ -66,7 +66,7 @@ function ModifyProfil(){
             }
         }
         else{
-            echo"Le mot de passe est incorrect";
+            echo"Le mot de passe est incorrect  ";
         }
     }
 }

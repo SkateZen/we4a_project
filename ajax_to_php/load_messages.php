@@ -34,15 +34,12 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
 
         $query_messages = "SELECT * FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami') OR 
                                                         (id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID') ORDER BY date_envoi ASC";
-
         $result_messages = $conn->query($query_messages);
 
-        //Requete qui récupère toutes les invitations d'événements entre 2 utilisateurs
+        //Requete qui récupère toutes les invitations d'événements entre 2 utilisateurs à placé entre les messages
 
         $query_invitation = "SELECT * FROM `invitation_evenement` WHERE id_utilisateur = '$userID' AND id_evenement IN (SELECT id_evenement FROM `evenement` WHERE id_createur = '$id_ami')
                                                                     OR id_utilisateur = '$id_ami' AND id_evenement IN (SELECT id_evenement FROM `evenement` WHERE id_createur = '$userID') ORDER BY date_invitation ASC";
-
-
         $result_invitation = $conn->query($query_invitation);
 
        // echo "tentative de chargement des invitations =".$result_invitation;
@@ -57,7 +54,16 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
                 //On affiche les messages privés avant les invitation aux événements
                 while($row2 = mysqli_fetch_array($result_messages)){
                 
-                    echo "<br>".$row2['contenu'];
+                    if (!empty($row2['contenu']))
+                    {
+                        echo "<br>".$row2['contenu'];
+                    }
+                    else if (!empty($row2['image'])){
+                        ?>
+                        <img src="images/messages/<?php echo $row2['image'];?>" alt="photo message">
+                        <?php
+                    }
+                    
     
                     if ($result_invitation){
                         //On affiche les invitation aux événements avant les messages privés ayant été publiés après

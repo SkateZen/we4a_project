@@ -63,14 +63,15 @@ function DisplayProfil(){
         
         <p> Prénom : <?php echo $firstname; ?> </p>
 
+        <p> Pseudo : <?php echo $pseudo; ?> </p>
+
         <?php
-        if ($avatar != ""){
+        if (!empty($avatar)){
             ?>
             <img src="<?php echo $avatar; ?>" alt="avatar">
             <?php
         }
         ?>
-        <p> Pseudo : <?php echo $pseudo; ?> </p>
         
     </div>
 
