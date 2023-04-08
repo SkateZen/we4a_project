@@ -168,7 +168,7 @@ function CheckNewAccountForm(){
 function CheckLogin(){
 
     global $conn, $userID;
-    global $name, $firstname, $pseudo;
+    //global $name, $firstname, $pseudo;
         
 
     $error = NULL; 
