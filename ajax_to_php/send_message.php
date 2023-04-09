@@ -86,25 +86,6 @@ else if(isset($_POST["id_evenement_forum"])){
 
     if ( !empty($_POST["message"])){
 
-        //code pour envoyer image
-
-        // if (isset($_FILES["picture"]['name']) && !empty($_FILES["picture"]['name'])){
-
-        //     $img_name = $_FILES['picture']['name'];
-        //     $tmp_name = $_FILES['picture']['tmp_name'];
-        //     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-        //     $img_ex_to_lc = strtolower($img_ex);
-        //     $extensions = ["jpeg", "png", "jpg"];
-        //     if(in_array($img_ex_to_lc, $extensions)){
-        //         $new_img_name = uniqid("IMG-", true).'.'.$img_ex_to_lc;
-        //         $img_upload_path = '../images/messages/'.$new_img_name;
-        //         move_uploaded_file($tmp_name, $img_upload_path);
-        //     }
-
-        // } else {
-        //     $img_upload_path = NULL;
-        // }
-
         $message = mysqli_real_escape_string($conn, $_POST["message"]);
 
         $query = "INSERT INTO `message_groupe`(`id_message`, `id_utilisateur_envoyeur`, `id_evenement`, `date_envoi`, `contenu`, `image`) 
@@ -112,11 +93,50 @@ else if(isset($_POST["id_evenement_forum"])){
         $conn->query($query);
     }
 
+    //code pour envoyer image dans forum
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0)
+    {
+        // Testons si le fichier n'est pas trop gros (2Mo max)
+        if ($_FILES['picture']['size'] <= 2097152)
+        {
+            // Testons si l'extension est autorisée
+            $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+
+            $extension_upload = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
+
+            if (in_array($extension_upload, $extensions_autorisees))
+            {
+                // On peut valider le fichier et le stocker définitivement
+
+                $new_img_name = uniqid("IMG-", true).'.'.$extension_upload;
+
+                $path = "../images/forums/".$new_img_name;
+
+                $result = move_uploaded_file($_FILES['picture']['tmp_name'], $path);
+
+                if ($result){
+                    $query = "INSERT INTO `message_groupe`(`id_message`, `id_utilisateur_envoyeur`, `id_evenement`, `date_envoi`, `contenu`, `image`) 
+                                        VALUES (NULL,'$userID', '$id_event', CURRENT_TIMESTAMP, '', '$new_img_name')";
+
+                    $result = $conn->query($query);
+                }
+                else{
+                    echo "Erreur lors de l'envoi de votre photo";
+                }
+                //echo "L'envoi a bien été effectué !";
+            }
+            else{
+                echo "L'extension du fichier doit être jpg, jpeg, gif ou png";
+            }
+        }
+        else{
+            echo "Le fichier doit être inférieur à 2Mo";
+        }
+    }
+    
+
 }
 
-function PostImage(){
-    
-}
 
 
 ?>

@@ -115,7 +115,15 @@ else if(isset($_GET['id_event'])){
     }
     else{
         while($row = mysqli_fetch_array($result)){
-            echo "<br>".$row['contenu'];
+            if (!empty($row['contenu']))
+            {
+                echo "<br>".$row['contenu'];
+            }
+            else if (!empty($row['image'])){
+                ?>
+                <img src="images/forums/<?php echo $row['image'];?>" alt="photo message">
+                <?php
+            }
         }
     }
 }

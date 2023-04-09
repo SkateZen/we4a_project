@@ -7,7 +7,18 @@ Projet pour l'uv we4a. L'idée est de faire un site web axé sur la proposition 
 Nouvelles étapes :
 
 événement publics : invités personnes
-modification profil + événement
+modification événement
+
+autres infos sur événement
+    ->organisateur
+    ->type
+    ->image
+    ->nombre participants
+    ->max participants
+    ->
+
+page profil ami
+    ->événements ami
 
 
 Petits bugs à corriger :
