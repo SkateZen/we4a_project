@@ -7,6 +7,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="./javascript/script_evenement.js"></script>
+    <script src="./javascript/script_ajout_event.js"></script>
+
+    <link rel="stylesheet" href="./css/effect.css">
     <title>Document</title>
 </head>
 <body>
@@ -21,10 +24,13 @@
     
             include("./pageparts/header.php");  
             include("./utils/gestion_event.php");
+            include("./utils/gestion_amis.php");
 
             InscriptionIntoEvent();
             DesinscriptionFromEvent();
             ModifyEvent();
+
+            
             
     ?>
 
@@ -36,6 +42,10 @@
         if ($row_event == false){
             echo "Erreur";
             header('Location: ./accueil.php');
+        }
+
+        if (isset($_POST['send_invitation'])){
+            InviteAmis($row_event['id_evenement']);
         }
 
         echo "<div class='event'>";
@@ -92,9 +102,31 @@
                 
                 DesinscriptionButton($row_event);
                 echo"<br>Vous êtes inscrits";
-            }
 
+                
+            }
             //createur et participant
+
+            //inviter amis
+            if ($row_event['is_public'] == 1)
+            {
+            ?>
+                <form action="" method="post">
+                    <button type="button" id="invite_button">Inviter amis</button>
+
+                    <div id="invitation_amis" class="hide">
+                        <?php
+                            ShowInvitationAmis();
+                        ?>
+                        <button type="submit" name="send_invitation">Inviter</button>
+
+                    </div>
+                </form>
+                
+                <?php
+            }
+            
+            //forum
             ?>
                 <h2>Forum</h2>
             <?php

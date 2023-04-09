@@ -96,7 +96,7 @@ function InviteAmis($id_event){
                 echo $id_ami;
                 echo $id_event;
 
-                $query2 = "INSERT INTO `invitation_evenement` (`id_invitation`, `id_utilisateur`, `id_evenement`, `date_invitation`) VALUES (NULL, '$id_ami', '$id_event', CURRENT_TIMESTAMP())";
+                $query2 = "INSERT INTO `invitation_evenement` (`id_invitation`, `id_utilisateur`, `id_inviteur`, `id_evenement`, `date_invitation`) VALUES (NULL, '$id_ami', '$userID', '$id_event', CURRENT_TIMESTAMP())";
                 $result2 = $conn->query($query2);
 
                 if (!$result2) {
@@ -129,7 +129,7 @@ function ShowCategories(){
 
 
 
-function ShowEvent(){
+function ShowPublicEvent(){
 
     global $conn, $userID;
 
@@ -147,7 +147,10 @@ function ShowEvent(){
         while($row = mysqli_fetch_array($result)){
             
             //fonction qui affiche les events
-            CardEvent($row);
+            if ($row['is_public'] == 1){
+                CardEvent($row);
+            }
+            
             //InscriptionButton($row);
         }
     }

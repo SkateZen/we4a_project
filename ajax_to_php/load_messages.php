@@ -38,11 +38,15 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
 
         //Requete qui récupère toutes les invitations d'événements entre 2 utilisateurs à placé entre les messages
 
-        $query_invitation = "SELECT * FROM `invitation_evenement` WHERE id_utilisateur = '$userID' AND id_evenement IN (SELECT id_evenement FROM `evenement` WHERE id_createur = '$id_ami')
-                                                                    OR id_utilisateur = '$id_ami' AND id_evenement IN (SELECT id_evenement FROM `evenement` WHERE id_createur = '$userID') ORDER BY date_invitation ASC";
+        // $query_test = "SELECT COUNT(*) FROM `invitation_evenement`";
+
+        // echo "test =".$conn->query($query_test)->fetch_row()[0];
+
+        $query_invitation = "SELECT * FROM `invitation_evenement` WHERE (id_utilisateur = '$userID' AND id_inviteur = '$id_ami')
+                                                                    OR (id_utilisateur = '$id_ami' AND id_inviteur = '$userID') ORDER BY date_invitation ASC";
         $result_invitation = $conn->query($query_invitation);
 
-       // echo "tentative de chargement des invitations =".$result_invitation;
+        echo "invitations =".$result_invitation->num_rows;
 
 
         if( !$result_messages && !$result_invitation )
@@ -50,52 +54,134 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
             echo "Aucun message enregistré";
         }
         else{ 
-            if ($result_messages){
-                //On affiche les messages privés avant les invitation aux événements
-                while($row2 = mysqli_fetch_array($result_messages)){
+
+            $messages = array();
+            $invitations = array();
+
+            while( $row_message = $result_messages->fetch_assoc() ){
+                $messages[] = $row_message;
+            }
+        
+        
+            while( $row_invitation = $result_invitation->fetch_assoc() ){
+                $invitations[] = $row_invitation;
+            }
+            
+            if ($invitations || $messages){
+
+                $i = 0;
+                $j = 0;
+
+                echo "<br>".count($messages);
+                echo "<br>".count($invitations);
                 
-                    if (!empty($row2['contenu']))
-                    {
-                        echo "<br>".$row2['contenu'];
-                    }
-                    else if (!empty($row2['image'])){
-                        ?>
-                        <img src="images/messages/<?php echo $row2['image'];?>" alt="photo message">
-                        <?php
-                    }
+                while( $i < count($messages) || $j < count($invitations) ){
                     
-    
-                    if ($result_invitation){
-                        //On affiche les invitation aux événements avant les messages privés ayant été publiés après
-                        while($row_invitation = $result_invitation->fetch_assoc()){
-    
-                            if ($row_invitation['date_invitation'] < $row2['date_envoi']){
-                                //echo "<br>invitation à l'event ".$row_invitation['id_evenement'];
-        
-                                $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
-                                $result_event = $conn->query($query_event);
-                                $row_event = $result_event->fetch_assoc();
-        
-                                CardEvent($row_event);
-        
+                    if ($i < count($messages) && $j < count($invitations)){
+                        
+
+                        if( $messages[$i]['date_envoi'] < $invitations[$j]['date_invitation'] ){ //si le message est plus ancien que l'invitation
+
+                            //On affiche le message
+                            if (!empty($messages[$i]['contenu']))
+                            {
+                                
+                                echo "<br>".$messages[$i]['contenu'];
                             }
-                            else{
-                                echo "<br>message privé";
+                            else if (!empty($messages[$i]['image'])){
+                                ?>
+                                <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+                                <?php
                             }
+                            $i++;
+                        }
+                        else{
+                            //On affiche l'invitation
+
+                            $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$invitations[$j]['id_evenement']."'";
+                            $result_event = $conn->query($query_event);
+                            $row_event = $result_event->fetch_assoc();
+    
+                            CardEvent($row_event);
+                            
+                            $j++;
                         }
                     }
+                    else if ($i < count($messages) && $j >= count($invitations)){
+                        //Plus d'invitation mais des messages
+                        if (!empty($messages[$i]['contenu']))
+                        {
+                            
+                            echo "<br>".$messages[$i]['contenu'];
+                        }
+                        else if (!empty($messages[$i]['image'])){
+
+                            echo "<br>image";
+                            ?>
+                            <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+                            <?php
+                        }
+                        $i++;
+                    }
+                    else{
+                        $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$invitations[$j]['id_evenement']."'";
+                        $result_event = $conn->query($query_event);
+                        $row_event = $result_event->fetch_assoc();
+
+                        CardEvent($row_event);
+                        
+                        $j++;
+                    }
                 }
             }
-            else if ($result_invitation){
-                while($row_invitation = $result_invitation->fetch_assoc()){
 
-                    $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
-                    $result_event = $conn->query($query_event);
-                    $row_event = $result_event->fetch_assoc();
+                
 
-                    CardEvent($row_event);
-                }
-            }
+
+
+                //On affiche les messages privés avant les invitation aux événements
+                // while($row2 = mysqli_fetch_array($result_messages)){
+                
+                //     if (!empty($row2['contenu']))
+                //     {
+                //         echo "<br>".$row2['contenu'];
+                //     }
+                //     else if (!empty($row2['image'])){
+                //         
+                //     }
+                    
+    
+                //     if ($result_invitation){
+                //         //On affiche les invitation aux événements avant les messages privés ayant été publiés après
+                //         while($row_invitation = $result_invitation->fetch_assoc()){
+    
+                //             if ($row_invitation['date_invitation'] < $row2['date_envoi']){
+                //                 //echo "<br>invitation à l'event ".$row_invitation['id_evenement'];
+        
+                //                 $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
+                //                 $result_event = $conn->query($query_event);
+                //                 $row_event = $result_event->fetch_assoc();
+        
+                //                 CardEvent($row_event);
+        
+                //             }
+                //             else{
+                //                 echo "<br>message privé";
+                //             }
+                //         }
+                //     }
+                // }
+            
+            // else if ($result_invitation){
+            //     while($row_invitation = $result_invitation->fetch_assoc()){
+
+            //         $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
+            //         $result_event = $conn->query($query_event);
+            //         $row_event = $result_event->fetch_assoc();
+
+            //         CardEvent($row_event);
+            //     }
+            // }
         }
     }   
 }
