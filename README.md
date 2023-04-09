@@ -6,8 +6,6 @@ Projet pour l'uv we4a. L'idée est de faire un site web axé sur la proposition 
 
 Nouvelles étapes :
 
-événement publics : invités personnes
-
 autres infos sur événement
     ->organisateur
     ->type

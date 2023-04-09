@@ -145,10 +145,17 @@ function ShowPublicEvent(){
     }
     else{
         while($row = mysqli_fetch_array($result)){
-            
+
             //fonction qui affiche les events
             if ($row['is_public'] == 1){
-                CardEvent($row);
+
+                if ($row['nb_participants'] == NULL){
+                    CardEvent($row);
+                }
+                else if (NumberOfParticipants($row) < $row['nb_participants']){
+                    CardEvent($row);
+                }
+                
             }
             
             //InscriptionButton($row);
@@ -386,6 +393,19 @@ function ModifyEvent(){
             echo "Mot de passe incorrect";
         }
     }
+}
+
+function NumberOfParticipants($row_event){
+    global $conn;
+
+    $id_event = $row_event['id_evenement'];
+
+    $query = "SELECT COUNT(*) FROM `inscription_evenement` WHERE id_evenement = '$id_event'";
+
+    $result = $conn->query($query);
+    $row = $result->fetch_row()[0];
+
+    return $row;
 }
 
 ?>

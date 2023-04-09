@@ -54,13 +54,19 @@
         echo "<p>".$row_event['date']."</p>";
         echo "<p>".$row_event['heure']."</p>";
         echo "<p>".$row_event['lieu']."</p>";
+        echo "<p>". NumberOfParticipants($row_event) ." participants</p>";
         echo "</div>";
 
         if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
 
             //participants non inscrits
             
-            InscriptionButton($row_event);
+            if (NumberOfParticipants($row_event) >= $row_event['nb_participants'] && $row_event['nb_participants'] != 0){
+                echo "<br>Nombre de participants maximum atteint";
+            }
+            else{
+                InscriptionButton($row_event);
+            }
         }
         else{
             if (CreatorEvent($row_event)){
@@ -108,7 +114,7 @@
             //createur et participant
 
             //inviter amis
-            if ($row_event['is_public'] == 1)
+            if ($row_event['is_public'] == 1 || CreatorEvent($row_event))
             {
             ?>
                 <form action="" method="post">
