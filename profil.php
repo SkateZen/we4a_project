@@ -43,11 +43,18 @@
         
     </div>
 
+    <form action="">
+                    
+        <input type="hidden" name="id_profil" value="<?php echo $userID;?>">
+        <button type="button">Modifier profil</button>
+    
+    </form>
 
-    <!-- <div>
-        <h1>Modifier infos utilisateur</h1>
+
+    <div>
+        <h2>Modifier infos utilisateur</h2>
         
-        <form action="./updateUser.php" method="POST">
+        <form action="./updateUser.php" method="POST" enctype="multipart/form-data">
             <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
             <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
 
@@ -57,9 +64,9 @@
             <input type="text" name="password" id="password" placeholder="Mot de passe">
             <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
 
-            <button type="submit" name="update" id="update"> Modifier</button>
+            <button type="submit" name="update_profil" id="update_profil"> Modifier</button>
         </form>
-    </div> -->
+    </div>
 
     <div>
         

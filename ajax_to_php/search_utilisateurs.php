@@ -2,16 +2,17 @@
 
 include("../utils/database.php");
 connect_db();
-CheckLogin();
 
 include("../pageparts/affichage_amis.php");
 
 
 //Permet de chercher des utilisateurs et de les ajouter en amis
 
-global $conn, $userID;
+global $conn;
 
 if(isset($_GET['user'])){
+
+    $userID = GetIdWithCookie();
     $input = $_GET['user'];
 
     $query = "SELECT * FROM `utilisateur` WHERE (pseudo LIKE '%$input%' OR prenom LIKE '%$input%' OR nom LIKE '%$input%') ";
@@ -41,20 +42,10 @@ if(isset($_GET['user'])){
 
             $row2 = $result2->fetch_row()[0];
 
-            
-
-            if ($row2 > 0) {
-                $error = "Deja amis";
-                echo $error;
-            }
-            else{
-                echo "Pas encore amis";
+            if ($row2 == 0) {
                 AjoutAmiButton($row);
             } 
         }
     }
 }
-
-
-
 ?>

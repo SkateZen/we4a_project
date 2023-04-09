@@ -39,7 +39,7 @@ function connect_db(){
         die("Connection failed: " . $conn->connect_error);
     }
     else{
-        echo "Connection DB OK !";
+        // echo "Connection DB OK !";
     }
 }
 
@@ -75,6 +75,24 @@ function CreateLoginCookie($mail, $encryptedPasswd){
 function DestroyLoginCookie(){
     setcookie("mail", NULL, -1);
     setcookie("password", NULL, -1);
+}
+
+
+//Fonction pour récupérer l'id en utilisant le cookie du mail
+function GetIdWithCookie(){
+
+    global $conn;
+
+    if (isset($_COOKIE['mail'])) {
+        $mail = $_COOKIE['mail'];
+
+        $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
+        $result_userID = $conn->query($query_userID);
+
+        $userID = $result_userID->fetch_assoc()['id_utilisateur'];
+        return $userID;
+    }
+    return null;
 }
 
 
@@ -166,8 +184,8 @@ function CheckLogin(){
             $mail = SecurizeString_ForSQL($_POST["mail"]);
             $password = md5($_POST["password"]);
             $loginAttempted = true;
-            echo "<br>Connexion tentée avec des informations envoyées via le formulaire";
-            echo "<br>Adresse e-mail : ".$mail;
+            // echo "<br>Connexion tentée avec des informations envoyées via le formulaire";
+            // echo "<br>Adresse e-mail : ".$mail;
         }
     }
     // Données reçues via les cookies
@@ -175,8 +193,8 @@ function CheckLogin(){
         $mail = $_COOKIE["mail"];
         $password = $_COOKIE["password"];
         $loginAttempted = true;
-        echo "<br>Connexion tentée avec des informations stockées dans les cookies";
-        echo "<br>Adresse e-mail : ".$mail;
+        // echo "<br>Connexion tentée avec des informations stockées dans les cookies";
+        // echo "<br>Adresse e-mail : ".$mail;
 
     }
 
@@ -192,8 +210,8 @@ function CheckLogin(){
             $firstname = $row["prenom"];
             $userID = $row["id_utilisateur"];
 
-            echo "<br>Pseudo : ".$pseudo;
-            echo "<br>Prénom : ".$firstname;
+            // echo "<br>Pseudo : ".$pseudo;
+            // echo "<br>Prénom : ".$firstname;
 
             
             DestroyLoginCookie();

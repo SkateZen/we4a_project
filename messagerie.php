@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="./javascript/script.js"></script>
+    <script src="./javascript/script_messagerie.js"></script>
+    <script src="./javascript/script_search_bar.js"></script>
     
     <title>Document</title>
 </head>
@@ -47,7 +48,7 @@
     
     <?php 
     ShowConversation();
-    SendMessage();    
+    //SendMessage();    
     ?>
     <!-- <div id="messages"></div> -->
     

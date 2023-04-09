@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="./javascript/script.js"></script>
+    <script src="./javascript/script_search_bar.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -31,9 +31,15 @@
 
 
     <!-- Recherche d'événements -->
-    <button>
-        <input type="search" placeholder="Cherchez des évènements">
-    </button>
+    <form action="" method="POST">
+        <input type="search" id="search_evenement" name="search_evenement" placeholder="Cherchez des événements">
+
+        <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
+        <div id="results_event">
+
+        </div>
+
+    </form>
 
 
 
@@ -57,8 +63,7 @@
 
     <!-- Ajout d'événements -->
     <form action="./ajout_event.php" method="POST">
-        
-        <!-- <input type="hidden" value="logout" name="logout"></input> -->
+
         <button type="submit">Ajouter événement</button>
         
         <!-- <div style="clear:both"></div> -->
@@ -70,7 +75,6 @@
 
     <?php
             include("./utils/gestion_event.php");
-            InscriptionIntoEvent();
             ShowEvent();
 
         }

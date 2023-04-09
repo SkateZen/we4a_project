@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="./javascript/script.js"></script>
-    
-    <title>Document</title>
-</head>
-
 <?php   
 
 
@@ -28,7 +15,7 @@ function AjoutAmiButton($row){
 function ContactAmiButton($row){
     ?>
     <form action="" method="post">
-        <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>">
+        <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
         <button type="submit" name="contact_ami" id="contact_ami"> Contacter</button>
     </form>
 
@@ -49,7 +36,7 @@ function AcceptAmiButton($row){
 
 function SelectConversation($row){
     ?>
-    <form action="" method="get">
+    <form action="" method="post">
 
         <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
 
@@ -65,21 +52,26 @@ function ChatBox($row){
     global $conn, $userID;
 
     ?>
-    <form action="" method="post">
+    
+
+    <h3><?php echo $row['pseudo']; ?></h3>
+
+    <!-- <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>"> -->
+    <div id="messages-content"></div>
+
+    <form id="message-form" enctype="multipart/form-data">
 
         <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>">
-        <h3><?php echo $row['pseudo']; ?></h3>
+        
+        <input type="file" id="img" name="picture" accept="image/png, image/jpeg"><br>
 
+        <textarea  id="msg" name="message" placeholder="Message" required></textarea>
 
-        <div id="messages"></div>
+        <button type="button" id="send_message">Send</button>
 
-
-        <input type="hidden" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
-
-        <textarea name="message" id="message" placeholder="Message" required></textarea>
-        <!-- <input type="text" name="message" id="message" placeholder="Message" required> -->
-        <button type="submit" name="send_message_ami" id="send_message_ami"> Envoyer</button>
     </form>
+
+    <div id="debug"></div>
 
     <?php
 }
