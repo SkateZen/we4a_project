@@ -29,7 +29,7 @@ function ModifyProfilForm(){
             <label >Avatar :</label>
             <input type="file" name="avatar">
 
-            <input type="text" name="password" id="password" placeholder="Mot de passe">
+            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
             <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
 
             <button type="submit" name="update_profil" id="update_profil"> Modifier</button>

@@ -24,6 +24,7 @@
 
             InscriptionIntoEvent();
             DesinscriptionFromEvent();
+            ModifyEvent();
             
     ?>
 
@@ -32,6 +33,10 @@
     <?php
         $row_event = PageEvent();
         
+        if ($row_event == false){
+            echo "Erreur";
+            header('Location: ./accueil.php');
+        }
 
         echo "<div class='event'>";
         echo "<h2>".$row_event['titre']."</h2>";
@@ -60,6 +65,10 @@
                     <button type="submit">Modifier événement</button>
                 
                 </form>
+
+                <?php 
+                    ModifyEventForm($row_event);
+                ?>
                 
 
                 <form id="infos-participants-form" action="">
