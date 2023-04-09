@@ -19,60 +19,33 @@
 
     <?php
         include("./utils/database.php");
+        include("./utils/gestion_profil.php");
         connect_db();
+        
         $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
+        
+
         if($accountStatus[0]){
             echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
-    
-
-            if ( isset($pseudo) || isset($userID) ) {
+            include("./pageparts/affichage_profil.php"); 
+            
+            ModifyProfil();
+            
     ?>
 
-    <div>
-        <h1>Infos utilisateur</h1>
-        
-        <p> Nom : <?php echo $name; ?> </p>
-        
-        <p> Prénom : <?php echo $firstname; ?> </p>
+    <?php 
+        DisplayProfil();
 
-        <p> Pseudo : <?php echo $pseudo; ?> </p>
-        
-    </div>
-
-    <form action="">
-                    
-        <input type="hidden" name="id_profil" value="<?php echo $userID;?>">
-        <button type="button">Modifier profil</button>
+        ModifyProfilForm();
+    ?>
     
-    </form>
-
 
     <div>
-        <h2>Modifier infos utilisateur</h2>
-        
-        <form action="./updateUser.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
-            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
-
-            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="<?php echo $pseudo; ?>">
-
-
-            <input type="text" name="password" id="password" placeholder="Mot de passe">
-            <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
-
-            <button type="submit" name="update_profil" id="update_profil"> Modifier</button>
-        </form>
-    </div>
-
-    <div>
-        
-    
         <form action="./logout.php" method="POST">
-
             
             <div id="ID_logout">
                 <input type="hidden" value="logout" name="logout"></input>
@@ -83,9 +56,6 @@
         </form>
     </div>
 
-   
-   
-
     <div>
         <h2>Amis</h2>
         <?php ShowAmis();?>
@@ -95,7 +65,7 @@
         <?php ShowDemandeAmis();?>
     </div>
     <?php
-            }
+            
     
         }
         elseif ($accountStatus[2]){

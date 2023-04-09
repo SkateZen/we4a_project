@@ -75,5 +75,74 @@ function ForumBox($row_event){
 }
 
 
+function ModifyEventForm($row){
+
+    global $conn, $userID;
+
+    
+
+    // $query = "SELECT * FROM categorie WHERE id_categorie = '$row[id_categorie]'";
+    // $result = $conn->query($query);
+    // $categorie = $result->fetch_assoc()['categorie'];
+
+    $id_event = $row['id_evenement'];
+    $id_createur = $row['id_createur'];
+
+    $titre = $row['titre'];
+    $description = $row['description'];
+    
+    $date = $row['date'];
+    $heure = $row['heure'];
+    $lieu = $row['lieu'];
+    
+    ?>
+    <div>
+        <h2>Modifier événements</h2>
+        
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
+            <input type="hidden" name="id_createur" value="<?php echo $id_createur; ?>">
+
+            <input type="text" name="titre"  placeholder="Titre" value="<?php echo $titre; ?>">
+
+            <!-- <input type="text" name="description"  placeholder="Description" value="<?php echo $description; ?>"> -->
+
+            <textarea name="description" placeholder="Description" ><?php echo $description; ?></textarea>
+
+            <select name="categorie"  id="categorie">
+            <?php 
+                ShowCategories();
+            ?>
+            </select>
+
+            <input type="date" name="date" placeholder="Date" value="<?php echo $date; ?>">
+
+            <input type="time" name="heure" placeholder="Heure" value="<?php echo $heure; ?>">
+
+            <input type="text" name="lieu" placeholder="Lieu" value="<?php echo $lieu; ?>">
+
+            <!-- <label >Avatar :</label>
+            <input type="file" name="avatar"> -->
+
+            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
+            <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
+
+            <button type="submit" name="update_event"> Modifier</button>
+        </form>
+    </div>
+    <div>
+        <h2>Supprimer événements</h2>
+        <form action="" method="POST">
+            <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
+            <input type="hidden" name="id_createur" value="<?php echo $id_createur; ?>">
+            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
+            <button type="submit" name="delete_event"> Supprimer</button>
+        </form>
+    </div>
+    <?php
+}
+
+
 
 ?>

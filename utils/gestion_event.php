@@ -312,10 +312,76 @@ function CreatorEvent($row_event){
 }
 
 
-function ShowParticipants($row_event){
+function ModifyEvent(){
 
-    if (isset($_POST["infos_participants"])){
-        echo"infos";
+    global $conn, $userID;
+
+    if (isset($_POST['update_event'])){
+
+        $titre = $_POST['titre'];
+        $description = $_POST['description'];
+        $date = $_POST['date'];
+        $heure = $_POST['heure'];
+        $lieu = $_POST['lieu'];
+
+        $id_event = $_POST['id_event'];
+        $id_createur = $_POST['id_createur'];
+
+        $password = md5($_POST['password']);
+
+
+        $query_verif = "SELECT `password` FROM utilisateur WHERE id_utilisateur = $userID";
+
+        $result = $conn->query($query_verif);
+        $row = $result->fetch_assoc();
+
+        if ($id_createur == $userID && $password == $row['password']){
+
+            //echo"password good";
+
+            $query_update = "UPDATE `evenement` SET `titre`='$titre', `description`='$description', `date`='$date', `heure`='$heure', `lieu`='$lieu' WHERE id_evenement = '$id_event'";
+
+            $result = $conn->query($query_update);
+        }
+    }
+    if (isset($_POST['delete_event'])){
+
+        $id_event = $_POST['id_event'];
+        $id_createur = $_POST['id_createur'];
+
+        $password = md5($_POST['password']);
+
+        $query_verif = "SELECT `password` FROM utilisateur WHERE id_utilisateur = $userID";
+
+        $result = $conn->query($query_verif);
+        $row = $result->fetch_assoc();
+
+        if ($id_createur == $userID && $password == $row['password']){
+
+            echo "password good";
+            echo $id_event;
+
+            $query_delete_invitation = "DELETE FROM `invitation_evenement` WHERE id_evenement = '$id_event'";
+
+            $result = $conn->query($query_delete_invitation);
+
+            $query_delete_inscription = "DELETE FROM `inscription_evenement` WHERE id_evenement = '$id_event'";
+
+            $result = $conn->query($query_delete_inscription);
+
+
+            $query_delete = "DELETE FROM `evenement` WHERE id_evenement = '$id_event'";
+
+            $result = $conn->query($query_delete);
+
+            if (!$result) {
+                $error = "Erreur lors de l'insertion SQL.";
+                echo $error;
+            }    
+        }
+        else{
+            echo "Mot de passe incorrect";
+        }
     }
 }
 

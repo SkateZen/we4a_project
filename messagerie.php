@@ -30,6 +30,8 @@
 
     <h1>Messagerie</h1>
 
+    <!-- <img src="images/messages/test.jpg"alt="photo message"> -->
+
 
     <form action="" method="POST">
 
