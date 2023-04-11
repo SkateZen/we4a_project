@@ -75,7 +75,7 @@
 
     <?php
             include("./utils/gestion_event.php");
-            ShowEvent();
+            ShowPublicEvent();
 
         }
         elseif ($accountStatus[2]){

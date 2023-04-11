@@ -7,6 +7,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="./javascript/script_evenement.js"></script>
+    <script src="./javascript/script_ajout_event.js"></script>
+
+    <link rel="stylesheet" href="./css/effect.css">
     <title>Document</title>
 </head>
 <body>
@@ -21,10 +24,13 @@
     
             include("./pageparts/header.php");  
             include("./utils/gestion_event.php");
+            include("./utils/gestion_amis.php");
 
             InscriptionIntoEvent();
             DesinscriptionFromEvent();
             ModifyEvent();
+
+            
             
     ?>
 
@@ -38,19 +44,29 @@
             header('Location: ./accueil.php');
         }
 
+        if (isset($_POST['send_invitation'])){
+            InviteAmis($row_event['id_evenement']);
+        }
+
         echo "<div class='event'>";
         echo "<h2>".$row_event['titre']."</h2>";
         echo "<p>".$row_event['description']."</p>";
         echo "<p>".$row_event['date']."</p>";
         echo "<p>".$row_event['heure']."</p>";
         echo "<p>".$row_event['lieu']."</p>";
+        echo "<p>". NumberOfParticipants($row_event) ." participants</p>";
         echo "</div>";
 
         if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
 
             //participants non inscrits
             
-            InscriptionButton($row_event);
+            if (NumberOfParticipants($row_event) >= $row_event['nb_participants'] && $row_event['nb_participants'] != 0){
+                echo "<br>Nombre de participants maximum atteint";
+            }
+            else{
+                InscriptionButton($row_event);
+            }
         }
         else{
             if (CreatorEvent($row_event)){
@@ -92,9 +108,31 @@
                 
                 DesinscriptionButton($row_event);
                 echo"<br>Vous êtes inscrits";
-            }
 
+                
+            }
             //createur et participant
+
+            //inviter amis
+            if ($row_event['is_public'] == 1 || CreatorEvent($row_event))
+            {
+            ?>
+                <form action="" method="post">
+                    <button type="button" id="invite_button">Inviter amis</button>
+
+                    <div id="invitation_amis" class="hide">
+                        <?php
+                            ShowInvitationAmis();
+                        ?>
+                        <button type="submit" name="send_invitation">Inviter</button>
+
+                    </div>
+                </form>
+                
+                <?php
+            }
+            
+            //forum
             ?>
                 <h2>Forum</h2>
             <?php
