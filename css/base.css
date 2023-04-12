@@ -6,6 +6,8 @@
 
     /* Variable color */
 
+    --ligneSection: #352f2f8a;
+
     --background: #1d9bf020;
     --brandColor: #d9d9d9;
     --itemBackground: #d9d9d920;
@@ -56,7 +58,7 @@ aside.leftside{
 	z-index: 1;
 	overflow-x: hidden;
 	
-    border-right : 1px solid #352f2f8a;
+    border-right : 1px solid var(--ligneSection);
 }
 
 main{
@@ -81,7 +83,7 @@ aside.rightside{
 	z-index: 1;
 	overflow-x: hidden;
 
-    border-left : 1px solid #352f2f8a;
+    border-left : 1px solid var(--ligneSection);
 }
 
 

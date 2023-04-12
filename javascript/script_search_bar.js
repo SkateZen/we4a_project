@@ -99,4 +99,55 @@ $(document).ready(function() {
 
 
 
+// Bouton pour spécifier le type de recherche
+
+$(document).ready(function() {
+    
+    var searchEventButton = document.getElementById('search_event_button');
+
+    var searchUserButton = document.getElementById('search_user_button');
+
+    var searchEvent = document.getElementById('search_evenement');
+
+    var searchUser = document.getElementById('search_utilisateur');
+    
+    searchEventButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        //console.log("onchange public/privé");
+
+        if (searchEventButton.classList.contains("selected")) {
+            console.log("nothing to do");
+            
+        } else {     
+            console.log("hide");
+            searchEventButton.classList.add("selected");
+            searchUserButton.classList.remove("selected");
+            
+            searchEvent.classList.remove("hide");
+            searchUser.classList.add("hide");
+            //searchEvent.classList.add("show");
+        }
+    });
+
+    searchUserButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        //console.log("onchange public/privé");
+
+        if (searchUserButton.classList.contains("selected")) {
+            console.log("nothing to do");
+            
+        } else {     
+            console.log("hide");
+            searchEventButton.classList.remove("selected");
+            searchUserButton.classList.add("selected");
+            
+            searchUser.classList.remove("hide");
+            searchEvent.classList.add("hide");
+            //searchEvent.classList.add("show");
+        }
+    });
+});
+
+
+
 

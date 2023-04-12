@@ -1,0 +1,93 @@
+
+:root {
+
+    /* Variable color */
+
+    --searchBar: #B9DDF6;
+}
+
+header{
+    background: var(--searchBar);
+    width: 100%;
+    position: sticky;
+    top: 0;
+
+    border-bottom: 1px solid var(--ligneSection);
+}
+
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    align-items: center;
+    padding: 10px;
+}
+
+.search-box{
+
+    background: var(--sidebarBackground);
+   
+    height: 50px;   
+    width: 50%;
+    min-width: 250px;
+    border-radius: 50px;
+    padding: 15px;
+
+    border: 1px solid var(--ligneSection);
+
+
+}
+
+.search-btn{
+    float: right;
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.search-text{
+    /* padding: 10px; */
+    border: none;
+    outline: none;
+    background: none;
+    float: left;
+    
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 20px;
+    width: 90%;
+
+    /* border: 1px solid var(--ligneSection); */
+}
+
+
+
+.categorie{
+    background: var(--sidebarBackground);
+
+    width: 50px;
+    height: 50px;
+
+    margin-left: 5px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--ligneSection);
+    
+    /* color: var(--texte); */
+    
+    text-align: center;
+    
+    cursor: pointer;
+}
+
+.categorie svg{
+    /* vertical-align: middle; */
+    margin-top: 10px;
+}
+
+.categorie.selected{
+    /* background: var(--sidebarLinksHover); */
+    border: 3px solid var(--ligneSection);
+}
