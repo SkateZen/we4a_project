@@ -13,9 +13,14 @@ header{
     top: 0;
 
     border-bottom: 1px solid var(--ligneSection);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .search-bar{
+    width: 80%;
     display: flex;
     flex-direction: row;
     /* justify-content: space-around; */
@@ -84,10 +89,17 @@ header{
 
 .categorie svg{
     /* vertical-align: middle; */
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .categorie.selected{
     /* background: var(--sidebarLinksHover); */
     border: 3px solid var(--ligneSection);
+}
+
+.categorie.right{
+    align-items: center;
+    margin: 10px;
+    padding-top: 2px;
+    /* padding-left: 1px; */
 }

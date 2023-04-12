@@ -35,9 +35,9 @@
                 <!-- Recherche d'événements -->
 
                 <div class="search-box">
-                    <input class="search-text" type="text" id="search_evenement" name="search_evenement" placeholder="Cherchez des événements">
+                    <input class="search-text" type="text" id="search_evenement" name="search_evenement" placeholder="Chercher des événements">
 
-                    <input class="search-text hide"  type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Cherchez des amis">
+                    <input class="search-text hide"  type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Chercher des amis">
 
 
                     <a class="search-btn" href="#">
@@ -61,6 +61,11 @@
                         <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/></svg>
                 </button>
             </div>
+            <a href="ajout_event.php" class="categorie right">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30">
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </a>
             <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
            
         </header>
@@ -72,33 +77,30 @@
         Blanditiis velit facere nisi ratione fuga sunt, officiis doloribus! Non dignissimos incidunt ut debitis dolores inventore nihil voluptatibus labore nemo fugiat totam vitae ea, quam provident est, laboriosam aperiam. Facilis!
 
 
-    <!-- Recherche d'événements -->
-    
-        <input type="text" id="search_evenement" name="search_evenement" placeholder="Cherchez des événements">
-
-        <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-        <div id="results_event">
-
-        </div>
-
-    
-
-
-
-    <?php 
+        <?php 
             include("./utils/gestion_amis.php");
             AjoutAmi();
 
-    ?>
+        ?>
+
+        <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
+        <div id="results_event"></div>
+        <div id="results"></div>
+
+    
+
+
+
+    
 
     <!-- Recherche d'utilisateurs -->
     
-    <input type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Cherchez des amis">
+
 
     <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-    <div id="results">
+    
 
-    </div>
+
 
    
 
