@@ -7,6 +7,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="./javascript/script_search_bar.js"></script>
+
+    
     <title>Document</title>
 </head>
 <body>
@@ -17,11 +19,12 @@
         $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
         if($accountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
             include("./pageparts/header.php");  
     ?>
 
+    <main>
     <h1>Eventum</h1>
 
     <p>
@@ -86,6 +89,9 @@
             header('Location: ./index.php');
         }
     ?>
+
+    </main>
+    
     
 </body>
 </html>

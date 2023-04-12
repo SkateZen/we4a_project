@@ -12,21 +12,20 @@
     <title>Document</title>
 </head>
 <body>
-
-
     <?php
         include("./utils/database.php");
         connect_db();
         $newAccountStatus = CheckLogin();
     
         if($newAccountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+  
+            include("./pageparts/header.php");  
+            include("./utils/gestion_amis.php");
     ?>
 
-    <?php
-        include("./pageparts/header.php");  
-        include("./utils/gestion_amis.php");
-    ?>
+    <main>
+ 
 
     <h1>Messagerie</h1>
 
@@ -69,6 +68,8 @@
             Exit();
         }
     ?>
+           
+    </main>
     
 </body>
 </html>

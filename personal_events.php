@@ -15,12 +15,12 @@
         $newAccountStatus = CheckLogin();
     
         if($newAccountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+    
+            include("./pageparts/header.php");  
     ?>
 
-    <?php
-        include("./pageparts/header.php");  
-    ?>
+    <main>
 
     <h1>Vos événements</h1>
 
@@ -39,15 +39,6 @@
         ShowEventWithIdUser();
     ?>
 
-    
-
-
-    
-
-    
-
-
-
     <?php
         }
         elseif ($newAccountStatus[2]){
@@ -60,6 +51,8 @@
             Exit();
         }
     ?>
+    </main>
+
     
 </body>
 </html>

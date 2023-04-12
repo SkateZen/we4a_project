@@ -10,12 +10,6 @@
 
 
 <body>
-    
-    <!-- photo -->
-
-    <!-- nom, prénom -->
-
-    <!-- pseudo -->
 
     <?php
         include("./utils/database.php");
@@ -27,7 +21,7 @@
         
 
         if($accountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
@@ -36,6 +30,8 @@
             ModifyProfil();
             
     ?>
+
+    <main>
 
     <?php 
         DisplayProfil();
@@ -78,6 +74,7 @@
             Exit();
         }
     ?>
+    </main>
 
 
 </body>

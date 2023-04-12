@@ -25,12 +25,14 @@
         AjoutEvent();
 
         if($accountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
 
             include("./pageparts/header.php");  
     ?>
 
+    <main>
 
+    
     <h1>Ajouter un événement</h1>
 
     <!-- Formulaire ajout d'un évenement -->
@@ -92,7 +94,7 @@
             header('Location: ./index.php');
         }
     ?>
-
+    </main>
 </body>
 
 </html>

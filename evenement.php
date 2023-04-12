@@ -20,7 +20,7 @@
         $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
     
         if($accountStatus[0]){
-            echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
+            // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
             include("./pageparts/header.php");  
             include("./utils/gestion_event.php");
@@ -34,6 +34,7 @@
             
     ?>
 
+    <main>
     <h1>Infos evenement</h1>
 
     <?php
@@ -139,6 +140,7 @@
             ForumBox($row_event);
         }
         ?>
+        </main>
 
   
 
