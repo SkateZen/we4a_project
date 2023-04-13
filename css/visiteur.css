@@ -2,6 +2,23 @@
 /*                          Page visiteur                           */
 /* ---------------------------------------------------------------- */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: var(--color1);
+    margin: 0;
+    height: 100vh;
+}
+
+
 /* Mise en forme titre */
 h1 {
     font-size: 40px;
@@ -25,9 +42,9 @@ p {
     font-size: 20px;
     text-decoration: none;
     color: white;
-    background-color: #eb7371;
+    background-color: var(--color3);
     cursor: pointer;
-    margin: 50px 50px;
+    margin: 50px 30px;
 }
 
 /* Ajout d'un effet assombrissant lors du survol du lien */
@@ -42,6 +59,12 @@ p {
 /*              Formulaires Inscription et Connexion                */
 /* ---------------------------------------------------------------- */
 
+
+/* .form-visiteur {
+    position: fixed;
+    z-index: 1;
+    margin: 50px;
+} */
 
 /* Dessin de l'emplaçement du formulaire */
 form {

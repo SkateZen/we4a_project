@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/visiteur.css">
 </head>
 
 
@@ -15,13 +18,6 @@
         $newAccountStatus = CheckNewAccountForm(); // <-- array($creationAttempted, $creationSuccessful, $error)
     ?>
 
-    <header>
-        <nav>
-            <a href="./index.php">Accueil visiteur</a>
-        </nav>
-    </header>
-
-    <h1>Création d'un nouveau compte</h1>
     <?php
         // Redirection vers la page connexion si l'inscription est réussie
         if($newAccountStatus[1]){
@@ -36,8 +32,8 @@
 
 
     <!-- Formulaire d'inscription -->
-          
-    <form action="" method="post">
+    <main>
+        <form action="" method="post" class="form-visiteur">
             <h1>S'inscrire</h1>
             
             <div align="center">
@@ -46,15 +42,17 @@
                 
                 <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
                 <input type="email" name="mail" id="mail" placeholder="Mail">
-        
+
                 <input type="password" name="password" id="password" placeholder="Mot de passe">
                 <input type="password" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
-        
+
                 <button type="submit" name="sign_up" id="sign_up">Inscription</button>
             </div>
-
             <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
         </form>
+    </main>
+  
+    
     
     
 </body>
