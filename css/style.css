@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,43 +10,66 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	line-height: 1.5;
 	color: black;
+    display: flex;
 }
 
 /* Style qui s'applique au header */
 
-header {
-    width: 100%;
-
-	position: relative;
-	background: linear-gradient(to right, #fab20d 40%,#f45c43);
+aside {
+	/* position: fixed; */
+    display: inline-flex;
+	height: 100vh;
+    flex: 15%;
+    background: purple; /* linear-gradient(to bottom, #fab20d 40%,#f45c43) */
 }
 
 /* Barre de navigation */
 
 nav {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.menu-item a {
+    display: block;
+    text-decoration: none;
+    color: aliceblue;
+    width: 100%;
+    padding-left: 2em;
+    font-weight: 700;
+}
+
+.menu-item > a:hover {
+    color: purple;
+    background-color: aliceblue;
+}
+/* nav {
     width: 80%;
     margin: 0 auto;
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 1em 2em; /* enlever le 1 si on ne met pas d'image */
-}
+/*} */
 
 /* Logo */
-
+/* 
 .logo img {
     width: 200px;
-}
+} */
 
 /* Links et sa liste de liens */
 
-.links {
+/* .links {
     width: 50%;
 
-}
+} */
 
-.links ul {
+/* .links ul {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -62,8 +86,24 @@ nav {
     background-image: linear-gradient(#ffffff, #ffffff);
     background-size: 0% .1em;
     background-position: 50% 100%;
-
+    background-repeat: no-repeat;
+    transition: background-size ease-in-out 0.5s;
 }
+
+/* Style pour les liens survolés */
+
+/* .links a:hover {
+    background-size: 100% .15em;
+}  */
 
 /* J'ai fait en suivant cette vidéo, mais je n'ai pas encore fini:
 https://youtu.be/gigBUU0aqwo?t=1152 */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 70%;
+    background-color: #f5f5f5;
+}
+

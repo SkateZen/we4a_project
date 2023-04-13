@@ -5,14 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./visiteur.css">
   <title>Document</title>
 </head>
 <body>
 
-	<header>
+	<aside class="leftside">
 		<nav>
 			<!-- TODO: Mettre une image pour le EventumLogo -->
-            <div class="logo">
+            <!-- <div class="logo">
                 <a href="accueil.php"><img src="" alt="EventumLogo"></a>
             </div>
             <div class="links">
@@ -22,32 +23,110 @@
                     <li><a href="messagerie.php">Messages</a></li>
                     <li><a href="personal_events.php">Mes Evenements</a></li>
                 </ul>              
+            </div> -->
+            <div class="menu-item">
+                <a href="accueil.php"><img src="" alt="EventumLogo"></a>
             </div>
+            
+            <div class="menu-item"><a href="accueil.php">Accueil</a></div>
+            <div class="menu-item"><a href="profil.php">Profil</a></div>
+            <div class="menu-item"><a href="messagerie.php">Messages</a></div>
+            <div class="menu-item"><a href="personal_events.php">Mes Evenements</a></div>
 		</nav>
-	</header>
+	</aside>
+    
 
-	<h1>Eventum</h1>
+    <main>
 
-	<p>
-		Bravo, vous vous êtes connecté sur notre réseau social. Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !
-	</p>
+        <p>Page accueil visiteur</p>
+        <div align="center">
+            <!-- Titre de notre Réseau social -->
+            <h1>Eventum</h1>
+            <p>Ceci est la page d'acceuil de notre réseau social. L'idée est de faire un site permettant de faciliter la recherche d'évènements</p>
+            
+            <div class="big-button">
+                <a href="inscription.php">S'inscrire</a>
+                <a href="connexion.php">Se connecter</a>
+            </div>
+        </div>
 
-	<button>
-		<input type="search" placeholder="Cherchez des évènements">
-	</button>
-	
-	<h2>Insciption</h2>
-	<form action="" method="post">
-        <input type="text" name="name" id="name" placeholder="Nom">
-        <input type="text" name="firstname" id="firstname" placeholder="Prénom">
 
-        <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
-        <input type="email" name="mail" id="mail" placeholder="Mail">
+        <p>-------------------------------------------------------</p>
+        <p>Page accueil utilisateur</p>
+        <h1>Eventum</h1>
+    
+        <p>
+            Bravo, vous vous êtes connecté sur notre réseau social. Vous êtes censé pouvoir accéder à des évènements, vous y inscrire, ajouter des évènements, des amis, être heureux et faire la fête !
+        </p>
+    
+        <button>
+            <input type="search" placeholder="Cherchez des évènements">
+        </button>
+        
+        
+        
+        <!-- Formulaire d'inscription -->
+          
+        <form action="" method="post">
+            <h1>S'inscrire</h1>
+            
+            <div align="center">
+                <input type="text" name="name" id="name" placeholder="Nom">
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                
+                <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                <input type="email" name="mail" id="mail" placeholder="Mail">
+        
+                <input type="password" name="password" id="password" placeholder="Mot de passe">
+                <input type="password" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
+        
+                <button type="submit" name="sign_up" id="sign_up">Inscription</button>
+            </div>
+            <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
+        </form>
+        
+        <!-- Formulaire connexion -->
+    <form action="" method="post">
+        <h1>Se connecter</h1>
 
-        <input type="text" name="password" id="password" placeholder="Mot de passe">
-        <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
-
-        <button type="submit" name="sign_up" id="sign_up">Inscription</button>
+        <div align="center">
+            <input type="email" name="mail" id="mail" placeholder="Mail" required>
+            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+    
+            <button type="submit" name="login" id="login">Connexion</button>
+        </div>
+        <a href="./inscription.php">Vous êtes nouveau, c'est par ici !</a>
     </form>
+        
+    
+
+
+
+    </main>
+    
+    <aside class="rightside">
+		<nav>
+			<!-- TODO: Mettre une image pour le EventumLogo -->
+            <!-- <div class="logo">
+                <a href="accueil.php"><img src="" alt="EventumLogo"></a>
+            </div>
+            <div class="links">
+                <ul>
+                    <li><a href="accueil.php">Accueil</a></li>
+                    <li><a href="profil.php">Profil</a></li>
+                    <li><a href="messagerie.php">Messages</a></li>
+                    <li><a href="personal_events.php">Mes Evenements</a></li>
+                </ul>              
+            </div> -->
+            <div class="menu-item">
+                <a href="accueil.php"><img src="" alt="EventumLogo"></a>
+            </div>
+            
+            <div class="menu-item"><a href="accueil.php">Accueil</a></div>
+            <div class="menu-item"><a href="profil.php">Profil</a></div>
+            <div class="menu-item"><a href="messagerie.php">Messages</a></div>
+            <div class="menu-item"><a href="personal_events.php">Mes Evenements</a></div>
+		</nav>
+	</aside>
 </body>
 </html>
