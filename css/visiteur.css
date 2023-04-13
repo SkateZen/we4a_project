@@ -1,4 +1,44 @@
 /* ---------------------------------------------------------------- */
+/*                          Page visiteur                           */
+/* ---------------------------------------------------------------- */
+
+/* Mise en forme titre */
+h1 {
+    font-size: 40px;
+}
+
+/* Mise en forme paragraphe */
+p {
+    font-size: 15px;
+}
+
+/* Mise en forme des liens en forme de boutons */
+.big-button a {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 150px;
+    max-width: 400px;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #eb7371;
+    cursor: pointer;
+    margin: 50px 50px;
+}
+
+/* Ajout d'un effet assombrissant lors du survol du lien */
+.big-button a:hover {
+    background-color: #db524f;
+}
+
+
+
+
+/* ---------------------------------------------------------------- */
 /*              Formulaires Inscription et Connexion                */
 /* ---------------------------------------------------------------- */
 
