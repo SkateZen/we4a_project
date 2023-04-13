@@ -12,6 +12,8 @@
 
   <link rel="stylesheet" href="./effect.css">
 
+  <link rel="stylesheet" href="./evenement.css">
+
   <!-- <script src="./javascript/script_search_bar.js"></script> -->
   <title>Document</title>
 </head>
@@ -146,11 +148,86 @@
 
              </div>
 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, magni expedita minus voluptate aut velit ullam neque quas totam mollitia aliquid cupiditate tempore quia nobis provident blanditiis sunt suscipit. Quam?
-            Accusamus consequatur illum deleniti architecto exercitationem vero! Provident repellat error modi odit consequatur atque quibusdam sit nemo perspiciatis quasi ea reprehenderit pariatur officia ex, blanditiis maxime voluptas ullam nesciunt non!
-            Reiciendis animi impedit velit, quam debitis doloribus odio. Pariatur voluptates minima asperiores! Adipisci, porro incidunt quia veniam laboriosam libero impedit quae blanditiis est aspernatur assumenda repellat praesentium facere dignissimos numquam.
-            Quam fugiat amet minima aliquid illum doloremque id veritatis? Voluptas, blanditiis maiores? Voluptatibus molestias iusto dignissimos error ea eius sequi totam asperiores magni harum ullam, labore earum, provident iure atque?
-            Nulla ea porro eos reiciensum iusto totam perspiciatis assumenda sequi? Deserunt adipisci nihil veniam quo sed accusantium non.
+             <!-- Affichage événement -->
+             <br>
+
+             <div class="container-event">
+
+                <form action="./evenement.php" method="get">
+                    <button type="submit" class="card-event">
+            
+                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
+            
+                        
+                        <div class="event">
+                            <h3>Titre</h3>
+                            <p>description</p>
+                            <p>24/05/12</p>
+                            <p>20h</p>
+                            <p>Belfort</p>
+                        </div>
+            
+                    </button>
+                </form>
+                <form action="./evenement.php" method="get">
+                    <button type="submit" class="card-event">
+            
+                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
+            
+                        <!-- <img src="../images/front/eventum_reversed.png" alt="" width="180px" height ="150px"> -->
+                        
+                        <div class="event-infos">
+                            <h3>Titre trop trop trop long</h3>
+                            <p class="description">description incidunt doloribus eum assumenda quod eligendi eaque perspiciatis, quis aperiam consequuntur placeat vitae at mollitia facilis. Sapiente.</p>
+                            <p>24/05/12</p>
+                            <p>20h</p>
+                            <p>Belfort</p>
+                        </div>
+            
+                    </button>
+                </form>
+                <form action="./evenement.php" method="get">
+                    <button type="submit" class="card-event">
+            
+                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
+            
+                        
+                        <div class="event-infos">
+                            <h3>Titre</h3>
+                            <p class="description">description</p>
+                            <p>24/05/12</p>
+                            <p>20h</p>
+                            <p>Belfort</p>
+                        </div>
+            
+                    </button>
+                </form>
+                <form action="./evenement.php" method="get">
+                    <button type="submit" class="card-event">
+            
+                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
+            
+                        
+                        <div class="event">
+                            <h3>Titre</h3>
+                            <p>description</p>
+                            <p>24/05/12</p>
+                            <p>20h</p>
+                            <p>Belfort</p>
+                        </div>
+            
+                    </button>
+                </form>
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod pariatur a facere aliquam inventore provident voluptatibus, adipisci ipsum odit dolorum libero? Quas itaque, vero facilis sequi deleniti obcaecati placeat ut.
+            Ad autem exercitationem sunt maxime neque adipisci esse harum voluptate at, dolore repudiandae delectus quod. Molestiae, totam? A aut, tenetur harum, perspiciatis nobis ab fugit ratione, ipsum pariatur ea porro?
+            Eveniet omnis laborum obcaecati eaque error illum aspernatur provident, voluptatibus nulla, facilis possimus, culpa non dignissimos nostrum expedita quasi neque harum adipisci deleniti id veritatis! Vel praesentium modi animi expedita.
+
         </section>
         
     

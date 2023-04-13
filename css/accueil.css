@@ -19,6 +19,8 @@ header{
     justify-content: space-between;
 }
 
+/* Barre de recherche */
+
 .search-bar{
     width: 80%;
     display: flex;
@@ -103,3 +105,5 @@ header{
     padding-top: 2px;
     /* padding-left: 1px; */
 }
+
+

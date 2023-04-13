@@ -7,14 +7,14 @@
 function CardEvent($row){
     ?>
     <form action="./evenement.php" method="get">
-        <button type="submit">
+        <button type="submit" class="card-event">
 
             <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
 
             
-            <div class="event">
+            <div class="event-infos">
                 <h3><?php echo $row['titre']; ?></h3>
-                <p><?php echo $row['description']; ?></p>
+                <p class="description"><?php echo $row['description']; ?></p>
                 <p><?php echo $row['date']; ?></p>
                 <p><?php echo $row['heure']; ?></p>
                 <p><?php echo $row['lieu']; ?></p>
@@ -22,9 +22,10 @@ function CardEvent($row){
 
         </button>
     </form>
-
     <?php
 }
+
+
 
 
 function InscriptionButton($row){

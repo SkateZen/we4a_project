@@ -8,9 +8,11 @@
 
     <script src="./javascript/script_search_bar.js"></script>
 
+    <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/accueil.css">
     <link rel="stylesheet" href="./css/effect.css">
-
+    <link rel="stylesheet" href="./css/evenement.css">
+    
     
     <title>Document</title>
 </head>
@@ -69,12 +71,6 @@
             <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
            
         </header>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, repellendus. Totam quam, explicabo et praesentium esse quae officiis aliquid. Distinctio culpa quas enim maxime soluta blanditiis, nesciunt obcaecati! Suscipit, illum!
-        Eos ab consectetur excepturi magnam autem, animi, sapiente asperiores repellat obcaecati voluptates odit adipisci assumenda fugit quam fuga in iusto! Corrupti in ab dolorem dolorum velit animi soluta alias nostrum.
-        Doloremque optio voluptate dolor non laudantium quibusdam quaerat dolorum voluptas quos facere assumenda explicabo molestiae est quisquam, suscipit odio velit libero illo, magni culpa. Cumque architecto neque dolorum ut! Similique?
-        Velit cumque ducimus obcaecati autem fugit dolorem tenetur nisi nulla nesciunt nihil delectus ipsa, aspernatur odit. Incidunt voluptatem architecto libero explicabo asperiores, maxime cumque eos consequatur officiis a. Enim, quae?
-        Blanditiis velit facere nisi ratione fuga sunt, officiis doloribus! Non dignissimos incidunt ut debitis dolores inventore nihil voluptatibus labore nemo fugiat totam vitae ea, quam provident est, laboriosam aperiam. Facilis!
 
 
         <?php 
