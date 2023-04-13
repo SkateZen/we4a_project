@@ -34,23 +34,28 @@
     ?>
 
 
-    <h2>S'inscrire</h2>
 
     <!-- Formulaire d'inscription -->
+          
     <form action="" method="post">
-        <input type="text" name="name" id="name" placeholder="Nom">
-        <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+            <h1>S'inscrire</h1>
+            
+            <div align="center">
+                <input type="text" name="name" id="name" placeholder="Nom">
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                
+                <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                <input type="email" name="mail" id="mail" placeholder="Mail">
+        
+                <input type="password" name="password" id="password" placeholder="Mot de passe">
+                <input type="password" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
+        
+                <button type="submit" name="sign_up" id="sign_up">Inscription</button>
+            </div>
 
-        <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
-        <input type="email" name="mail" id="mail" placeholder="Mail">
-
-        <input type="text" name="password" id="password" placeholder="Mot de passe">
-        <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
-
-        <button type="submit" name="sign_up" id="sign_up">Inscription</button>
-    </form>
+            <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
+        </form>
     
-    <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
     
 </body>
 </html>

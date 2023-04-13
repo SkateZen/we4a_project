@@ -37,19 +37,20 @@
 
     <h1>Formulaire</h1>
 
-    <h2>Se connecter</h2>
-
+    
     <!-- Formulaire connexion -->
     <form action="" method="post">
-        <input type="email" name="mail" id="mail" placeholder="Mail" required>
+        <h1>Se connecter</h1>
 
-        <input type="text" name="password" id="password" placeholder="Mot de passe" required>
-
-        <button type="submit" name="login" id="login" > Connexion</button>
-
+        <div align="center">
+            <input type="email" name="mail" id="mail" placeholder="Mail" required>
+            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+    
+            <button type="submit" name="login" id="login" >Connexion</button>
+        </div>
+        <a href="./inscription.php">Vous êtes nouveau, c'est par ici !</a>
     </form>
 
-    <a href="./inscription.php">Vous êtes nouveau, c'est par ici !</a>
 
 </body>
 </html>

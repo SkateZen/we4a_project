@@ -1,0 +1,73 @@
+/* ---------------------------------------------------------------- */
+/*              Formulaires Inscription et Connexion                */
+/* ---------------------------------------------------------------- */
+
+
+/* Dessin de l'emplaçement du formulaire */
+form {
+    background-color: white;
+    margin-top: 20px;
+    padding: 40px 60px;
+    min-width: 300px;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+/* Mise en forme du titre du formulaire */
+form h1 {
+    color: #df6967;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Mise en forme des saisies dans le formulaire */
+form input {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    outline: none;
+    width: 220px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+/* Ajout d'un effet de relief lorsque l'on a séléctionner un champ input */
+form input:focus {
+    box-shadow: 3px 4px #b3b3b3;
+}
+
+
+/* Mise en forme du bouton d'envoi du formulaire */
+form button {
+    padding: 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+    background-color: #eb7371;
+    /* outline: none; */ /* Pour enlever la bordure de séléction*/
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Ajout d'un effet assombrissant lors du survol du bouton */
+form button:hover {
+    background-color: #db524f;
+}
+
+/* Mise en forme du lien de redirection du formulaire */
+form a {
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #eb7371;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Ajout d'un effet assombrissant lors du survol du lien */
+form a:hover {
+    color: #db524f;
+}

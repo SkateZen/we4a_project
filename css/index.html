@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./visiteur.css">
   <title>Document</title>
 </head>
 <body>
@@ -46,19 +47,45 @@
             <input type="search" placeholder="Cherchez des évènements">
         </button>
         
-        <h2>Insciption</h2>
+        
+        
+        <!-- Formulaire d'inscription -->
+          
         <form action="" method="post">
-            <input type="text" name="name" id="name" placeholder="Nom">
-            <input type="text" name="firstname" id="firstname" placeholder="Prénom">
-    
-            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
-            <input type="email" name="mail" id="mail" placeholder="Mail">
-    
-            <input type="text" name="password" id="password" placeholder="Mot de passe">
-            <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
-    
-            <button type="submit" name="sign_up" id="sign_up">Inscription</button>
+            <h1>S'inscrire</h1>
+            
+            <div align="center">
+                <input type="text" name="name" id="name" placeholder="Nom">
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom">
+                
+                <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                <input type="email" name="mail" id="mail" placeholder="Mail">
+        
+                <input type="password" name="password" id="password" placeholder="Mot de passe">
+                <input type="password" name="confirm" id="confirm" placeholder="Confirmer mot de passe">
+        
+                <button type="submit" name="sign_up" id="sign_up">Inscription</button>
+            </div>
+            <a href="./connexion.php">Vous avez déjà un compte, c'est par ici !</a>
         </form>
+        
+        <!-- Formulaire connexion -->
+    <form action="" method="post">
+        <h1>Se connecter</h1>
+
+        <div align="center">
+            <input type="email" name="mail" id="mail" placeholder="Mail" required>
+            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+    
+            <button type="submit" name="login" id="login">Connexion</button>
+        </div>
+        <a href="./inscription.php">Vous êtes nouveau, c'est par ici !</a>
+    </form>
+        
+    
+
+
+
     </main>
     
     <aside class="rightside">
