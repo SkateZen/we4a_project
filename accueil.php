@@ -8,7 +8,7 @@
 
     <script src="./javascript/script_search_bar.js"></script>
 
-    <link rel="stylesheet" href="./css/base.css">
+    
     <link rel="stylesheet" href="./css/accueil.css">
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/evenement.css">
@@ -80,11 +80,18 @@
         ?>
 
         <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-        <div id="results_event"></div>
-        <div id="results"></div>
+        <div id="results_event" class="container-event"></div>
+
+        <!-- div resultat recherche utilisateurs -->
+        <div id="results" class=""></div>
 
     
+        <h2>Événements disponibles</h2>
 
+        <?php
+        include("./utils/gestion_event.php");
+        ShowPublicEvent();
+        ?>
 
 
     
@@ -111,7 +118,7 @@
 
 
     <!-- Proposition d'événements -->
-    <h2>Événements disponibles</h2>
+    
 
     </main>
     <aside class="rightside">
@@ -119,8 +126,7 @@
     </aside>
 
     <?php
-            include("./utils/gestion_event.php");
-            ShowPublicEvent();
+            
 
         }
         elseif ($accountStatus[2]){

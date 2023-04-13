@@ -10,6 +10,9 @@
     --color2: #FBD1B0;
     --color3: #B9DDF6;
 
+    --color2-hover: #f8c9a5;
+    --color2-border: #f6dfcd;
+
     --ligneSection: #352f2f8a;
 
     --background: #1d9bf020;
@@ -70,6 +73,7 @@ main{
     background-color: var(--color1);
 
     margin: 0 240px;
+    /* height: 100%; */
 }
 
 

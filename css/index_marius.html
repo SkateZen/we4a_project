@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="./evenement.css">
 
+  <link rel="stylesheet" href="./profil.css">
+
   <!-- <script src="./javascript/script_search_bar.js"></script> -->
   <title>Document</title>
 </head>
@@ -94,141 +96,22 @@
 
     <main>
 
-        <header>
+        <div class="profil-bar">
 
-            <div class="search-bar">
+            <img src="../images/avatars/IMG-6438522f4fc787.69435124.jpg"  width="255px" height="255px" alt="avatar">
 
-                <div class="search-box">
-                    <input class="search-text" type="text" id="search_evenement" name="search_evenement" placeholder="Chercher des événements">
-
-                    <input class="search-text hide"  type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Chercher des amis">
-
-
-                    <a class="search-btn" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px">
-                            <!-- ! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-                    </a>
-                </div>
-    
+            <div class="user-infos">
+                <h1> Marius Diguat</h1>
                 
+                <p> SkateZen</p>
 
-                <button class="categorie selected" id="search_event_button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30"  viewBox="0 0 24 24">
-                        <path d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
-
-                </button>
-
-                <button class="categorie" id="search-amis-button">
-                    
-                    <svg viewBox="0 0 640 512" width="30" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/></svg>
-                </button>
+                <div class="profil-button">
+                    <button>Modifier</button>
+                    <button>Se déconnecter</button>
+                </div>
             </div>
+        </div>
 
-            <a href="ajout_event.php" class="categorie right">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30">
-                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-            </a>
-            <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-           
-        </header>
-             
-
-
-        <section class="evenements">
-
-             <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-             <div id="results_event">
-
-             </div>
-
-             <div id="results">
-
-             </div>
-
-             <!-- Affichage événement -->
-             <br>
-
-             <div class="container-event">
-
-                <form action="./evenement.php" method="get">
-                    <button type="submit" class="card-event">
-            
-                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
-            
-                        
-                        <div class="event">
-                            <h3>Titre</h3>
-                            <p>description</p>
-                            <p>24/05/12</p>
-                            <p>20h</p>
-                            <p>Belfort</p>
-                        </div>
-            
-                    </button>
-                </form>
-                <form action="./evenement.php" method="get">
-                    <button type="submit" class="card-event">
-            
-                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
-            
-                        <!-- <img src="../images/front/eventum_reversed.png" alt="" width="180px" height ="150px"> -->
-                        
-                        <div class="event-infos">
-                            <h3>Titre trop trop trop long</h3>
-                            <p class="description">description incidunt doloribus eum assumenda quod eligendi eaque perspiciatis, quis aperiam consequuntur placeat vitae at mollitia facilis. Sapiente.</p>
-                            <p>24/05/12</p>
-                            <p>20h</p>
-                            <p>Belfort</p>
-                        </div>
-            
-                    </button>
-                </form>
-                <form action="./evenement.php" method="get">
-                    <button type="submit" class="card-event">
-            
-                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
-            
-                        
-                        <div class="event-infos">
-                            <h3>Titre</h3>
-                            <p class="description">description</p>
-                            <p>24/05/12</p>
-                            <p>20h</p>
-                            <p>Belfort</p>
-                        </div>
-            
-                    </button>
-                </form>
-                <form action="./evenement.php" method="get">
-                    <button type="submit" class="card-event">
-            
-                        <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
-            
-                        
-                        <div class="event">
-                            <h3>Titre</h3>
-                            <p>description</p>
-                            <p>24/05/12</p>
-                            <p>20h</p>
-                            <p>Belfort</p>
-                        </div>
-            
-                    </button>
-                </form>
-
-            </div>
-
-            <br>
-            <br>
-            <br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod pariatur a facere aliquam inventore provident voluptatibus, adipisci ipsum odit dolorum libero? Quas itaque, vero facilis sequi deleniti obcaecati placeat ut.
-            Ad autem exercitationem sunt maxime neque adipisci esse harum voluptate at, dolore repudiandae delectus quod. Molestiae, totam? A aut, tenetur harum, perspiciatis nobis ab fugit ratione, ipsum pariatur ea porro?
-            Eveniet omnis laborum obcaecati eaque error illum aspernatur provident, voluptatibus nulla, facilis possimus, culpa non dignissimos nostrum expedita quasi neque harum adipisci deleniti id veritatis! Vel praesentium modi animi expedita.
-
-        </section>
         
     
     </main>

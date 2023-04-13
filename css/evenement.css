@@ -2,20 +2,12 @@
 
 /* Contenu accueil : événements */
 
-:root {
-
-    /* Variable color */
-
-    --color2-hover: #f8c9a5;
-    --color2-border: #f6dfcd;
-}
-
 
 .container-event{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 10px;
 }
@@ -26,7 +18,7 @@
     height: 250px;
     border-radius: 20px;
     /* padding: 15px; */
-    margin: 10px;
+    margin: 20px;
 
     /* border: none; */
     border: 1px solid var(--color2-border);

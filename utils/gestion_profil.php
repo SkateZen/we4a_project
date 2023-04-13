@@ -17,7 +17,7 @@ function ModifyProfil(){
 
         //$id_profil = $_POST['id_profil'];
 
-        $query_verif = "SELECT `password` FROM utilisateur WHERE id_utilisateur = $userID";
+        $query_verif = "SELECT * FROM utilisateur WHERE id_utilisateur = $userID";
 
         $result = $conn->query($query_verif);
         $row = $result->fetch_assoc();
@@ -43,11 +43,20 @@ function ModifyProfil(){
                     {
                         // On peut valider le fichier et le stocker définitivement
 
-                        $path = "images/avatars/".$userID.".".$extension_upload;
+                        $new_img_name = uniqid("IMG-", true).'.'.$extension_upload;
+
+                        $path = "images/avatars/".$new_img_name;
 
                         $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $path);
 
                         if ($result){
+
+                            if(!empty($row['photo_profil'])){
+                                // echo"photo de profil non vide";
+                                unlink($row['photo_profil']);
+                            }
+
+
                             $query_update = "UPDATE utilisateur SET photo_profil = '$path' WHERE id_utilisateur = $userID";
                             $result = $conn->query($query_update);
                         }

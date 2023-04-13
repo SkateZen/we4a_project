@@ -56,7 +56,7 @@ function DisplayProfil(){
     $avatar = $row['photo_profil'];
 
     ?>
-    <div>
+    <!-- <div>
         <h1>Infos utilisateur</h1>
         
         <p> Nom : <?php echo $name; ?> </p>
@@ -73,6 +73,31 @@ function DisplayProfil(){
         }
         ?>
         
+    </div> -->
+
+
+    <div class="profil-bar">
+
+        <?php
+        if (!empty($avatar)){
+            ?>
+            <img src="<?php echo $avatar; ?>" alt="avatar">
+            <?php
+        }
+        ?>
+
+        <!-- <img src="../images/avatars/IMG-6438522f4fc787.69435124.jpg"  width="255px" height="255px" alt="avatar"> -->
+
+        <div class="user-infos">
+            <h1> <?php echo $firstname." ".$name; ?></h1>
+            
+            <p> <?php echo $pseudo; ?></p>
+
+            <div class="profil-button">
+                <button>Modifier</button>
+                <button>Se déconnecter</button>
+            </div>
+        </div>
     </div>
 
     <?php
