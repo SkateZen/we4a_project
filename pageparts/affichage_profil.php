@@ -78,12 +78,16 @@ function DisplayProfil(){
         <!-- <img src="../images/avatars/IMG-6438522f4fc787.69435124.jpg"  width="255px" height="255px" alt="avatar"> -->
 
         <div class="user-infos">
-            <h1> <?php echo $firstname." ".$name; ?></h1>
+
+            <h1> <?php echo $pseudo; ?></h1>
+
+            <p> <?php echo $firstname." ".$name; ?></p>
             
-            <p> <?php echo $pseudo; ?></p>
+            
 
             <div class="profil-button">
-                <button id="modify-button">Modifier</button>
+
+                <button id="modify-button" class="ecart-button">Modifier</button>
                 
                 <form action="./logout.php" method="POST">
                     

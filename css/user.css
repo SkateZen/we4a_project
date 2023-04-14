@@ -1,0 +1,33 @@
+
+
+/* Affichage des autres utilisateurs */
+
+.row-user{
+    display: flex;
+
+    margin: 10px 30px;
+
+    padding: 5px;
+
+    background: none;
+    border: none;
+    /* border: 1px solid var(--ligneSection); */
+}
+
+.row-user img{
+    border-radius: 50%;
+}
+
+.row-user:hover{
+    background: var(--color2);
+    border-radius: 10px;
+}
+
+.infos-user{
+
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}

@@ -31,9 +31,7 @@ if(isset($_GET['user'])){
             $id_ami = $row['id_utilisateur'];
 
 
-            echo "<br>".$row['pseudo'];
-            echo "<br>".$row['prenom'];
-            echo "<br>".$row['nom'];
+            CardAmi($row);
 
             $query2 = "SELECT COUNT(*) FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
                                                                 id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";

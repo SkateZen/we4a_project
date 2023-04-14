@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/evenement.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,17 +29,25 @@
     
     <h2>Événements proposés</h2>
 
+    <div class="container-event">
     <?php
         include("./utils/gestion_event.php");
         ShowEventWithIdCreator();
     ?>
+    </div>
+
+    
 
     <h2>Événements inscrits</h2>
 
+    <div class="container-event">
     <?php
         //include("./utils/gestion_event.php");
         ShowEventWithIdUser();
     ?>
+    </div>
+
+    
 
     <?php
         }

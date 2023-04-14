@@ -6,24 +6,25 @@
 
     /* Variable color */
 
-    --color1: #FFFBFA;
-    --color2: #FBD1B0;
+    /* Color background */
+    --color1: #fcfaff;
+
+    /* Color violet */
+    /* Cards et boutons */
+
+    --color2: #dcb3df;
+
+    --color2-text: #fff;
+
+    --color2-hover: #621768;
+    --color2-border: #3c0444;
+
+    /* Color bleu */
     --color3: #B9DDF6;
 
-    --color2-hover: #f8c9a5;
-    --color2-border: #f6dfcd;
+    
 
     --ligneSection: #352f2f8a;
-
-    --background: #1d9bf020;
-    --brandColor: #d9d9d9;
-    --itemBackground: #d9d9d920;
-
-    --colorPrimary: #000000;
-    --colorSecondary: #6e767d;
-
-    --colorWhite: #fff;
-    --tweetBtnBg: #1d9bf0;
 }
 
 * {
@@ -32,6 +33,7 @@
     box-sizing: border-box;
     transition: 0.2s ease;
     /* user-select: none; */
+    font-family: -apple-system, BlinkMacSystemFont, Poppins,  Montserrat, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
   
 html {
@@ -53,7 +55,7 @@ li {
 
 aside.leftside{
 
-    background: var(--sidebarBackground);
+    background: var(--color1);
 
     width: 240px;
     
@@ -73,13 +75,15 @@ main{
     background-color: var(--color1);
 
     margin: 0 240px;
+
+    height: 100vh;
     /* height: 100%; */
 }
 
 
 aside.rightside{
     /* flex: 20%; */
-    background: rgb(255, 253, 253);
+    background: var(--color1);
 
     width: 240px;
     

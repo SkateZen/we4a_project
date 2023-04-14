@@ -1,18 +1,12 @@
 
-:root {
-
-    /* Variable color */
-
-    --searchBar: #B9DDF6;
-}
 
 header{
-    background: var(--searchBar);
+    background: var(--color1);
     width: 100%;
     position: sticky;
     top: 0;
 
-    border-bottom: 1px solid var(--ligneSection);
+    /* border-bottom: 1px solid var(--ligneSection); */
 
     display: flex;
     flex-direction: row;
@@ -32,7 +26,7 @@ header{
 
 .search-box{
 
-    background: var(--sidebarBackground);
+    background: var(--color1);
    
     height: 50px;   
     width: 50%;
@@ -71,7 +65,7 @@ header{
 
 
 .categorie{
-    background: var(--sidebarBackground);
+    background: var(--color1);
 
     width: 50px;
     height: 50px;
@@ -89,6 +83,12 @@ header{
     cursor: pointer;
 }
 
+.categorie:hover{
+
+    background: var(--color2);
+    fill: var(--color2-text);
+}
+
 .categorie svg{
     /* vertical-align: middle; */
     margin-top: 5px;
@@ -97,6 +97,9 @@ header{
 .categorie.selected{
     /* background: var(--sidebarLinksHover); */
     border: 3px solid var(--ligneSection);
+
+    background: var(--color2);
+    fill: var(--color2-text);
 }
 
 .categorie.right{

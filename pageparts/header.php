@@ -17,7 +17,7 @@
     
                 
                 <div class="logo">
-                    <a href="accueil.php"><img width="160px" src="images/front/eventum2.png" alt="EventumLogo"></a>
+                    <a href="accueil.php"><img width="160px" src="images/front/eventum_transparent.png" alt="EventumLogo"></a>
                 </div>
 
                 <div class="links">

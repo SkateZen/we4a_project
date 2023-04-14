@@ -51,7 +51,7 @@ function ModifyProfil(){
 
                         if ($result){
 
-                            if(!empty($row['photo_profil'])){
+                            if(!empty($row['photo_profil']) && $row['photo_profil'] != "images/avatars/default-avatar.png"){
                                 // echo"photo de profil non vide";
                                 unlink($row['photo_profil']);
                             }

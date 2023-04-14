@@ -1,14 +1,5 @@
 
 
-:root {
-
-    /* Variable color */
-    
-
-    /* SideBar */
-    --sidebarBackground: #FFFBFA;
-    --sidebarLinksHover: #FBD1B0;
-}
 
 .sidebar {
     display: flex;
@@ -59,8 +50,11 @@
 }
 
 .links a:hover{
-    background-color: var(--sidebarLinksHover);
+    background-color: var(--color2-hover);
     border-radius: 10px;
+
+    color: var(--color2-text);
+    fill: var(--color2-text);
 }
 
 .links .nav-icon svg{

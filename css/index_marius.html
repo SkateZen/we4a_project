@@ -18,6 +18,8 @@
 
   <link rel="stylesheet" href="./formulaire.css">
 
+  <link rel="stylesheet" href="./user.css">
+
   <!-- <script src="./javascript/script_search_bar.js"></script> -->
   <title>Document</title>
 </head>
@@ -96,7 +98,7 @@
         </nav>
     </aside>
 
-    <main class="hide">
+    <main class="">
 
         <div class="profil-bar">
 
@@ -114,13 +116,44 @@
             </div>
         </div>
 
-        
+        <form action="./profil.php" method="get">
+            <button type="submit" class="row-user">
+    
+                <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
+    
+                
+                <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
+                
+                <div class="infos-user">
+                    <h3> Sk8zen</h3>
+    
+                    <p> Diguat  Marius</p>
+                </div>
+    
+            </button>
+        </form>
+        <form action="./profil.php" method="get">
+            <button type="submit" class="row-user">
+    
+                <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
+    
+                
+                <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
+                
+                <div class="infos-user">
+                    <h2> <?php echo $pseudo; ?></h>
+    
+                    <p> <?php echo $firstname." ".$name; ?></p>
+                </div>
+    
+            </button>
+        </form>
 
         
     
     </main >
 
-    <div  class="form-on-top">
+    <div  class="form-on-top hide">
             
         <form action="" class="formulaire" method="POST"  enctype="multipart/form-data">
 

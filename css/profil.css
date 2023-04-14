@@ -30,13 +30,16 @@
 }
 
 .profil-bar .profil-button button{
+
+    color : var(--color2-text);
+
     background: var(--color2);
     border: none;
     border-radius: 10px;
     padding: 8px;
-    /* color: white; */
+    /* color: black; */
     /* font-weight: bold; */
-
+    color:var(--texte);
 
     border: 1px solid var(--color2-border);
     /* box-shadow: 0 0 7px rgba(0,0,0,0.2); */
@@ -50,5 +53,14 @@
 
 .profil-bar .profil-button button:hover{
     background: var(--color2-hover);
+    color: var(--color2-text);
     box-shadow: 0 0 7px rgba(0,0,0,0.5);
 }
+
+.ecart-button{
+    margin-right: 10px;
+}
+
+
+/* Affichage des autres utilisateurs */
+
