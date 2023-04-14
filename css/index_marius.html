@@ -16,6 +16,8 @@
 
   <link rel="stylesheet" href="./profil.css">
 
+  <link rel="stylesheet" href="./formulaire.css">
+
   <!-- <script src="./javascript/script_search_bar.js"></script> -->
   <title>Document</title>
 </head>
@@ -94,7 +96,7 @@
         </nav>
     </aside>
 
-    <main>
+    <main class="hide">
 
         <div class="profil-bar">
 
@@ -113,8 +115,37 @@
         </div>
 
         
+
+        
     
-    </main>
+    </main >
+
+    <div  class="form-on-top">
+            
+        <form action="" class="formulaire" method="POST"  enctype="multipart/form-data">
+
+            <button class="exit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </button>
+
+            <h2>Modifier infos utilisateur</h2>
+
+            <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
+
+            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="<?php echo $pseudo; ?>">
+
+            <label >Avatar :</label>
+            <input type="file" name="avatar">
+
+            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
+            <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
+
+            <button class="submit-button" type="submit" name="update_profil" id="update_profil"> Modifier</button>
+        </form>
+    </div>
 
     <aside class="rightside">
         <p>right</p>

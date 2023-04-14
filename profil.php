@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./javascript/script_profil.js"></script>
 
     <link rel="stylesheet" href="./css/profil.css">
+    <link rel="stylesheet" href="./css/formulaire.css">
+    <link rel="stylesheet" href="./css/effect.css">
     <title>Document</title>
 </head>
 
@@ -34,15 +38,15 @@
             
     ?>
 
-    <main>
+    <main id="page-profil">
 
     <?php 
         DisplayProfil();
 
-        ModifyProfilForm();
+        
     ?>
     
-
+<!-- 
     <div>
         <form action="./logout.php" method="POST">
             
@@ -51,9 +55,8 @@
                 <button type="submit">Se déconnecter</button>
             </div>
             
-            <!-- <div style="clear:both"></div> -->
         </form>
-    </div>
+    </div> -->
 
     <div>
         <h2>Amis</h2>
@@ -78,6 +81,10 @@
         }
     ?>
     </main>
+
+    <?php
+        ModifyProfilForm();
+        ?>
 
 
 </body>

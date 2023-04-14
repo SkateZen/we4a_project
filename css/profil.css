@@ -2,6 +2,7 @@
 
 .profil-bar {
     display: flex;
+    border-bottom: solid 1px var(--ligneSection);
 }
 
 
@@ -25,6 +26,7 @@
 
 .profil-bar .profil-button{
     margin-top: 20px;
+    display: flex;
 }
 
 .profil-bar .profil-button button{
