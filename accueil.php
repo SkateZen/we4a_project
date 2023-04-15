@@ -40,7 +40,7 @@
                 <div class="search-box">
                     <input class="search-text" type="text" id="search_evenement" name="search_evenement" placeholder="Chercher des événements">
 
-                    <input class="search-text hide"  type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Chercher des amis">
+                    <input class="search-text hide"  type="search" id="search_utilisateur" name="search_utilisateur" placeholder="Chercher des utilisateurs">
 
 
                     <a class="search-btn" href="#">

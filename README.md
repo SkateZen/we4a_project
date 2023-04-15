@@ -18,6 +18,15 @@ page profil ami
     ->événements ami
 
 
+CSS 
+    ->page ami
+    ->onglet actuel à marqué
+    ->couleur section visiteurs
+    ->messagerie
+    ->événement
+    ->aajout événement
+
+
 Petits bugs à corriger :
 
 bug accept_ami -> plusieurs amis ajoutés en 1 seul click

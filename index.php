@@ -21,7 +21,7 @@
 <div align="center" class="accueil">
     <!-- Titre de notre Réseau social -->
 
-    <img src="./images/front/eventum2.png" width="500px"alt="">
+    <img src="./images/front/eventum_transparent.png" width="500px"alt="">
 
     <p>Ceci est la page d'acceuil de notre réseau social. L'idée est de faire un site permettant de faciliter la recherche, la création et l'organisation d'évènements ! Bienvenue !</p>
     
