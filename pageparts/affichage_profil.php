@@ -18,7 +18,7 @@ function ModifyProfilForm(){
     ?>
     <div id="modify-profil-form" class="form-on-top hide">
         
-        <form action="" class="formulaire" method="POST" enctype="multipart/form-data">
+        <form action="./redirect_profil.php" class="formulaire" method="POST" enctype="multipart/form-data">
 
             <button id="exit-button" class="exit-button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
@@ -47,21 +47,23 @@ function ModifyProfilForm(){
 }
 
 
-function DisplayProfil(){
+function DisplayProfil($row){
 
     global $conn, $userID;
 
 
-    $query = "SELECT * FROM utilisateur WHERE id_utilisateur = $userID";
+    // $query = "SELECT * FROM utilisateur WHERE id_utilisateur = $userID";
 
-    $result = $conn->query($query);
+    // $result = $conn->query($query);
 
-    $row = $result->fetch_assoc();
+    // $row = $result->fetch_assoc();
 
     $name = $row['nom'];
     $firstname = $row['prenom'];
     $pseudo = $row['pseudo'];
     $avatar = $row['photo_profil'];
+
+    $id_ami = $row['id_utilisateur'];
 
     ?>
 
@@ -84,6 +86,9 @@ function DisplayProfil(){
             <p> <?php echo $firstname." ".$name; ?></p>
             
             
+            <?php
+            if ( $id_ami == $userID){
+            ?>
 
             <div class="profil-button">
 
@@ -97,6 +102,36 @@ function DisplayProfil(){
 
                 </form>
             </div>
+
+            <?php
+            }
+            else{
+                $query = "SELECT * FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
+                id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
+
+                $result = $conn->query($query);
+
+                $row2 = $result->fetch_assoc();
+
+                if ($row2 > 0 && $row2['statut'] == 'accepte'){
+                    ?>
+                    <div class="profil-button">
+                        <button id="contact-button" class="ecart-button">Contacter</button>
+                    </div>
+                    <?php
+                }
+                else if($row2 > 0 && $row2['statut'] == 'en attente'){
+                    echo "en attente";
+                }
+                else{
+                    ?>
+                    <div class="profil-button">
+                        <button id="ajout-button" class="ecart-button">Ajouter</button>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
         </div>
     </div>
 

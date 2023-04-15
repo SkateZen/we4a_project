@@ -32,16 +32,15 @@
     
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
-            include("./pageparts/affichage_profil.php"); 
-            
-            ModifyProfil();
-            
+            include("./pageparts/affichage_profil.php");  
     ?>
 
     <main id="page-profil">
 
     <?php 
-        DisplayProfil();
+
+        $row_user = PageProfil();
+        DisplayProfil($row_user);
 
         
     ?>

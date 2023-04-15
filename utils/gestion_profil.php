@@ -1,6 +1,45 @@
 <?php
 
 
+function PageProfil(){
+
+    global $conn, $userID;
+
+    //Si on visite la page d'un ami en ayant cliqué sur sa carte
+    if (isset($_GET["pseudo"])){
+
+        $pseudo_ami = $_GET["pseudo"];
+
+        $query = "SELECT * FROM `utilisateur` WHERE `pseudo` = '$pseudo_ami'";
+
+        $result = $conn->query($query);
+
+        $row = $result->fetch_assoc();
+
+        if ($row){
+            return $row;
+        }
+        else{
+            $error = "Aucun profil trouvé";
+            echo $error;
+            return null;   
+        }
+    }
+    //Si on est sur notre profil à nous
+    else{
+        $query = "SELECT * FROM `utilisateur` WHERE id_utilisateur = $userID";
+
+        $result = $conn->query($query);
+
+        $row = $result->fetch_assoc();
+
+        return $row;
+    }
+
+
+}
+
+
 function ModifyProfil(){
 
     global $conn, $userID;

@@ -21,10 +21,10 @@ page profil ami
 CSS 
     ->page ami
     ->onglet actuel à marqué
-    ->couleur section visiteurs
+    
     ->messagerie
     ->événement
-    ->aajout événement
+    ->ajout événement
 
 
 Petits bugs à corriger :

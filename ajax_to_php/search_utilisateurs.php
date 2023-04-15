@@ -41,7 +41,7 @@ if(isset($_GET['user'])){
             $row2 = $result2->fetch_row()[0];
 
             if ($row2 == 0) {
-                AjoutAmiButton($row);
+                //AjoutAmiButton($row);
             } 
         }
     }
