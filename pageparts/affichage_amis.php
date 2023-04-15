@@ -65,12 +65,31 @@ function AcceptAmiButton($row){
 }
 
 function SelectConversation($row){
+
+    // $id_ami = $row['id_utilisateur'];
+
+    $name = $row['nom'];
+    $firstname = $row['prenom'];
+    $pseudo = $row['pseudo'];
+    $avatar = $row['photo_profil'];
+
     ?>
     <form action="" method="post">
 
         <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
 
-        <button type="submit" name="select_conversation" id="select_conversation"> <?php echo $row['pseudo']; ?> </button>
+        <button type="submit" name="select_conversation" id="select_conversation" class="row-user"> 
+            <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
+
+            
+            <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
+            
+            <div class="infos-user">
+                <h3> <?php echo $pseudo; ?></h3>
+
+                <p> <?php echo $firstname." ".$name; ?></p>
+            </div>
+        </button>
     </form>
 
     <?php
@@ -87,7 +106,7 @@ function ChatBox($row){
     <h3><?php echo $row['pseudo']; ?></h3>
 
     <!-- <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>"> -->
-    <div id="messages-content"></div>
+    <div id="messages-content" class="messages-content"></div>
 
     <form id="message-form" enctype="multipart/form-data">
 

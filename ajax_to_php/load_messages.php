@@ -46,7 +46,7 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
                                                                     OR (id_utilisateur = '$id_ami' AND id_inviteur = '$userID') ORDER BY date_invitation ASC";
         $result_invitation = $conn->query($query_invitation);
 
-        echo "invitations =".$result_invitation->num_rows;
+        // echo "invitations =".$result_invitation->num_rows;
 
 
         if( !$result_messages && !$result_invitation )
@@ -72,8 +72,10 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
                 $i = 0;
                 $j = 0;
 
-                echo "<br>".count($messages);
-                echo "<br>".count($invitations);
+                $side = "left";
+
+                // echo "<br>".count($messages);
+                // echo "<br>".count($invitations);
                 
                 while( $i < count($messages) || $j < count($invitations) ){
                     
@@ -82,106 +84,107 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
 
                         if( $messages[$i]['date_envoi'] < $invitations[$j]['date_invitation'] ){ //si le message est plus ancien que l'invitation
 
+                            //si c'est l'utilisateur qui a envoyé le message, on affiche le message à droite
+                            //sinon on affiche le message à gauche
+                            $side = SideMessage($messages[$i]['id_utilisateur_envoyeur']);
+
                             //On affiche le message
                             if (!empty($messages[$i]['contenu']))
                             {
+                                ?>
+                                <div class="<?php echo $side;?>">
+
+                                    <p class="message">
+                                        <?php echo $messages[$i]['contenu'];?>
+                                    </p>
+                                    
+                                </div>
+                                <?php
                                 
-                                echo "<br>".$messages[$i]['contenu'];
                             }
                             else if (!empty($messages[$i]['image'])){
                                 ?>
-                                <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+
+                                <div class="<?php echo $side;?>">
+
+                                    <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+
+                                </div>
                                 <?php
                             }
                             $i++;
                         }
                         else{
+
+                            //si c'est l'utilisateur qui a envoyé l'invitation', on affiche à droite
+                            //sinon on affiche à gauche
+                            $side = SideMessage($invitations[$j]['id_utilisateur']);
+                            
+                            
                             //On affiche l'invitation
 
                             $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$invitations[$j]['id_evenement']."'";
                             $result_event = $conn->query($query_event);
                             $row_event = $result_event->fetch_assoc();
-    
-                            CardEvent($row_event);
+
+                            ?>
+                            <div class="<?php echo $side;?>">
+
+                                <?php CardEvent($row_event); ?>
+                            </div>
+                            <?php
                             
                             $j++;
                         }
                     }
                     else if ($i < count($messages) && $j >= count($invitations)){
                         //Plus d'invitation mais des messages
+
+                        $side = SideMessage($messages[$i]['id_utilisateur_envoyeur']);
+
                         if (!empty($messages[$i]['contenu']))
                         {
-                            
-                            echo "<br>".$messages[$i]['contenu'];
+                            ?>
+                            <div class="<?php echo $side;?>">
+
+                                <p class="message">
+                                    <?php echo $messages[$i]['contenu'];?>
+                                </p>
+                            </div>
+                            <?php
                         }
                         else if (!empty($messages[$i]['image'])){
 
                             echo "<br>image";
                             ?>
-                            <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+                            <div class="<?php echo $side;?>">
+
+                                <img src="images/messages/<?php echo $messages[$i]['image'];?>" alt="photo message">
+
+                            </div>
                             <?php
                         }
                         $i++;
                     }
                     else{
+
+                        $side = SideMessage($invitations[$j]['id_utilisateur_envoyeur']);
+
                         $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$invitations[$j]['id_evenement']."'";
                         $result_event = $conn->query($query_event);
                         $row_event = $result_event->fetch_assoc();
 
-                        CardEvent($row_event);
+                        ?>
+                        <div class="<?php echo $side;?>">
+
+                            <?php CardEvent($row_event); ?>
+                        </div>
+                        <?php
                         
                         $j++;
                     }
                 }
             }
-
-                
-
-
-
-                //On affiche les messages privés avant les invitation aux événements
-                // while($row2 = mysqli_fetch_array($result_messages)){
-                
-                //     if (!empty($row2['contenu']))
-                //     {
-                //         echo "<br>".$row2['contenu'];
-                //     }
-                //     else if (!empty($row2['image'])){
-                //         
-                //     }
-                    
-    
-                //     if ($result_invitation){
-                //         //On affiche les invitation aux événements avant les messages privés ayant été publiés après
-                //         while($row_invitation = $result_invitation->fetch_assoc()){
-    
-                //             if ($row_invitation['date_invitation'] < $row2['date_envoi']){
-                //                 //echo "<br>invitation à l'event ".$row_invitation['id_evenement'];
-        
-                //                 $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
-                //                 $result_event = $conn->query($query_event);
-                //                 $row_event = $result_event->fetch_assoc();
-        
-                //                 CardEvent($row_event);
-        
-                //             }
-                //             else{
-                //                 echo "<br>message privé";
-                //             }
-                //         }
-                //     }
-                // }
-            
-            // else if ($result_invitation){
-            //     while($row_invitation = $result_invitation->fetch_assoc()){
-
-            //         $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$row_invitation['id_evenement']."'";
-            //         $result_event = $conn->query($query_event);
-            //         $row_event = $result_event->fetch_assoc();
-
-            //         CardEvent($row_event);
-            //     }
-            // }
         }
     }   
 }
@@ -215,8 +218,16 @@ else if(isset($_GET['id_event'])){
 }
 
 
-function DisplayInvitation($row_messages){
+function SideMessage($id_envoyeur){
 
+    global $userID;
+
+    if ($id_envoyeur == $userID){ 
+        return "right";
+    }
+    else{
+        return "left";
+    }
 }
 
 /*

@@ -9,7 +9,7 @@
     <script src="./javascript/script_search_bar.js"></script>
 
     
-    <link rel="stylesheet" href="./css/accueil.css">
+    <link rel="stylesheet" href="./css/search-bar.css">
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/evenement.css">
     <link rel="stylesheet" href="./css/user.css">
@@ -31,8 +31,7 @@
     ?>
 
     <main>
-    <header>
-
+        <header>
             <div class="search-bar">
 
                 <!-- Recherche d'événements -->

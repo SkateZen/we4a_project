@@ -111,14 +111,14 @@ function AcceptAmi(){
     }
 }
 
-function ContactAmi(){
-    global $conn, $userID;
+// function ContactAmi(){
+//     global $conn, $userID;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["contact_ami"])){
+//     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["contact_ami"])){
 
         
-    }
-}
+//     }
+// }
 
 
 function ShowAmisWithConversation(){

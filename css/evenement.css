@@ -63,6 +63,7 @@
 .event-infos .description{
     max-height: 40%;
     /* border: 1px solid #352f2f8a; */
-    overflow: scroll;
+    /* overflow: scroll; */
     /* text-overflow: ellipsis;  */
 }
+

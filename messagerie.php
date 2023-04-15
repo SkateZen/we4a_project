@@ -8,6 +8,11 @@
 
     <script src="./javascript/script_messagerie.js"></script>
     <script src="./javascript/script_search_bar.js"></script>
+
+    <link rel="stylesheet" href="./css/search-bar.css">
+    <link rel="stylesheet" href="./css/messagerie.css">
+    <link rel="stylesheet" href="./css/user.css">
+    <link rel="stylesheet" href="./css/evenement.css">
     
     <title>Document</title>
 </head>
@@ -24,35 +29,50 @@
             include("./utils/gestion_amis.php");
     ?>
 
-    <main>
- 
+    <main class="d-flex">
+    <section class="messagerie-left">
+        <div class="search-bar">
+            <!-- Recherche d'événements -->
 
-    <h1>Messagerie</h1>
+            <div class="search-box">
+            <input class="search-text" type="search" id="search_ami" name="search_ami" placeholder="Chercher vos amis">
 
-    <!-- <img src="images/messages/test.jpg"alt="photo message"> -->
-
-
-    <form action="" method="POST">
-
-        <input type="search" id="search_ami" name="search_ami" placeholder="Cherchez des amis">
+                <a class="search-btn" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px">
+                        <!-- ! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </a>
+            </div>
+        </div>
 
         <div id="results">
-            
-        </div>
-    </form>
-
-    <h2>Conversations</h2>
-
-    <?php ShowAmisWithConversation();?>
-
-    <h2>Conversation en cours</h2>
     
-    <?php 
-    ShowConversation();
-    //SendMessage();    
-    ?>
+        </div>
+
+        <h2>Conversations</h2>
+
+        <?php ShowAmisWithConversation();?>
+    </section>
+    
+    <!-- <img src="images/messages/test.jpg"alt="photo message"> -->
+    
+    <section class="messagerie-right">
+        <h2>Conversation en cours</h2>
+        
+        <?php 
+        
+        ShowConversation();
+        //SendMessage();    
+        ?>
+    </section>
+
+    
     <!-- <div id="messages"></div> -->
     
+    </main>
+    <aside class="rightside">
+        <p>right</p>
+    </aside>
 
 
 
@@ -69,7 +89,7 @@
         }
     ?>
            
-    </main>
+    
     
 </body>
 </html>

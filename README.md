@@ -6,6 +6,8 @@ Projet pour l'uv we4a. L'idée est de faire un site web axé sur la proposition 
 
 Nouvelles étapes :
 
+Selectionner conversation avec Ajax est pas post lors du clique sur l'ami
+
 autres infos sur événement
     ->organisateur
     ->type
