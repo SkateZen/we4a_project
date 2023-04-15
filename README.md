@@ -19,7 +19,7 @@ page profil ami
 
 
 CSS 
-    ->page ami
+    
     ->onglet actuel à marqué
     
     ->messagerie

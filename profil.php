@@ -33,6 +33,9 @@
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
             include("./pageparts/affichage_profil.php");  
+
+            AjoutAmi();
+            AcceptAmi();
     ?>
 
     <main id="page-profil">
@@ -83,7 +86,7 @@
 
     <?php
         ModifyProfilForm();
-        ?>
+    ?>
 
 
 </body>

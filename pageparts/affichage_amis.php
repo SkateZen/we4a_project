@@ -57,7 +57,7 @@ function ContactAmiButton($row){
 function AcceptAmiButton($row){
     ?>
     <form action="" method="post">
-        <!-- <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>"> -->
+        <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>">
         <button type="submit" name="accept_ami" id="accept_ami"> Accepter</button>
     </form>
 

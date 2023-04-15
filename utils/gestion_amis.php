@@ -2,6 +2,8 @@
 
 include("pageparts/affichage_amis.php");
 
+
+//fonction qui permet de demander une personne en ami
 function AjoutAmi(){
     global $conn, $userID;
 
@@ -83,16 +85,17 @@ function ShowDemandeAmis(){
             $id_ami = $row['id_utilisateur'];
             echo "<br>".$row['pseudo'];
             AcceptAmiButton($row);
-            AcceptAmi($id_ami);
         }
     }
 }
 
 
-function AcceptAmi($id_ami){
+function AcceptAmi(){
     global $conn, $userID;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["accept_ami"])){
+
+        $id_ami = $_POST["id_ami"];
 
         $query = "UPDATE `relation` SET `statut`='accepte' WHERE id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
 

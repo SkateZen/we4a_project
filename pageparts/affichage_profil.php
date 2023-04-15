@@ -47,6 +47,8 @@ function ModifyProfilForm(){
 }
 
 
+//fonction qui affiche le profil de la personne
+
 function DisplayProfil($row){
 
     global $conn, $userID;
@@ -87,7 +89,7 @@ function DisplayProfil($row){
             
             
             <?php
-            if ( $id_ami == $userID){
+            if ( $id_ami == $userID){ //Si nous sommes sur notre profil
             ?>
 
             <div class="profil-button">
@@ -99,13 +101,13 @@ function DisplayProfil($row){
                     <input type="hidden" value="logout" name="logout"></input>
                     <button type="submit">Se déconnecter</button>
                     
-
                 </form>
             </div>
 
             <?php
             }
-            else{
+            else{ //Si nous visitons un autre profil
+
                 $query = "SELECT * FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
                 id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
 
@@ -113,20 +115,46 @@ function DisplayProfil($row){
 
                 $row2 = $result->fetch_assoc();
 
-                if ($row2 > 0 && $row2['statut'] == 'accepte'){
+                if ($row2 > 0 && $row2['statut'] == 'accepte'){ //Deja amis
                     ?>
                     <div class="profil-button">
-                        <button id="contact-button" class="ecart-button">Contacter</button>
+                        
+                        <!-- Bouton contact envoie vers la messagerie -->
+                        <form action="./messagerie.php" method="post">
+                            <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
+                            <button type="submit" name="contact_ami" id="contact_ami"> Contacter</button>
+                        </form>
+
                     </div>
                     <?php
                 }
-                else if($row2 > 0 && $row2['statut'] == 'en attente'){
-                    echo "en attente";
+                else if($row2 > 0 && $row2['statut'] == 'en attente'){ //Pas encore ami mais demande envoyé
+
+                    if ($row2['id_utilisateur2'] == $userID){ //Si c'est l'autre qui a envoyé la demande
+                        ?>
+                        <div class="profil-button">
+                            <!-- <button id="accept-button" class="ecart-button">Accepter</button> -->
+
+                            <form action="" method="post">
+                                <input type="hidden" name="id_ami" value="<?php echo $id_ami; ?>">
+                                <button type="submit" name="accept_ami" id="accept_ami"> Accepter</button>
+                            </form>
+                        </div>
+                        <?php
+                    }
+                    else{ //Si c'est nous qui avons envoyé la demande
+                        echo "demande envoyé";
+                    }
                 }
-                else{
+                else{ //Pas encore ami et pas encore de relation demandé
                     ?>
                     <div class="profil-button">
-                        <button id="ajout-button" class="ecart-button">Ajouter</button>
+                        <!-- <button id="ajout-button" class="ecart-button">Ajouter</button> -->
+
+                        <form action="" method="post">
+                            <input type="hidden" name="id_ami" value="<?php echo $id_ami; ?>">
+                            <button type="submit" name="ajout_ami" id="ajout_ami"> Ajouter</button>
+                        </form>
                     </div>
                     <?php
                 }
