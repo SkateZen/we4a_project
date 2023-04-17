@@ -69,7 +69,7 @@
 
 
 /* Mise en forme du bouton d'envoi du formulaire */
-.formulaire .submit-button {
+.submit-button {
     font-family: 'Poppins', sans-serif;  
     padding: 15px 15px;
     border: none;
@@ -83,7 +83,7 @@
 }
 
 /* Ajout d'un effet assombrissant lors du survol du bouton */
-form .submit-button:hover {
+.submit-button:hover {
     
     background-color: var(--color2-hover);
     color: var(--color2-text);
@@ -116,3 +116,73 @@ form a:hover {
     cursor: pointer;
     /* fill: white; */
 }
+
+
+
+/* ---------------------------------------------------------------- */
+/*              Formulaires Ajout événement              */
+/* ---------------------------------------------------------------- */
+
+h1{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.formulaire-event .ecart{
+    margin: 10px 0px;
+}
+
+.formulaire-event{
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    min-width: 300px;
+    height: 70%;
+    margin: auto;
+    align-items: center;
+
+    /* justify-content: space-around; */
+
+    background-color: var(--color2);
+    border: 1px solid var(--ligneSection);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.formulaire-event .titre{
+    width: 60%;
+    height: 30px;
+
+    font-size: 16px;
+}
+
+.formulaire-event textarea{
+    width: 100%;
+    height: 100px;
+    
+}
+
+.formulaire-event .lieu{
+    
+    width: 40%;
+    height: 30px;
+
+    font-size: 16px;
+}
+
+.formulaire-event .submit-button{
+    margin-top: 30px;
+    background-color: var(--color2-hover);
+    color: var(--color2-text);
+}
+
+.formulaire-event .submit-button:hover {
+    
+    background-color: var(--color2);
+    border : 1px solid var(--color2-hover);
+
+    color: var(--color2-hover);
+}
+

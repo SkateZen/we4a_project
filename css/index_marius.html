@@ -98,87 +98,85 @@
         </nav>
     </aside>
 
-    <main class="">
 
-        <div class="profil-bar">
-
-            <img src="../images/avatars/IMG-6438522f4fc787.69435124.jpg"  width="255px" height="255px" alt="avatar">
-
-            <div class="user-infos">
-                <h1> Marius Diguat</h1>
-                
-                <p> SkateZen</p>
-
-                <div class="profil-button">
-                    <button>Modifier</button>
-                    <button>Se déconnecter</button>
-                </div>
-            </div>
-        </div>
-
-        <form action="./profil.php" method="get">
-            <button type="submit" class="row-user">
-    
-                <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
-    
-                
-                <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
-                
-                <div class="infos-user">
-                    <h3> Sk8zen</h3>
-    
-                    <p> Diguat  Marius</p>
-                </div>
-    
-            </button>
-        </form>
-        <form action="./profil.php" method="get">
-            <button type="submit" class="row-user">
-    
-                <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
-    
-                
-                <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
-                
-                <div class="infos-user">
-                    <h2> <?php echo $pseudo; ?></h>
-    
-                    <p> <?php echo $firstname." ".$name; ?></p>
-                </div>
-    
-            </button>
-        </form>
 
         
     
-    </main >
+    <main >
 
-    <div  class="form-on-top hide">
+    <h1>Ajouter un événement</h1>
+
+    <!-- Formulaire ajout d'un évenement -->
+    
+        <form action="" method="post"  class="formulaire-event">
+
+            <input class="titre ecart" type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
+    
+            <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
+    
+            <label class="ecart" for="">Categorie : 
+                <select name="categorie"  id="categorie" required>
+                    <option value="1"> 
+                        Sport
+                    </option>
+                    <option value="2"> 
+                        Musique
+                    </option>
+                    <option value="3"> 
+                        Cinéma
+                    </option>
+                    <option value="4"> 
+                        Jeux
+                    </option>
+                    <option value="5"> 
+                        Autre
+                    </option>
+                </select>
+            </label>
             
-        <form action="" class="formulaire" method="POST"  enctype="multipart/form-data">
+    
+            <label class="ecart" for="">Date :
+                <input type="date" name="date" id="date" placeholder="Date" required>
+            </label>
 
-            <button class="exit-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
-                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-            </button>
-
-            <h2>Modifier infos utilisateur</h2>
-
-            <input type="text" name="name" id="name" placeholder="Nom" value="<?php echo $name; ?>">
-            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<?php echo $firstname; ?>">
-
-            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="<?php echo $pseudo; ?>">
-
-            <label >Avatar :</label>
-            <input type="file" name="avatar">
-
-            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
-            <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
-
-            <button class="submit-button" type="submit" name="update_profil" id="update_profil"> Modifier</button>
+            <label class="ecart" for="">
+                Heure :
+                <input type="time" name="heure" id="heure" placeholder="Heure" required>
+            </label>
+            
+    
+            <input class="lieu ecart" type="text" name="lieu" id="lieu" placeholder="Lieu" required>
+    
+             <!-- Evenements publics ou privés à actualiser avec ajax -->
+    
+            <select class="ecart" name="is_public" id="is_public" required>
+                <option value="1"> 
+                    public
+                </option>
+                <option value="0"> 
+                    privé
+                </option>
+            </select>
+    
+            <button class="ecart" type="button" id="invite_button">Inviter amis</button>
+            <div id="invitation_amis" class="hide">
+           
+            </div>
+            
+    
+            <button class="ecart" type="button" id="max_button">Max participants</button>
+            <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
+    
+            
+            
+    
+            <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
         </form>
-    </div>
+    
+    
+
+    </main>
+
 
     <aside class="rightside">
         <p>right</p>

@@ -9,6 +9,8 @@
     <script src="./javascript/script_ajout_event.js"></script>
 
     <link rel="stylesheet" href="./css/effect.css">
+    <link rel="stylesheet" href="./css/formulaire.css">
+
     <title>Document</title>
 </head>
 
@@ -36,50 +38,61 @@
     <h1>Ajouter un événement</h1>
 
     <!-- Formulaire ajout d'un évenement -->
-    <form action="" method="post">
-        <input type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
+    
+    <form action="" method="post"  class="formulaire-event">
 
-        <textarea name="description" id="description" placeholder="Description"></textarea>
+            <input class="titre ecart" type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
+    
+            <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
+    
+            <label class="ecart" for="">Categorie : 
+                <select name="categorie"  id="categorie" required>
+                    <?php 
+                        ShowCategories();
+                    ?>
+                </select>
+            </label>
+            
+    
+            <label class="ecart" for="">Date :
+                <input type="date" name="date" id="date" placeholder="Date" required>
+            </label>
 
-        
-        <select name="categorie"  id="categorie" required>
-            <?php 
-                ShowCategories();
+            <label class="ecart" for="">
+                Heure :
+                <input type="time" name="heure" id="heure" placeholder="Heure" required>
+            </label>
+            
+    
+            <input class="lieu ecart" class="lieu" type="text" name="lieu" id="lieu" placeholder="Lieu" required>
+    
+             <!-- Evenements publics ou privés à actualiser avec ajax -->
+    
+            <select class="ecart" name="is_public" id="is_public" required>
+                <option value="1"> 
+                    public
+                </option>
+                <option value="0"> 
+                    privé
+                </option>
+            </select>
+    
+            <button class="ecart" type="button" id="invite_button">Inviter amis</button>
+            <div id="invitation_amis" class="hide">
+            <?php
+                ShowInvitationAmis();
             ?>
-        </select>
-
-        <input type="date" name="date" id="date" placeholder="Date" required>
-        <input type="time" name="heure" id="heure" placeholder="Heure" required>
-
-        <input type="text" name="lieu" id="lieu" placeholder="Lieu" required>
-
-         <!-- Evenements publics ou privés à actualiser avec ajax -->
-
-        <select name="is_public" id="is_public" required>
-            <option value="1"> 
-                public
-            </option>
-            <option value="0"> 
-                privé
-            </option>
-        </select>
-
-        <button type="button" id="invite_button">Inviter amis</button>
-        <div id="invitation_amis" class="hide">
-        <?php
-            ShowInvitationAmis();
-        ?>
-        </div>
-        
-
-        <button type="button" id="max_button">Max participants</button>
-        <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
-
-        
-        
-
-        <button type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
-    </form>
+            </div>
+            
+    
+            <button class="ecart" type="button" id="max_button">Max participants</button>
+            <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
+    
+            
+            
+    
+            <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
+        </form>
 
     
     

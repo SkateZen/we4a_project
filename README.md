@@ -6,9 +6,7 @@ Projet pour l'uv we4a. L'idée est de faire un site web axé sur la proposition 
 
 Nouvelles étapes :
 
-Messagerie
-Selectionner conversation avec Ajax est pas post lors du clique sur l'ami
-Voir pour régler battement carte événement
+
 
 autres infos sur événement
     ->organisateur
@@ -16,7 +14,7 @@ autres infos sur événement
     ->image
     ->nombre participants
     ->max participants
-    ->
+    ->prix
 
 page profil ami
     ->événements ami
@@ -25,8 +23,8 @@ page profil ami
 CSS 
     
     ->onglet actuel à marqué
+        ->javascript
     
-    ->messagerie
     ->événement
     ->ajout événement
 
@@ -34,6 +32,10 @@ CSS
 Petits bugs à corriger :
 
 bug accept_ami -> plusieurs amis ajoutés en 1 seul click
+
+Messagerie
+Selectionner conversation avec Ajax est pas post lors du clique sur l'ami
+Voir pour régler battement carte événement
 
 
 Nettoyage code :
