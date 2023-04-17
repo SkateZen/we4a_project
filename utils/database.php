@@ -140,9 +140,11 @@ function CheckNewAccountForm(){
                 $error = "Le mot de passe et sa confirmation sont différents";
             }
             else {
+
+                $path_photo = "images/avatars/default-avatar.png";
                 // Création du compte dans la base de données
-                $query = "INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `email`, `password`) 
-                        VALUES ('$name', '$firstname', '$pseudo', '$mail', '$password')";
+                $query = "INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`) 
+                        VALUES ('$name', '$firstname', '$pseudo', '$mail', '$password', '$path_photo')";
                 $result = $conn->query($query);
 
                 if (!$result) {

@@ -118,7 +118,7 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
 
                             //si c'est l'utilisateur qui a envoyé l'invitation', on affiche à droite
                             //sinon on affiche à gauche
-                            $side = SideMessage($invitations[$j]['id_utilisateur']);
+                            $side = SideMessage($invitations[$j]['id_inviteur']);
                             
                             
                             //On affiche l'invitation
@@ -155,7 +155,6 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
                         }
                         else if (!empty($messages[$i]['image'])){
 
-                            echo "<br>image";
                             ?>
                             <div class="<?php echo $side;?>">
 
@@ -168,7 +167,7 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
                     }
                     else{
 
-                        $side = SideMessage($invitations[$j]['id_utilisateur_envoyeur']);
+                        $side = SideMessage($invitations[$j]['id_inviteur']);
 
                         $query_event = "SELECT * FROM `evenement` WHERE id_evenement = '".$invitations[$j]['id_evenement']."'";
                         $result_event = $conn->query($query_event);

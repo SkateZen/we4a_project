@@ -57,10 +57,8 @@
     <!-- <img src="images/messages/test.jpg"alt="photo message"> -->
     
     <section class="messagerie-right">
-        <h2>Conversation en cours</h2>
-        
         <?php 
-        
+
         ShowConversation();
         //SendMessage();    
         ?>

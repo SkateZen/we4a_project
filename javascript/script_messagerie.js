@@ -8,6 +8,8 @@ function load_messages() {
 
     var pseudo_ami = $("#pseudo_ami_ajax").val();
 
+    // document.getElementById("content-messages").scrollTop = document.getElementById("content-messages").scrollHeight;
+
     $.ajax({
         type: 'GET',
         url: "ajax_to_php/load_messages.php",
@@ -62,3 +64,4 @@ document.addEventListener("DOMContentLoaded", function () {
         sendMessage(event);
     });
 });
+
