@@ -16,6 +16,7 @@
 
 
 <body>
+    <main>
 
     <?php
         include("./utils/database.php");
@@ -32,67 +33,72 @@
             include("./pageparts/header.php");  
     ?>
 
-    <main>
+    
 
     
     <h1 class="ajout_event-title">Ajouter un événement</h1>
 
     <!-- Formulaire ajout d'un évenement -->
     
-    <form action="" method="post"  class="formulaire-event">
+    <form action="" method="post"  class="formulaire-event" enctype="multipart/form-data">
 
-            <input class="titre ecart" type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
-    
-            <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
-    
-            <label class="ecart" for="">Categorie : 
-                <select name="categorie"  id="categorie" required>
-                    <?php 
-                        ShowCategories();
-                    ?>
-                </select>
-            </label>
-            
-    
-            <label class="ecart" for="">Date :
-                <input type="date" name="date" id="date" placeholder="Date" required>
-            </label>
+        <input class="titre ecart" type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
 
-            <label class="ecart" for="">
-                Heure :
-                <input type="time" name="heure" id="heure" placeholder="Heure" required>
-            </label>
-            
-    
-            <input class="lieu ecart" class="lieu" type="text" name="lieu" id="lieu" placeholder="Lieu" required>
-    
-             <!-- Evenements publics ou privés à actualiser avec ajax -->
-    
-            <select class="ecart" name="is_public" id="is_public" required>
-                <option value="1"> 
-                    public
-                </option>
-                <option value="0"> 
-                    privé
-                </option>
+        <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
+
+        <label class="ecart" for="">
+            Image:
+            <input type="file" name="image_event" placeholder="Image">
+        </label>
+
+        <label class="ecart" for="">Categorie : 
+            <select name="categorie"  id="categorie" required>
+                <?php 
+                    ShowCategories();
+                ?>
             </select>
-    
-            <button class="ecart" type="button" id="invite_button">Inviter amis</button>
-            <div id="invitation_amis" class="hide">
-            <?php
-                ShowInvitationAmis();
-            ?>
-            </div>
-            
-    
-            <button class="ecart" type="button" id="max_button">Max participants</button>
-            <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
-    
-            
-            
-    
-            <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
-        </form>
+        </label>
+        
+
+        <label class="ecart" for="">Date :
+            <input type="date" name="date" id="date" placeholder="Date" required>
+        </label>
+
+        <label class="ecart" for="">
+            Heure :
+            <input type="time" name="heure" id="heure" placeholder="Heure" required>
+        </label>
+        
+
+        <input class="lieu ecart" class="lieu" type="text" name="lieu" id="lieu" placeholder="Lieu" required>
+
+            <!-- Evenements publics ou privés à actualiser avec ajax -->
+
+        <select class="ecart" name="is_public" id="is_public" required>
+            <option value="1"> 
+                public
+            </option>
+            <option value="0"> 
+                privé
+            </option>
+        </select>
+
+        <button class="ecart" type="button" id="invite_button">Inviter amis</button>
+        <div id="invitation_amis" class="hide">
+        <?php
+            ShowInvitationAmis();
+        ?>
+        </div>
+        
+
+        <button class="ecart" type="button" id="max_button">Max participants</button>
+        <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
+
+        
+        
+
+        <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
+    </form>
 
     
     

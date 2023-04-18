@@ -34,8 +34,6 @@
             DesinscriptionFromEvent();
             ModifyEvent();
 
-            
-            
     ?>
 
     <main>
@@ -59,8 +57,18 @@
         }
 
         ?>
+        
 
         <div class="event">
+            <?php
+            if (!empty($row_event['image'])){
+                ?>
+                <img class="image-event" src=<?php echo $row_event['image']; ?> alt="">
+                <?php
+            }
+            
+            ?>
+            
 
             <h1><?php echo $row_event['titre']; ?></h1>
 

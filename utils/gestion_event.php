@@ -26,14 +26,56 @@ function AjoutEvent(){
         $lieu = $_POST["lieu"];
         $is_public = $_POST["is_public"];
         $max_participants = $_POST["max_participants"];
+
+        //Gestion image profil
+
+        $path = NULL;
+
+        if (isset($_FILES['image_event']) && $_FILES['image_event']['error'] == 0)
+        {
+            // Testons si le fichier n'est pas trop gros (2Mo max)
+            if ($_FILES['image_event']['size'] <= 2097152)
+            {
+                // Testons si l'extension est autorisée
+                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+
+                $extension_upload = strtolower(substr(strrchr($_FILES['image_event']['name'], '.'), 1));
+
+                if (in_array($extension_upload, $extensions_autorisees))
+                {
+                    // On peut valider le fichier et le stocker définitivement
+
+                    $new_img_name = uniqid("IMG-", true).'.'.$extension_upload;
+
+                    $path = "images/evenements/".$new_img_name;
+
+                    $result = move_uploaded_file($_FILES['image_event']['tmp_name'], $path);
+
+                    if (!$result){
+
+                        echo "Erreur lors de l'importation de votre photo de profil";
+                    }
+                    //echo "L'envoi a bien été effectué !";
+                }
+                else{
+                    echo "L'extension du fichier doit être jpg, jpeg, gif ou png";
+                }
+            }
+            else{
+                echo "Le fichier doit être inférieur à 2Mo";
+            }
+        }
+
+
+        //Insertion événement
         
         if (!$max_participants || $max_participants <= 0){
-            $query = "INSERT INTO `evenement`(`id_evenement`, `id_createur`, `titre`, `id_categorie`, `description`, `date`, `heure`, `lieu`, `is_public`, `nb_participants`) 
-                    VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$date', '$heure', '$lieu', '$is_public', NULL)";
+            $query = "INSERT INTO `evenement`(`id_evenement`, `id_createur`, `titre`, `id_categorie`, `description`, `image`, `date`, `heure`, `lieu`, `is_public`, `nb_participants`) 
+                    VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$path', '$date', '$heure', '$lieu', '$is_public', NULL)";
         }
         else{
-            $query = "INSERT INTO `evenement`(`id_evenement`, `id_createur`, `titre`, `id_categorie`, `description`, `date`, `heure`, `lieu`, `is_public`, `nb_participants`) 
-                    VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$date', '$heure', '$lieu', '$is_public', '$max_participants')";
+            $query = "INSERT INTO `evenement`(`id_evenement`, `id_createur`, `titre`, `id_categorie`, `description`, `image`, `date`, `heure`, `lieu`, `is_public`, `nb_participants`) 
+                    VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$path', '$date', '$heure', '$lieu', '$is_public', '$max_participants')";
         }
 
         echo $query."<br>";
@@ -45,17 +87,12 @@ function AjoutEvent(){
             echo $error;
         }
         else{
-
-            //Si l'event est privé, on invite les amis
-
-            if (!$is_public){
-
-                //On récupère l'id de l'event créé
-                $id_event = mysqli_insert_id($conn);
-                echo "id_event =".$id_event;
-                //On invite les amis
-                InviteAmis($id_event);
-            }
+            //On récupère l'id de l'event créé
+            $id_event = mysqli_insert_id($conn);
+            echo "id_event =".$id_event;
+            //On invite les amis
+            InviteAmis($id_event);
+            
             echo"creation réussie";
             $creationSuccessful = true;
 
