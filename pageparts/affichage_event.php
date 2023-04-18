@@ -55,18 +55,22 @@ function ForumBox($row_event){
 
     ?>
     
-    <!-- <input type="hidden" id="pseudo_ami_ajax" name="pseudo_ami_ajax" value="<?php echo $row['pseudo']; ?>"> -->
-    <div id="messages-content-forum"></div>
+    <div id="messages-content-forum" class="messages-content"></div>
 
-    <form id="message-form" enctype="multipart/form-data">
+    <form id="message-form" enctype="multipart/form-data" class="message-form">
 
         <input type="hidden" id="id_evenement_forum" name="id_evenement_forum" value="<?php echo $row_event['id_evenement']; ?>">
         
-        <input type="file" id="img" name="picture" accept="image/png, image/jpeg"><br>
+        <label class="custom-file-upload">
+            <input type="file" id="img" name="picture" accept="image/png, image/jpeg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
+        </label>
 
         <textarea  id="msg" name="message" placeholder="Message" required></textarea>
-
-        <button type="button" id="send_message">Send</button>
+        
+        <button type="button" id="send_message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+        </button>
 
     </form>
 

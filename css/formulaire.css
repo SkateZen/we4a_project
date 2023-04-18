@@ -123,9 +123,9 @@ form a:hover {
 /*              Formulaires Ajout événement              */
 /* ---------------------------------------------------------------- */
 
-h1{
+.ajout_event-title{
     text-align: center;
-    margin: 20px 0px;
+    padding: 20px 0px;
 }
 
 .formulaire-event .ecart{

@@ -15,6 +15,7 @@ autres infos sur événement
     ->nombre participants
     ->max participants
     ->prix
+    ->adresse
 
 page profil ami
     ->événements ami
@@ -26,7 +27,6 @@ CSS
         ->javascript
     
     ->événement
-    ->ajout événement
 
 
 Petits bugs à corriger :

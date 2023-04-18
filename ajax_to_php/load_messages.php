@@ -6,29 +6,32 @@ connect_db();
 
 //Code permettant de charger les messages dans la messagerie privée et dans les forums événements
 
-global $conn;
+global $conn, $userID;
 
-if (isset($_GET['pseudo'])) {  //messagerie privée
 
-    $pseudo_ami = $_GET['pseudo'];
+if (isset($_COOKIE['mail'])) {
+    $mail = $_COOKIE['mail'];
 
-    // echo $pseudo_ami;
+    $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
+    $result_userID = $conn->query($query_userID);
 
-    $query = "SELECT * FROM `utilisateur` WHERE pseudo = '$pseudo_ami'";
+    $userID = $result_userID->fetch_assoc()['id_utilisateur'];
 
-    $result = $conn->query($query);
+    if (isset($_GET['pseudo'])) {  //messagerie privée
 
-    $row = $result->fetch_assoc();
+        $pseudo_ami = $_GET['pseudo'];
 
-    $id_ami = $row['id_utilisateur'];
+        // echo $pseudo_ami;
 
-    if (isset($_COOKIE['mail'])) {
-        $mail = $_COOKIE['mail'];
+        $query = "SELECT * FROM `utilisateur` WHERE pseudo = '$pseudo_ami'";
 
-        $query_userID = "SELECT id_utilisateur FROM `utilisateur` WHERE email = '$mail'";
-        $result_userID = $conn->query($query_userID);
+        $result = $conn->query($query);
 
-        $userID = $result_userID->fetch_assoc()['id_utilisateur'];
+        $row = $result->fetch_assoc();
+
+        $id_ami = $row['id_utilisateur'];
+
+    
 
         //Requete qui récupère tous les messages entre 2 utilisateurs
 
@@ -186,31 +189,64 @@ if (isset($_GET['pseudo'])) {  //messagerie privée
             }
         }
     }   
-}
-else if(isset($_GET['id_event'])){
 
-    $id_event = $_GET['id_event'];
+    else if(isset($_GET['id_event'])){
 
-    //echo "tentative de chargement des messages de l'event $id_event";
+        $id_event = $_GET['id_event'];
 
-    $query = "SELECT * FROM `message_groupe` WHERE id_evenement = '$id_event' ORDER BY date_envoi ASC";
+        //echo "tentative de chargement des messages de l'event $id_event";
 
-    $result = $conn->query($query);
+        $query = "SELECT * FROM `message_groupe` WHERE id_evenement = '$id_event' ORDER BY date_envoi ASC";
 
-    if( mysqli_affected_rows($conn) == 0 )
-    {
-        echo "Aucun message enregistré";
-    }
-    else{
-        while($row = mysqli_fetch_array($result)){
-            if (!empty($row['contenu']))
-            {
-                echo "<br>".$row['contenu'];
-            }
-            else if (!empty($row['image'])){
-                ?>
-                <img src="images/forums/<?php echo $row['image'];?>" alt="photo message">
-                <?php
+        $result = $conn->query($query);
+
+        if( mysqli_affected_rows($conn) == 0 )
+        {
+            echo "Aucun message enregistré";
+        }
+        else{
+            while($row = mysqli_fetch_array($result)){
+
+                $side = SideMessage($row['id_utilisateur_envoyeur']);
+
+                $query_user = "SELECT * FROM `utilisateur` WHERE id_utilisateur = '".$row['id_utilisateur_envoyeur']."'";
+                $result_user = $conn->query($query_user);
+                $row_user = $result_user->fetch_assoc();
+
+                if (!empty($row['contenu']))
+                {
+                    
+                    ?>
+                    <div class="<?php echo $side;?>">
+
+
+                        <?php
+                        if ($side == "left"){
+                            echo $row_user['pseudo'];
+                        }
+
+                        ?>
+                        <p class="message">
+                            <?php echo $row['contenu'];?>
+                        </p>
+
+                    </div>
+                    <?php
+                }
+                
+                else if (!empty($row['image'])){
+                    ?>
+                    <div class="photo-groupe <?php echo $side;?>">
+                        <?php
+                        
+                        if ($side == "left"){
+                            echo $row_user['pseudo'];
+                        }
+                        ?>
+                        <img src="images/forums/<?php echo $row['image'];?>" alt="photo message">
+                    </div>
+                    <?php
+                }
             }
         }
     }

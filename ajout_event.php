@@ -35,7 +35,7 @@
     <main>
 
     
-    <h1>Ajouter un événement</h1>
+    <h1 class="ajout_event-title">Ajouter un événement</h1>
 
     <!-- Formulaire ajout d'un évenement -->
     

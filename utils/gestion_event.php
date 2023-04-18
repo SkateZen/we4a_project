@@ -281,6 +281,19 @@ function PageEvent(){
 }
 
 
+function CreateurEvent($id_creator){
+
+    global $conn;
+
+    $query = "SELECT * FROM `utilisateur` WHERE id_utilisateur = '$id_creator'";
+
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+
+    return $row;
+}
+
+
 function UserInEvent($row_event){
 
     global $conn, $userID;
