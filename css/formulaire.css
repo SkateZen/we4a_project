@@ -120,7 +120,7 @@ form a:hover {
 
 
 /* ---------------------------------------------------------------- */
-/*              Formulaires Ajout événement              */
+/*                  Formulaires Ajout événement                     */
 /* ---------------------------------------------------------------- */
 
 .ajout_event-title{
@@ -170,6 +170,10 @@ form a:hover {
     height: 30px;
 
     font-size: 16px;
+}
+
+.formulaire-event .choix {
+    padding: 5px;
 }
 
 .formulaire-event .submit-button{

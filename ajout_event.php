@@ -74,7 +74,7 @@
 
             <!-- Evenements publics ou privés à actualiser avec ajax -->
 
-        <select class="ecart" name="is_public" id="is_public" required>
+        <select class="ecart choix" name="is_public" id="is_public" required>
             <option value="1"> 
                 public
             </option>
@@ -83,7 +83,7 @@
             </option>
         </select>
 
-        <button class="ecart" type="button" id="invite_button">Inviter amis</button>
+        <button class="ecart choix" type="button" id="invite_button">Inviter amis</button>
         <div id="invitation_amis" class="hide">
         <?php
             ShowInvitationAmis();
@@ -91,7 +91,7 @@
         </div>
         
 
-        <button class="ecart" type="button" id="max_button">Max participants</button>
+        <button class="ecart choix" type="button" id="max_button">Max participants</button>
         <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
 
         
