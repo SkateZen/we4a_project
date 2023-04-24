@@ -102,7 +102,7 @@ header{
     fill: var(--color2-text);
 }
 
-.categorie.right{
+.categorie.right, .categorie.theme-btn{
     align-items: center;
     margin: 20px;
     padding-top: 2px;
