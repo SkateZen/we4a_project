@@ -121,9 +121,9 @@
     
 
     </main>
-    <aside class="rightside">
+    <!-- <aside class="rightside">
         <p>right</p>
-    </aside>
+    </aside> -->
 
     <?php
             

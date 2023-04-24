@@ -76,29 +76,13 @@ main{
     /* flex:60%; */
     background-color: var(--color1);
 
-    margin: 0 240px;
+    margin: 0 auto 0 240px;
+    padding-left: 10px;
 
     height: 100vh;
     /* height: 100%; */
 }
 
-
-aside.rightside{
-    /* flex: 20%; */
-    background: var(--color1);
-
-    width: 240px;
-    
-	position: fixed;
-	height: 100%;
-	
-	top: 0;
-	right: 0;
-	z-index: 1;
-	overflow-x: hidden;
-
-    border-left : 1px solid var(--ligneSection);
-}
 
 
 @media screen and (max-width: 1200px) {
