@@ -120,11 +120,10 @@
 
 
     <!-- Ajout d'événements -->
-    <form action="./ajout_event.php" method="POST">
+    <form action="./ajout_event.php" method="POST" class="btn-add-event">
 
         <button type="submit">Ajouter événement</button>
         
-        <!-- <div style="clear:both"></div> -->
     </form>
 
 

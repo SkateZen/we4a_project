@@ -77,12 +77,14 @@ main{
     background-color: var(--color1);
 
     margin: 0 auto 0 240px;
-    padding-left: 10px;
 
     height: 100vh;
     /* height: 100%; */
 }
 
+main h1, main h2, main .btn-add-event {
+    padding-left: 10px;
+}
 
 
 @media screen and (max-width: 1200px) {
