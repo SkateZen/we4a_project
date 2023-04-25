@@ -34,6 +34,15 @@
 
 
     <main>
+
+        <!-- Afficher la création du compte avec succès si le paramètre GET est rempli -->
+        <?php 
+            include("./utils/infos.php");
+            if (isset($_GET['registration_err'])) {
+                displayLogInfo($_GET['registration_err']);
+            }
+        ?>
+
         <!-- Formulaire connexion -->
         <form action="" method="post" class="hide">
         <h1>Se connecter</h1>

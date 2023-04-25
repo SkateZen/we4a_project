@@ -18,21 +18,21 @@
         $newAccountStatus = CheckNewAccountForm(); // <-- array($creationAttempted, $creationSuccessful, $error)
     ?>
 
+
+    <!-- Formulaire d'inscription -->
+    <main>
     <?php
         // Redirection vers la page connexion si l'inscription est réussie
         if($newAccountStatus[1]){
             echo '<h3 class="successMessage">Nouveau compte crée avec succès!</h3>';
-            header('Location: ./connexion.php');
+            header('Location: ./connexion.php?registration_err=success');
         }
         elseif ($newAccountStatus[0]){
+            include("./utils/infos.php");
+            displayLogInfo("fail");
             echo '<h3 class="errorMessage">'.$newAccountStatus[2].'</h3>';
         }
     ?>
-
-
-
-    <!-- Formulaire d'inscription -->
-    <main>
         <form action="" method="post" class="form-visiteur">
             <h1>S'inscrire</h1>
             
