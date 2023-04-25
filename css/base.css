@@ -27,6 +27,7 @@
     
 
     --ligneSection: #352f2f8a;
+    --default-text: #000000;
 }
 
 * {
@@ -34,6 +35,8 @@
     padding: 0;
     box-sizing: border-box;
     transition: 0.2s ease;
+    color: var(--default-text);
+    fill: var(--default-text);
     font-family: -apple-system, BlinkMacSystemFont, Poppins,  Montserrat, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
   
