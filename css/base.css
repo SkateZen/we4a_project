@@ -34,7 +34,6 @@
     padding: 0;
     box-sizing: border-box;
     transition: 0.2s ease;
-    /* user-select: none; */
     font-family: -apple-system, BlinkMacSystemFont, Poppins,  Montserrat, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
   
@@ -53,22 +52,18 @@ li {
 }
 
 
-/* Premières sections */
+/* Définition des différentes sections du site */
 
 aside.leftside{
 
     background: var(--color1);
-
     width: 240px;
-    
 	position: fixed;
 	height: 100%;
-	
 	top: 0;
 	left: 0;
 	z-index: 1;
 	overflow-x: hidden;
-	
     border-right : 1px solid var(--ligneSection);
 }
 
