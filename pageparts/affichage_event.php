@@ -10,11 +10,25 @@ function CardEvent($row){
         <button type="submit" class="card-event">
 
             <input type="hidden" name="id_event" value="<?php echo $row['id_evenement']?>">
-
             
             <div class="event-infos">
-                <h3><?php echo $row['titre']; ?></h3>
-                <p class="description"><?php echo $row['description']; ?></p>
+
+                <?php 
+                    $image = $row['image'];
+                    if($image != ""){
+                        ?>
+                            <img src="<?php echo $image; ?>" width="180px" height="100px" alt="Image de l'événement">
+                            <h3><?php echo $row['titre']; ?></h3>
+                        <?php
+                    }
+                    else{
+                        ?>
+                            <h3><?php echo $row['titre']; ?></h3>
+                            <p class="description"><?php echo $row['description']; ?></p>
+                        <?php
+                    }
+                ?>
+                
                 <p><?php echo $row['date']; ?></p>
                 <p><?php echo $row['heure']; ?></p>
                 <p><?php echo $row['lieu']; ?></p>
@@ -101,10 +115,18 @@ function ModifyEventForm($row){
     $lieu = $row['lieu'];
     
     ?>
-    <div>
-        <h2>Modifier événements</h2>
+    <div class="form-on-top">
         
-        <form action="" method="POST" enctype="multipart/form-data">
+        
+        <form action="" method="POST" class="formulaire" enctype="multipart/form-data">
+
+            <button id="exit-button" class="exit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </button>
+
+            <h2>Modifier événements</h2>
 
             <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
             <input type="hidden" name="id_createur" value="<?php echo $id_createur; ?>">
@@ -115,11 +137,13 @@ function ModifyEventForm($row){
 
             <textarea name="description" placeholder="Description" ><?php echo $description; ?></textarea>
 
-            <select name="categorie"  id="categorie">
+            <!-- <select name="categorie"  id="categorie">
             <?php 
-                ShowCategories();
+            //    ShowCategories();
             ?>
-            </select>
+            </select> -->
+            <label >Image :</label>
+            <input type="file" name="avatar">
 
             <input type="date" name="date" placeholder="Date" value="<?php echo $date; ?>">
 
@@ -127,13 +151,12 @@ function ModifyEventForm($row){
 
             <input type="text" name="lieu" placeholder="Lieu" value="<?php echo $lieu; ?>">
 
-            <!-- <label >Avatar :</label>
-            <input type="file" name="avatar"> -->
+            
 
             <input type="text" name="password" id="password" placeholder="Mot de passe" required>
             <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
 
-            <button type="submit" name="update_event"> Modifier</button>
+            <button class="submit-button" type="submit" name="update_event"> Modifier</button>
         </form>
     </div>
     <div>

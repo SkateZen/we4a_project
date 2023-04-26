@@ -86,38 +86,14 @@
         <div id="results" class=""></div>
 
     
-        <h2>Événements disponibles</h2>
+        <h2 class="title">Événements disponibles</h2>
 
-        <?php
-        include("./utils/gestion_event.php");
-        ShowPublicEvent();
-        ?>
-
-
-    
-
-    <!-- Recherche d'utilisateurs -->
-    
-
-
-    <!-- div dans laquelle les résultats de la recherche ajax s'afficheront -->
-    
-
-
-
-   
-
-
-    <!-- Ajout d'événements -->
-    <form action="./ajout_event.php" method="POST">
-
-        <button type="submit">Ajouter événement</button>
-        
-        <!-- <div style="clear:both"></div> -->
-    </form>
-
-
-    <!-- Proposition d'événements -->
+        <div class="container-event">
+            <?php
+            include("./utils/gestion_event.php");
+            ShowPublicEvent();
+            ?>
+        </div>
     
 
     </main>

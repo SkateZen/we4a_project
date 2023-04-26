@@ -383,12 +383,12 @@ function ModifyEvent(){
         $date = $_POST['date'];
         $heure = $_POST['heure'];
         $lieu = $_POST['lieu'];
+        //$image = $_POST['image'];
 
         $id_event = $_POST['id_event'];
         $id_createur = $_POST['id_createur'];
 
         $password = md5($_POST['password']);
-
 
         $query_verif = "SELECT `password` FROM utilisateur WHERE id_utilisateur = $userID";
 
@@ -402,6 +402,9 @@ function ModifyEvent(){
             $query_update = "UPDATE `evenement` SET `titre`='$titre', `description`='$description', `date`='$date', `heure`='$heure', `lieu`='$lieu' WHERE id_evenement = '$id_event'";
 
             $result = $conn->query($query_update);
+        }
+        else{
+            echo "Mot de passe incorrect";
         }
     }
     if (isset($_POST['delete_event'])){

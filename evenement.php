@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/evenement.css">
     <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/messagerie.css">
+    <link rel="stylesheet" href="./css/formulaire.css">
     <title>Document</title>
 </head>
 <body>
@@ -87,12 +88,13 @@
 
             </div>
 
-            <div class="button">
+            <div class="buttons">
         <?php
 
         if (!UserInEvent($row_event) && !CreatorEvent($row_event)){
 
             //participants non inscrits
+            //Bouton pour s'inscrire si il reste de la place
             
             if (NumberOfParticipants($row_event) >= $row_event['nb_participants'] && $row_event['nb_participants'] != 0){
                 echo "<br>Nombre de participants maximum atteint";
@@ -108,6 +110,7 @@
             if ($row_event['is_public'] == 1 || CreatorEvent($row_event)) //si l'événement est public ou si l'utilisateur est le créateur
             {
             ?>
+                <!-- Bouton pour inviter des amis -->
                 <form action="" method="post">
                     <button type="button" id="invite_button">Inviter amis</button>
 
@@ -126,23 +129,15 @@
             if (CreatorEvent($row_event)){ //si l'utilisateur est le créateur
 
                 //createur
-                // echo "<br>modifier";
+                // Bouton pour modifier l'événement
                 ?>
-                <!-- Ajout d'événements -->
-                <form action="./modif_event.php" method="POST">
-                    
-        
-                    <button type="submit">Modifier événement</button>
+               
+                <button type="submit" id="modify-button">Modifier événement</button>
                 
-                </form>
 
-                <div class="hide">
-                <?php 
-                    ModifyEventForm($row_event);
-                ?>
-                </div>
                 
                 
+                <!-- Boutons pour avoir les infos sur les participants -->
 
                 <form id="infos-participants-form" action="">
         
@@ -186,14 +181,15 @@
         }
         ?>
             </div>
-            </div>
+        </div>
 
-       
-
-        
-        </main>
-
-  
+    <div class="hide" id="modify-event-form">
+        <?php 
+            ModifyEventForm($row_event);
+        ?>
+    </div>
+    
+    </main>
 
     <?php
         }

@@ -118,5 +118,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+$(document).ready(function() {
+    
+    const modifyButton = document.getElementById('modify-button');
+
+    var modifyEvent = document.getElementById('modify-event-form');
+    //var pageProfil = document.getElementById('page-profil');
+
+    const exitButton = document.getElementById('exit-button');
+    
+
+    
+    modifyButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        
+        modifyEvent.classList.remove("hide");
+        // pageProfil.classList.add("hide");
+
+    });
+
+    exitButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        
+        modifyEvent.classList.add("hide");
+        // pageProfil.classList.add("hide");
+
+    });
+
+});
 
 

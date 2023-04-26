@@ -24,10 +24,10 @@
 
     <main>
 
-    <h1>Vos événements</h1>
+    <h1 class="title">Vos événements</h1>
 
     
-    <h2>Événements proposés</h2>
+    <h2 class="title">Événements proposés</h2>
 
     <div class="container-event">
     <?php
@@ -38,7 +38,7 @@
 
     
 
-    <h2>Événements inscrits</h2>
+    <h2 class="title">Événements inscrits</h2>
 
     <div class="container-event">
     <?php
