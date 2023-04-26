@@ -17,6 +17,7 @@
     <title>Document</title>
 </head>
 <body>
+<main>
 
     <?php
         include("./utils/database.php");
@@ -26,18 +27,18 @@
         if($accountStatus[0]){
             // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
-            include("./pageparts/header.php");  
+            
             include("./utils/gestion_event.php");
             include("./utils/gestion_amis.php");
-            
 
             InscriptionIntoEvent();
             DesinscriptionFromEvent();
             ModifyEvent();
 
-    ?>
+            include("./pageparts/header.php");  
 
-    <main>
+    ?>
+    
     <!-- <h1>Infos evenement</h1> -->
 
     <div class="page-event">

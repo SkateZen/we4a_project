@@ -33,19 +33,23 @@
     background-color: var(--color1);
     /* margin-top: 20px; */
     padding: 40px 60px;
-    min-width: 300px;
+    min-width: 400px;
     max-width: 600px;
     border-radius: 10px;
 
     border: 1px solid var(--ligneSection);
-    
+}
+
+/* particularités pour evenement */
+#modify-event-form .formulaire{
+    min-width: 500px;
 }
 
 /* Mise en forme du titre du formulaire */
 .formulaire h2 {
     /* color: var(--color2-hover); */
-    text-align: center;
-    margin-bottom: 20px;
+    /* text-align: center; */
+    margin-bottom: 30px;
 }
 
 /* Mise en forme des saisies dans le formulaire */
@@ -57,7 +61,7 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     outline: none;
-    width: 220px;
+    width: 80%;
     padding: 10px 15px;
     margin-bottom: 15px;
 }
@@ -71,7 +75,7 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     outline: none;
-    width: 220px;
+    width: 80%;
     padding: 10px 15px;
     margin-bottom: 15px;
 }

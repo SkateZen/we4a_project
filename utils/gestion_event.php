@@ -402,6 +402,61 @@ function ModifyEvent(){
             $query_update = "UPDATE `evenement` SET `titre`='$titre', `description`='$description', `date`='$date', `heure`='$heure', `lieu`='$lieu' WHERE id_evenement = '$id_event'";
 
             $result = $conn->query($query_update);
+
+            //Gestion image profil
+
+            $path = NULL;
+
+            if (isset($_FILES['image_event']) && $_FILES['image_event']['error'] == 0)
+            {
+                // Testons si le fichier n'est pas trop gros (2Mo max)
+                if ($_FILES['image_event']['size'] <= 2097152)
+                {
+                    // Testons si l'extension est autorisée
+                    $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+
+                    $extension_upload = strtolower(substr(strrchr($_FILES['image_event']['name'], '.'), 1));
+
+                    if (in_array($extension_upload, $extensions_autorisees))
+                    {
+                        // On peut valider le fichier et le stocker définitivement
+
+                        $new_img_name = uniqid("IMG-", true).'.'.$extension_upload;
+
+                        $path = "images/evenements/".$new_img_name;
+
+                        $result = move_uploaded_file($_FILES['image_event']['tmp_name'], $path);
+
+                        if ($result){
+
+                            $query_verif = "SELECT `image` FROM evenement WHERE id_evenement = $id_event";
+
+                            $result = $conn->query($query_verif);
+                            $row = $result->fetch_assoc();
+                            
+                            if(!empty($row['image'])){
+                                //echo "Supp ancienne image";
+                                // echo"photo de profil non vide";
+                                unlink($row['image']);
+                            }
+                            // echo "L'envoi a bien été effectué !";
+
+                            $query_update = "UPDATE evenement SET `image` = '$path' WHERE id_evenement = '$id_event'";
+                            $result = $conn->query($query_update);
+                        }
+                        else{
+                            echo "Erreur lors de l'importation de votre photo de profil";
+                        }
+                        //echo "L'envoi a bien été effectué !";
+                    }
+                    else{
+                        echo "L'extension du fichier doit être jpg, jpeg, gif ou png";
+                    }
+                }
+                else{
+                    echo "Le fichier doit être inférieur à 2Mo";
+                }
+            }
         }
         else{
             echo "Mot de passe incorrect";
@@ -440,7 +495,11 @@ function ModifyEvent(){
             if (!$result) {
                 $error = "Erreur lors de l'insertion SQL.";
                 echo $error;
-            }    
+            }
+            else{
+                echo "Evenement supprimé";
+                header('Location: ./personal_events.php');
+            }   
         }
         else{
             echo "Mot de passe incorrect";

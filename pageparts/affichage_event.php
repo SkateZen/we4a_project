@@ -126,7 +126,7 @@ function ModifyEventForm($row){
                     <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
             </button>
 
-            <h2>Modifier événements</h2>
+            <h2>Modifier événement</h2>
 
             <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
             <input type="hidden" name="id_createur" value="<?php echo $id_createur; ?>">
@@ -143,7 +143,7 @@ function ModifyEventForm($row){
             ?>
             </select> -->
             <label >Image :</label>
-            <input type="file" name="avatar">
+            <input type="file" name="image_event">
 
             <input type="date" name="date" placeholder="Date" value="<?php echo $date; ?>">
 
@@ -157,17 +157,13 @@ function ModifyEventForm($row){
             <!-- <input type="text" name="confirm" id="confirm" placeholder="Confirmer mot de passe"> -->
 
             <button class="submit-button" type="submit" name="update_event"> Modifier</button>
+            
+            <button class="submit-button" type="submit" name="delete_event"> Supprimer</button>
         </form>
+        <div>
     </div>
-    <div>
-        <h2>Supprimer événements</h2>
-        <form action="" method="POST">
-            <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
-            <input type="hidden" name="id_createur" value="<?php echo $id_createur; ?>">
-            <input type="text" name="password" id="password" placeholder="Mot de passe" required>
-            <button type="submit" name="delete_event"> Supprimer</button>
-        </form>
     </div>
+    
     <?php
 }
 
