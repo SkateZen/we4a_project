@@ -87,6 +87,15 @@
 
                 <p class="ecart"><?php echo NumberOfParticipants($row_event); ?> participants</p>
 
+                <?php 
+                    if (UserInEvent($row_event)){ //si l'utilisateur est un participant
+                        ?>
+                        <p class="ecart">Vous êtes inscrits</p>
+                        <?php
+                        
+                    }
+                ?>
+
             </div>
 
             <div class="buttons">
@@ -158,7 +167,7 @@
             else if (UserInEvent($row_event)){ //si l'utilisateur est un participant
 
                 //participant
-                echo"<br>Vous êtes inscrits";
+                // echo"<br>Vous êtes inscrits";
                 DesinscriptionButton($row_event);
                 
 
