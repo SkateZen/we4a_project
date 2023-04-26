@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/formulaire.css">
+    <link rel="stylesheet" href="./css/evenement.css">
 
     <title>Document</title>
 </head>
@@ -36,11 +37,13 @@
     
 
     
-    <h1 class="ajout_event-title">Ajouter un événement</h1>
+    
 
     <!-- Formulaire ajout d'un évenement -->
-    
-    <form action="" method="post"  class="formulaire-event" enctype="multipart/form-data">
+    <div id="ajout-event" class="form-on-top">
+        <form action="" method="post"  class="formulaire" enctype="multipart/form-data" >
+
+        <h1 class="ajout_event-title">Ajouter un événement</h1>
 
         <input class="titre ecart" type="text" name="titre" id="titre" placeholder="Nom de l'événement" required>
 
@@ -84,11 +87,11 @@
         </select>
 
         <button class="ecart" type="button" id="invite_button">Inviter amis</button>
-        <div id="invitation_amis" class="hide">
+        <!-- <div id="invitation_amis" class="hide">
         <?php
-            ShowInvitationAmis();
+            //ShowInvitationAmis();
         ?>
-        </div>
+        </div> -->
         
 
         <button class="ecart" type="button" id="max_button">Max participants</button>
@@ -98,7 +101,25 @@
         
 
         <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
-    </form>
+        </form>
+    </div>
+    
+    <div id="invitation_amis" class="hide">
+        <div class="invitation_amis">
+            <button id="exit-button-invite" class="exit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </button>
+            
+            <h2>Inviter amis</h2>
+            <?php
+                ShowInvitationAmis();
+            ?>
+                
+
+        </div>
+    </div>
 
     
     

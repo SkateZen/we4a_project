@@ -54,10 +54,6 @@
             header('Location: ./accueil.php');
         }
 
-        if (isset($_POST['send_invitation'])){
-            InviteAmis($row_event['id_evenement']);
-        }
-
         ?>
         
 
@@ -122,10 +118,9 @@
             ?>
                 <!-- Bouton pour inviter des amis -->
                 <!-- Marche avec le javascript ajout_event -->
-                <form action="" method="post">
-                    <button type="button" id="invite_button">Inviter amis</button>
-                    
-                </form>
+                
+                <button type="button" id="invite_button">Inviter amis</button>
+                
                 
                 <?php
             }
@@ -138,20 +133,12 @@
                
                 <button type="submit" id="modify-button">Modifier événement</button>
                 
-
-                
                 
                 <!-- Boutons pour avoir les infos sur les participants -->
 
-                <form id="infos-participants-form" action="">
-        
-                    <input type="hidden" id="id_event_ajax" name="id_event_ajax" value="<?php echo $row_event['id_evenement']; ?>" ></input>
-                    <button type="button" id="infos_participants" name="infos_participants">Infos participants</button>
+                <button type="button" id="infos_participants" name="infos_participants">Infos participants</button>
                     
                     <!-- <div style="clear:both"></div> -->
-                </form>
-
-                <div id=participants-content></div>
 
                 <?php
 
@@ -163,8 +150,6 @@
                 //participant
                 // echo"<br>Vous êtes inscrits";
                 DesinscriptionButton($row_event);
-                
-
                 
             }
             //createur et participant
@@ -185,13 +170,18 @@
         }
         ?>
             </div>
+           
         </div>
 
+    <!-- Contenu qui s'affiche par dessus la page lors d'appuis sur les boutons -->
+
+    <!-- Modifier -->
     <div class="hide" id="modify-event-form">
         <?php 
             ModifyEventForm($row_event);
         ?>
     </div>
+    <!-- Inviter amis -->
     <div id="invitation_amis" class="hide">
         <div class="invitation_amis">
             <button id="exit-button-invite" class="exit-button">
@@ -199,13 +189,25 @@
                     <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
             </button>
-            <h2>Inviter amis</h2>
-            <?php
-                ShowInvitationAmis();
-            ?>
-            <button type="submit" class="submit-button" name="send_invitation">Inviter</button>
+            <form action="./redirect_event.php" method="POST">
+                <input type="hidden" name="id_evenement" value=<?php echo $row_event['id_evenement']?>>
+                <h2>Inviter amis</h2>
+                <?php
+                    ShowInvitationAmis();
+                ?>
+                <button type="submit" class="submit-button" name="send_invitation">Inviter</button>
+            </form>
 
         </div>
+    </div>
+    <!-- Infos participants -->
+    <div id="participants-content" class="hide">
+        <div class="invitation_amis">
+            <?php
+            ShowParticipantsEvent($row_event);
+            ?>
+        </div>
+
     </div>
     
     </main>

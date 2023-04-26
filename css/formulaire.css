@@ -45,6 +45,10 @@
     min-width: 500px;
 }
 
+/* #ajout-event .formulaire{
+    min-width: 600px;
+} */
+
 /* Mise en forme du titre du formulaire */
 .formulaire h2 {
     /* color: var(--color2-hover); */
@@ -97,6 +101,7 @@
     background-color: var(--color2);
     /* outline: none; */ /* Pour enlever la bordure de séléction*/
     cursor: pointer;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -135,14 +140,16 @@ button.exit-button{
     /* fill: white; */
 }
 
+.ajout_event-title{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
 /* ---------------------------------------------------------------- */
 /*              Formulaires Ajout événement              */
 /* ---------------------------------------------------------------- */
 
-.ajout_event-title{
-    text-align: center;
-    padding: 20px 0px;
-}
+/* 
 
 .formulaire-event .ecart{
     margin: 10px 0px;
@@ -159,7 +166,6 @@ button.exit-button{
     margin: auto;
     align-items: center;
 
-    /* justify-content: space-around; */
 
     background-color: var(--color2);
     border: 1px solid var(--ligneSection);
@@ -189,7 +195,6 @@ button.exit-button{
 }
 
 .formulaire-event .submit-button{
-    margin-top: 60px;
     background-color: var(--color2-hover);
     color: var(--color2-text);
 }
@@ -198,7 +203,8 @@ button.exit-button{
     
     background-color: var(--color2);
     border : 1px solid var(--color2-hover);
+    
 
     color: var(--color2-hover);
-}
+} */
 
