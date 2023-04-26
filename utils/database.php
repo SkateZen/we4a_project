@@ -231,5 +231,19 @@ function CheckLogin(){
     return array($loginSuccessful, $loginAttempted, $error, $userID);
 }
 
+
+// Fonction pour récupérer la valeur du booléen concernant le theme de l'utilisateur
+// Booléen 1 = thème sombre, Booléen 2 = thème clair
+//--------------------------------------------------------------------------------
+function getThemeFromDB() {
+    global $conn;
+    $mail = $_COOKIE['mail'];
+    $query = "SELECT is_darkmode FROM utilisateur WHERE email = '$mail'";
+    $result = $conn->query($query);
+    $theme = $result->fetch_assoc()["is_darkmode"];
+    return intval($theme);
+}
+
+
 ?>
 
