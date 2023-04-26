@@ -132,7 +132,7 @@ input[type="file"] {
 }
 
 .messages-content img{
-    min-width: 200px;
+    min-width: 180px;
     max-width: 60%;
     margin: 5px 10px;
     
@@ -145,6 +145,7 @@ input[type="file"] {
     max-width: 500px; */
     margin: 5px 10px;
 }
+
 
 .left{
     display: flex;
