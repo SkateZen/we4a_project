@@ -18,23 +18,22 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     
     const inviteButton = document.getElementById('invite_button');
+    const exitButton = document.getElementById('exit-button-invite');
 
     var checkAmis = document.getElementById('invitation_amis');
     
     inviteButton.addEventListener('click', function (event) {
         event.preventDefault();
         //console.log("onchange public/privé");
+        checkAmis.classList.remove("hide");
+    });
 
-        if (checkAmis.classList.contains("hide")) {
-            console.log("show");
-            checkAmis.classList.remove("hide");
-            checkAmis.classList.add("show");
-        } else {     
-            console.log("hide");
-            checkAmis.classList.remove("show");
-            checkAmis.classList.add("hide");       
-            
-        }
+    exitButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        console.log("clicked");
+        checkAmis.classList.add("hide");
+        // pageProfil.classList.add("hide");
     });
 });
 

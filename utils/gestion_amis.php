@@ -212,8 +212,13 @@ function ShowInvitationAmis(){
             $pseudo_ami = $row['pseudo'];
             
             ?>
-            <input type="checkbox" name=<?php echo $pseudo_ami;?> value=<?php echo $id_ami;?>>
-            <label for=""><?php echo $pseudo_ami;?></label>
+
+
+            <div>
+                <input type="checkbox" class="ecart-right" name=<?php echo $pseudo_ami;?> value=<?php echo $id_ami;?>>
+                <label for=""><?php echo $pseudo_ami;?></label>
+            </div>
+            
         <?php
         }
     }

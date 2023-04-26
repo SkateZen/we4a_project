@@ -127,8 +127,6 @@ $(document).ready(function() {
 
     const exitButton = document.getElementById('exit-button');
     
-
-    
     modifyButton.addEventListener('click', function (event) {
         event.preventDefault();
         
@@ -142,9 +140,7 @@ $(document).ready(function() {
         
         modifyEvent.classList.add("hide");
         // pageProfil.classList.add("hide");
-
     });
-
 });
 
 
