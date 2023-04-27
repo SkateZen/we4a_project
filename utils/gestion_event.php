@@ -1,6 +1,5 @@
 <?php
 
-include("./database.php");
 include("pageparts/affichage_event.php");
 
 

@@ -1,7 +1,5 @@
 <?php
 
-include("./database.php");
-
 function PageProfil(){
 
     global $conn, $userID;
