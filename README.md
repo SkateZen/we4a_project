@@ -23,7 +23,7 @@ autres infos sur événement
     ->adresse
 
 page profil ami
-    ->événements ami
+    
 
 
 CSS 

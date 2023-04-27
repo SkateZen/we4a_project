@@ -13,9 +13,17 @@
 <body>
 
 <aside class="rightside">
-    <div class="sidebar">
+    <div class="right-sidebar">
         
         <h2>Suggestions amis</h2>
+
+        <div class="suggestion-block">
+        <?php 
+            
+            ShowSuggestionAmis();
+        ?>
+        </div>
+        
                     
     </div>    
 </aside>

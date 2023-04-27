@@ -60,13 +60,9 @@
 
         <?php
         if ($row_user['id_utilisateur'] == $userID){
-        ?>
-
         
-        <?php ShowDemandeAmis();?>
+            ShowDemandeAmis();
         
-
-        <?php
         }
         ?>
         
@@ -104,6 +100,7 @@
         </div>
     </div>
     <?php
+    include("./pageparts/footer.php"); 
         }
         elseif ($accountStatus[2]){
             echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';

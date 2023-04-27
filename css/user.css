@@ -32,6 +32,11 @@
     align-items: flex-start;
 }
 
+.infos-user p{
+    text-align: left;
+    /* align-self: flex-start; */
+}
+
 /* @media screen and (max-width: 800px) {
     .row-user{
         flex-direction: column;

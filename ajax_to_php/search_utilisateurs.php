@@ -30,19 +30,22 @@ if(isset($_GET['user'])){
             
             $id_ami = $row['id_utilisateur'];
 
+            if ($id_ami != $userID){
+                CardAmi($row);
 
-            CardAmi($row);
+                $query2 = "SELECT COUNT(*) FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
+                                                                    id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
 
-            $query2 = "SELECT COUNT(*) FROM `relation` WHERE id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami' OR 
-                                                                id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID'";
+                $result2 = $conn->query($query2);
 
-            $result2 = $conn->query($query2);
+                $row2 = $result2->fetch_row()[0];
 
-            $row2 = $result2->fetch_row()[0];
+                if ($row2 == 0) {
+                    //AjoutAmiButton($row);
+                } 
+            }
 
-            if ($row2 == 0) {
-                //AjoutAmiButton($row);
-            } 
+            
         }
     }
 }

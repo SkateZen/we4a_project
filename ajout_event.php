@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/formulaire.css">
     <link rel="stylesheet" href="./css/evenement.css">
+    <link rel="stylesheet" href="./css/user.css">
 
     <title>Document</title>
 </head>
@@ -40,7 +41,7 @@
     
 
     <!-- Formulaire ajout d'un évenement -->
-    <div id="ajout-event" class="form-on-top">
+    <div id="ajout-event" align="center"  class="form-ajout">
         <form action="" method="post"  class="formulaire" enctype="multipart/form-data" >
 
         <h1 class="ajout_event-title">Ajouter un événement</h1>
@@ -50,7 +51,7 @@
         <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
 
         <label class="ecart " for="">
-            Image:
+            Image :
             <input type="file" name="image_event" placeholder="Image">
         </label>
 
@@ -77,28 +78,31 @@
 
             <!-- Evenements publics ou privés à actualiser avec ajax -->
 
-        <select class="ecart middle-button" name="is_public" id="is_public" required>
-            <option value="1"> 
-                public
-            </option>
-            <option value="0"> 
-                privé
-            </option>
-        </select>
+        <div class="form-middle-buttons">
+            <select class="ecart middle-button" name="is_public" id="is_public" required>
+                <option value="1"> 
+                    public
+                </option>
+                <option value="0"> 
+                    privé
+                </option>
+            </select>
 
-        <button class="ecart middle-button" type="button" id="invite_button">Inviter amis</button>
-        <!-- <div id="invitation_amis" class="hide">
-        <?php
-            //ShowInvitationAmis();
-        ?>
-        </div> -->
+            <button class="ecart middle-button" type="button" id="invite_button">Inviter amis</button>
+            <!-- <div id="invitation_amis" class="hide">
+            <?php
+                //ShowInvitationAmis();
+            ?>
+            </div> -->
+            
+
+            <button class="ecart middle-button" type="button" id="max_button">Max participants</button>
+            <div id="max_participants" class="hide">
+                <input type="number"  name="max_participants"  value='0' placeholder="Max participants">
+
+            </div >
+        </div>
         
-
-        <button class="ecart middle-button" type="button" id="max_button">Max participants</button>
-        <div id="max_participants" class="hide">
-            <input type="number"  name="max_participants"  value='0' placeholder="Max participants">
-
-        </div >
 
         
         
@@ -127,6 +131,7 @@
     
     
     <?php
+        include("./pageparts/footer.php");   
         }
         elseif ($accountStatus[2]){
             echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';

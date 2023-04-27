@@ -65,6 +65,34 @@ function ShowAmis(){
     }
 }
 
+function ShowSuggestionAmis(){
+
+    global $conn, $userID;
+
+    //requete qui affiche les amis
+
+    $query = "SELECT * FROM `utilisateur` WHERE NOT (id_utilisateur IN (SELECT id_utilisateur2 FROM `relation` WHERE id_utilisateur1 = '$userID' AND statut = 'accepte') OR 
+                                                id_utilisateur IN (SELECT id_utilisateur1 FROM `relation` WHERE id_utilisateur2 = '$userID' AND statut = 'accepte'))";
+
+    $result = $conn->query($query);
+
+    if( mysqli_affected_rows($conn) == 0 )
+    {
+        $error = "Aucun utilisateur trouvé";
+    }
+    else{
+        while($row = mysqli_fetch_array($result)){
+            
+            //fonction qui affiche les events
+            $id_ami = $row['id_utilisateur'];
+            // echo "<br>".$row['pseudo'];
+            if ($id_ami != $userID){
+                CardAmi($row);
+            }
+        }
+    }
+}
+
 function ShowDemandeAmis(){
 
     global $conn, $userID;
@@ -82,7 +110,7 @@ function ShowDemandeAmis(){
     else{
         ?>
         <div class="demande-amis">
-            <h2>Amis en attente</h2>
+            <h2>Demande en attente</h2>
         <?php
 
         while($row = mysqli_fetch_array($result)){
@@ -94,6 +122,7 @@ function ShowDemandeAmis(){
             
                 CardAmi($row);
                 AcceptAmiButton($row);
+                RefuseAmiButton($row);
             echo "</div>";
         }
         echo "</div>";
@@ -130,7 +159,7 @@ function RetireAmi(){
 
         $id_ami = $_POST["id_ami"];
 
-        echo "id ami :".$id_ami;
+        // echo "id ami :".$id_ami;
 
         $query = "DELETE FROM `relation` WHERE (id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID') OR 
                                         (id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami')";

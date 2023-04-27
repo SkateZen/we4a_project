@@ -213,6 +213,7 @@
     </main>
 
     <?php
+    include("./pageparts/footer.php"); 
         }
         elseif ($accountStatus[2]){
             echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';

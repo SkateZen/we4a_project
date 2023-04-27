@@ -10,6 +10,8 @@
     padding: 40px 0;
 }  
 
+
+
 .logo{
     /* border : 1px solid #352f2f8a; */
 
@@ -107,4 +109,28 @@
     .logo img{
         width: 100px;
     }
+}
+
+/* Suggestions amis right sidebar */
+
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    
+    
+    /* width: 100%; */
+
+    /* justify-content: center; */
+    align-items: center;
+    
+    padding: 100px 0;
+}  
+
+.right-sidebar h2{
+    margin-bottom: 20px;
+}
+
+.suggestion-block{
+    max-height: 400px;
+    overflow-y: auto;
 }

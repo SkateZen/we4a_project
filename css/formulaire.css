@@ -28,6 +28,11 @@
     /* background-color: var(--color2);     */
 }
 
+.form-ajout{
+    
+    padding-top: 20px;
+}
+
 /* Dessin de l'emplaçement du formulaire */
 .formulaire {
     background-color: var(--color1);
@@ -91,8 +96,23 @@
 }
 
 
+.formulaire label {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.formulaire label select {
+    
+    
+    width: 70%;
+}
+
+
+
 /* Mise en forme du bouton d'envoi du formulaire */
 .submit-button {
+    
     font-family: 'Poppins', sans-serif;  
     padding: 15px 15px;
     border: none;
@@ -104,12 +124,16 @@
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 10px;
+
+    border: 1px solid var(--ligneSection);
+
 }
 
 /* Ajout d'un effet assombrissant lors du survol du bouton */
 .submit-button:hover {
     
     background-color: var(--color2-hover);
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
     color: var(--color2-text);
 }
 
@@ -128,7 +152,15 @@ form a:hover {
     color: var(--color2-hover);
 }
 
+.form-middle-buttons{
+    width:80%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
 .middle-button{
+    /* width:20%; */
     font-family: 'Poppins', sans-serif;  
     padding: 5px 5px;
     border: none;
