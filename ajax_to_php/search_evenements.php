@@ -15,7 +15,7 @@ if(isset($_GET['event'])){
     $userID = GetIdWithCookie();
     $input = $_GET['event'];
 
-    $query = "SELECT * FROM `evenement` WHERE (titre LIKE '%$input%') ";
+    $query = "SELECT * FROM `evenement` WHERE (titre LIKE '%$input%') AND is_public = 1 AND `date` >= NOW() ORDER BY `date` ASC";
 
     $result = $conn->query($query);
 

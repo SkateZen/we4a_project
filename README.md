@@ -10,8 +10,10 @@ Nouvelles étapes :
 messagerie
     ->saut de ligne messages
     ->slider en bas
+    ->tri conversations
 
 accueil
+    ->evenements public / privés
     ->affichage événements disponibles
     ->affichage recherche
 
@@ -22,7 +24,7 @@ autres infos sur événement
     ->prix
     ->adresse
 
-page profil ami
+
     
 
 

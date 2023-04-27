@@ -17,13 +17,13 @@
     
                 
                 <div class="logo">
-                    <a href="accueil.php"><img width="160px" src="images/front/eventum_transparent.png" alt="EventumLogo"></a>
+                    <a href="index.php"><img width="160px" src="images/front/eventum_transparent.png" alt="EventumLogo"></a>
                 </div>
 
                 <div class="links">
                     <li>
 
-                        <a href="accueil.php">
+                        <a href="index.php">
                             <div class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="25px" >
                                     <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->

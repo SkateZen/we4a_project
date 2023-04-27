@@ -138,19 +138,19 @@
 }
 
 /* Mise en forme du lien de redirection du formulaire */
-form a {
+/* form a {
     border: none;
     border-radius: 5px;
     font-size: 15px;
     color: #eb7371;
     cursor: pointer;
     outline: none;
-}
+} */
 
 /* Ajout d'un effet assombrissant lors du survol du lien */
-form a:hover {
+/* form a:hover {
     color: var(--color2-hover);
-}
+} */
 
 .form-middle-buttons{
     width:80%;
@@ -179,7 +179,7 @@ form a:hover {
 }
 
 
-button.exit-button{
+.exit-button{
 
     border: none;
     background: none;

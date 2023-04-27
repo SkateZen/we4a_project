@@ -2,22 +2,6 @@
 /*                          Page visiteur                           */
 /* ---------------------------------------------------------------- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    background-color: var(--color1);
-    margin: 0;
-    height: 100vh;
-}
-
 
 /* Mise en forme titre */
 h1 {
@@ -29,108 +13,123 @@ p {
     font-size: 15px;
 }
 
-/* Mise en forme des liens en forme de boutons */
-.big-button a {
-    display: inline-flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 150px;
-    max-width: 400px;
-    padding: 15px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    background-color: var(--color2);
-    cursor: pointer;
-    margin: 50px 30px;
-}
 
-/* Ajout d'un effet assombrissant lors du survol du lien */
-.big-button a:hover {
-    background-color: var(--color2-hover);
-}
-
-
-
-
-/* ---------------------------------------------------------------- */
-/*              Formulaires Inscription et Connexion                */
-/* ---------------------------------------------------------------- */
-
-
-/* .form-visiteur {
-    position: fixed;
-    z-index: 1;
-    margin: 50px;
-} */
-
-/* Dessin de l'emplaçement du formulaire */
-form {
-    background-color: white;
-    margin-top: 20px;
-    padding: 40px 60px;
-    min-width: 300px;
-    max-width: 600px;
-    border-radius: 10px;
-}
-
-/* Mise en forme du titre du formulaire */
-form h1 {
-    color: var(--color2-hover);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Mise en forme des saisies dans le formulaire */
-form input {
+.page-visiteur{
     display: flex;
     flex-direction: column;
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    outline: none;
-    width: 220px;
-    padding: 10px 15px;
-    margin-bottom: 15px;
+
+    align-items: space-between;
 }
 
-/* Ajout d'un effet de relief lorsque l'on a séléctionner un champ input */
-form input:focus {
-    box-shadow: 3px 4px #b3b3b3;
+.accueil{
+    display: flex;
+    align-items: center;
 }
 
+.accueil img{
+    width: 40%;
+    height: 40%;
+    /* margin-right: 50px; */
+}
 
-/* Mise en forme du bouton d'envoi du formulaire */
-form button {
-    padding: 15px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    color: white;
-    background-color:  var(--color2);
-    /* outline: none; */ /* Pour enlever la bordure de séléction*/
-    cursor: pointer;
+.accueil .accueil-infos{
+    padding-top: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left:10px;
+}
+
+.accueil-infos h1{
+    /* font-size: 40px; */
+    margin-bottom: 20px;
+    
+}
+
+.accueil-infos p{
+    /* font-size: 40px; */
+    width: 80%;
+    font-size: 18px;
+}
+
+.accueil .buttons{
+    display: flex;
+    margin-top: 30px;
     margin-bottom: 10px;
 }
 
-/* Ajout d'un effet assombrissant lors du survol du bouton */
-form button:hover {
-    background-color: var(--color2-hover);
-}
-
-/* Mise en forme du lien de redirection du formulaire */
-form a {
+.accueil-button {
+    
+    font-family: 'Poppins', sans-serif;  
+    margin-right: 10px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
-    font-size: 15px;
-    color:  var(--color2);
+    font-size: 20px;
+    /* color: white; */
+    background-color: var(--color2);
+    /* outline: none; */ /* Pour enlever la bordure de séléction*/
     cursor: pointer;
-    outline: none;
+    
+
+    border: 1px solid var(--ligneSection);
+
 }
 
-/* Ajout d'un effet assombrissant lors du survol du lien */
-form a:hover {
-    color: var(--color2-hover);
+/* Ajout d'un effet assombrissant lors du survol du bouton */
+.accueil-button:hover {
+    
+    background-color: var(--color2-hover);
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    color: var(--color2-text);
+}
+
+/* Aperçu des événements */
+
+.accueil-content{
+    margin-top: 50px;
+}
+
+.accueil-content h2{
+    margin-bottom: 10px;
+}
+
+.container-apercu-event{
+
+    width: 100%;
+
+    max-height: 350px;
+    display: flex;
+    
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 10px;
+
+    /* overflow-x: hidden; */
+    overflow-x: visible;
+
+    overflow-y: hidden;
+
+    /* border: 1px solid var(--ligneSection); */
+}
+
+
+
+.form-on-top-accueil{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    /* margin: auto; */
+
+    margin-top: 50px;
+
+    left: 60%;
+    transform: translateX(-50%);
+
+    padding: 0;
+
+    /* background-color: var(--color2);     */
 }

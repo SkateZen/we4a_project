@@ -51,7 +51,7 @@
         
         if ($row_event == false){
             echo "Erreur";
-            header('Location: ./accueil.php');
+            header('Location: ./index.php');
         }
 
         ?>
