@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="./javascript/theme_mode.js"></script>
+
     <link rel="stylesheet" href="./css/evenement.css">
     <link rel="stylesheet" href="./css/user.css">
     <title>Document</title>
@@ -21,7 +23,9 @@
         if($newAccountStatus[0]){
             // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
-            include("./pageparts/header.php");  
+            include("./pageparts/header.php");
+            
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";            
     ?>
 
     <main>

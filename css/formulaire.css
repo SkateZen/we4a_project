@@ -1,6 +1,4 @@
 
-
-
 /* ---------------------------------------------------------------- */
 /*              Formulaires Inscription et Connexion                */
 /* ---------------------------------------------------------------- */
@@ -233,7 +231,7 @@
 }
 
 /* ---------------------------------------------------------------- */
-/*              Formulaires Ajout événement              */
+/*                  Formulaires Ajout événement                     */
 /* ---------------------------------------------------------------- */
 
 /* 
@@ -270,15 +268,21 @@
 .formulaire-event textarea{
     width: 80%;
     height: 100px;
-    
+}
+
+.formulaire-event input, label, select, button, textarea {
+    color: var(--black);
 }
 
 .formulaire-event .lieu{
     
     width: 40%;
     height: 30px;
-
     font-size: 16px;
+}
+
+.formulaire-event .choix {
+    padding: 5px;
 }
 
 .formulaire-event .submit-button{

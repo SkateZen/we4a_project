@@ -8,6 +8,7 @@
 
     <script src="./javascript/script_messagerie.js"></script>
     <script src="./javascript/script_search_bar.js"></script>
+    <script src="./javascript/theme_mode.js"></script>
 
     <link rel="stylesheet" href="./css/search-bar.css">
     <link rel="stylesheet" href="./css/messagerie.css">
@@ -27,6 +28,8 @@
   
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
+
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";
     ?>
 
     <main class="d-flex">

@@ -27,14 +27,17 @@
     
 
     --ligneSection: #352f2f8a;
+    --default-text: #000000;
+    --black: #000000;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: 0.2s ease;
-    /* user-select: none; */
+    /* transition: 0.2s ease; */
+    color: var(--default-text);
+    fill: var(--default-text);
     font-family: -apple-system, BlinkMacSystemFont, Poppins,  Montserrat, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
   
@@ -57,22 +60,18 @@ li {
 }
 
 
-/* Premières sections */
+/* Définition des différentes sections du site */
 
 aside.leftside{
 
     background: var(--color1);
-
     width: 240px;
-    
 	position: fixed;
 	height: 100%;
-	
 	top: 0;
 	left: 0;
 	z-index: 1;
 	overflow-x: hidden;
-	
     border-right : 1px solid var(--ligneSection);
 }
 
@@ -80,28 +79,18 @@ main{
     /* flex:60%; */
     background-color: var(--color1);
 
-    margin: 0 240px;
+    margin: 0 auto 0 240px;
 
     height: 100vh;
     /* height: 100%; */
 }
 
+main h1, main h2, main .btn-add-event {
+    padding-left: 10px;
+}
 
-aside.rightside{
-    /* flex: 20%; */
-    background: var(--color1);
-
-    width: 240px;
-    
-	position: fixed;
-	height: 100%;
-	
-	top: 0;
-	right: 0;
-	z-index: 1;
-	overflow-x: hidden;
-
-    border-left : 1px solid var(--ligneSection);
+main .btn-add-event button {
+    padding: 5px;
 }
 
 

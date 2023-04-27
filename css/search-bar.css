@@ -16,10 +16,10 @@ header{
 /* Barre de recherche */
 
 .search-bar{
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
+    justify-content: center;
     align-items: center;
     padding: 10px;
 }
@@ -102,9 +102,9 @@ header{
     fill: var(--color2-text);
 }
 
-.categorie.right{
+.categorie.right, .categorie.theme-btn{
     align-items: center;
-    margin: 10px;
+    margin: 20px;
     padding-top: 2px;
     /* padding-left: 1px; */
 }

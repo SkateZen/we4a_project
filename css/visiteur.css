@@ -133,3 +133,29 @@ p {
 
     /* background-color: var(--color2);     */
 }
+
+
+
+/* ---------------------------------------------------------------- */
+/*                          Messages URL                            */
+/* ---------------------------------------------------------------- */
+
+/* Dessiner la boite du message */
+.alert {
+    margin-top: 5px;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 5px;
+    border: 1px solid var(--ligneSection);
+    border-radius: 5px;
+}
+
+/* Coloration du backgroung an cas de succès */
+.alert-success {
+    background-color: lightgreen;
+}
+
+/* Coloration du backgroung an cas d'échec */
+.alert-fail {
+    background-color: red;
+}

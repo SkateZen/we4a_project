@@ -1,6 +1,5 @@
 <?php
 
-
 function PageProfil(){
 
     global $conn, $userID;
@@ -46,9 +45,9 @@ function ModifyProfil(){
 
     if(isset($_POST['update_profil'])){
 
-        $name = $_POST['name'];
-        $firstname = $_POST['firstname'];
-        $pseudo = $_POST['pseudo'];
+        $name = SecurizeString_ForSQL($_POST['name']);
+        $firstname = SecurizeString_ForSQL($_POST['firstname']);
+        $pseudo = SecurizeString_ForSQL($_POST['pseudo']);
         $password = md5($_POST['password']);
 
         //$avatar = $_FILES['avatar']['name'];
