@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/evenement.css">
     
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 <body>
     <?php
@@ -34,7 +34,7 @@
 
     <main class="d-flex">
     <section class="messagerie-left">
-        <div class="search-bar">
+        <div class="search-bar-messagerie">
             <!-- Recherche d'événements -->
 
             <div class="search-box">

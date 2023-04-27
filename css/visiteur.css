@@ -29,6 +29,8 @@ p {
 .accueil img{
     width: 40%;
     height: 40%;
+
+    padding: 100px;
     /* margin-right: 50px; */
 }
 
@@ -142,6 +144,10 @@ p {
 
 /* Dessiner la boite du message */
 .alert {
+    position: fixed;
+    top: 0;
+    left: 45%;
+    z-index: 2;
     margin-top: 5px;
     min-width: 300px;
     max-width: 600px;

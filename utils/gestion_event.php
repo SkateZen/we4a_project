@@ -15,7 +15,7 @@ function AjoutEvent(){
 
     if ( isset($_POST['ajout_event'])){
 
-        echo "creation event attempted";
+        //echo "creation event attempted";
         $creationAttempted = true;
 
         $titre = SecurizeString_ForSQL($_POST["titre"]);
@@ -78,7 +78,7 @@ function AjoutEvent(){
                     VALUES (NULL, '$userID', '$titre', '$id_categorie', '$description', '$path', '$date', '$heure', '$lieu', '$is_public', '$max_participants')";
         }
 
-        echo $query."<br>";
+        //echo $query."<br>";
         $result = $conn->query($query);
 
         if( mysqli_affected_rows($conn) == 0 )
@@ -89,7 +89,7 @@ function AjoutEvent(){
         else{
             //On récupère l'id de l'event créé
             $id_event = mysqli_insert_id($conn);
-            echo "id_event =".$id_event;
+            //echo "id_event =".$id_event;
             //On invite les amis
             InviteAmis($id_event);
             

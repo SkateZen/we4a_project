@@ -15,13 +15,37 @@ header{
 
 /* Barre de recherche */
 
-.search-bar{
+.search-bar-messagerie{
     width: 90%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 10px;
+
+    /* border: 1px solid var(--ligneSection); */
+}
+
+.search-bar{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+
+    /* border: 1px solid var(--ligneSection); */
+}
+
+.search-bar-rightside{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+
+    /* border: 1px solid var(--ligneSection); */
 }
 
 .search-box{
@@ -104,7 +128,7 @@ header{
 
 .categorie.right, .categorie.theme-btn{
     align-items: center;
-    margin: 20px;
+    margin-right: 5px;
     padding-top: 2px;
     /* padding-left: 1px; */
 }

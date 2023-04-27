@@ -29,7 +29,7 @@ function connect_db(){
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "socialnetwork";
+    $dbname = "eventum_db";
     global $conn;
     
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -143,8 +143,8 @@ function CheckNewAccountForm(){
 
                 $path_photo = "images/avatars/default-avatar.png";
                 // Création du compte dans la base de données
-                $query = "INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`) 
-                        VALUES ('$name', '$firstname', '$pseudo', '$mail', '$password', '$path_photo')";
+                $query = "INSERT INTO `utilisateur` (`nom`, `prenom`, `pseudo`, `email`, `password`, `photo_profil`, is_darkmode) 
+                        VALUES ('$name', '$firstname', '$pseudo', '$mail', '$password', '$path_photo', 0)";
                 $result = $conn->query($query);
 
                 if (!$result) {
@@ -224,7 +224,7 @@ function CheckLogin(){
         }
         else {
             $error = "Ce couple identifiant/mot de passe n'existe pas. Veuillez créer un compte.";
-            echo "<br>".$error;
+            // echo "<br>".$error;
         }
     }
 

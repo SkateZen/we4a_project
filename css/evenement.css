@@ -16,6 +16,7 @@
 }
 
 .card-event{
+    
     background: var(--color2);
     width: 200px;
     height: 250px;
@@ -45,6 +46,9 @@
 }
 
 .event-infos{
+
+    
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -54,6 +58,10 @@
     /* margin: 10px; */
     /* border: 1px solid #352f2f8a; */
 }
+
+/* .event-infos h3, p{
+    color: var(--black);
+} */
 
 .event-infos h3{
     width: 100%;

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/evenement.css">
     <link rel="stylesheet" href="./css/user.css">
 
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 
 
@@ -32,11 +32,13 @@
         if($accountStatus[0]){
             // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
             
-            include("./pageparts/header.php");
+            
             
             echo "<script>setThemeMode(".getThemeFromDB().");</script>";  
             
-            AjoutEvent();
+            $creationEvent = AjoutEvent();
+
+            include("./pageparts/header.php");
     ?>
 
     

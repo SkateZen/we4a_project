@@ -6,7 +6,8 @@
 }
 
 section{
-    border: 1px solid var(--ligneSection);
+    border-right: 1px solid var(--ligneSection);
+    border-left: 1px solid var(--ligneSection);
     text-align: center;
 }
 
@@ -70,6 +71,7 @@ section h2{
 }
 
 .message-form textarea{
+    color: var(--black);
     width: 70%;
     min-width: 300px;
     height: 100px;
@@ -114,13 +116,11 @@ input[type="file"] {
     cursor: pointer;
 }
 
-
-
-
-
 /* affichage des messages */
 
+
 .messages-content .message{
+    color: var(--black);
     margin: 5px 10px;
     padding: 10px;
     border-radius: 10px;

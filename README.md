@@ -7,10 +7,10 @@ Dans le cadre de l'UV WE4A - Technologies et programmation WEB, nous avons dû r
 Notre réseau social s'appelle Eventum ! Sur celui-ci, on trouvera :
 
 + Un système d'amis avec lesquels il est possible d'avoir des messages privés et échanger des images.
-+ Des évenments proposés par des utilisateurs, qu'ils soient public ou privés, pour la communauté auquel il est possible de s'inscrire facilement.
-+ Un système pour inviter ces amis à des évenments, c'est essentiel si l'évenment est privé !
++ Des évenements proposés par des utilisateurs, qu'ils soient public ou privés, pour la communauté auquel il est possible de s'inscrire facilement.
++ Un système pour inviter ces amis à des évenements, c'est essentiel si l'évenement est privé !
 + Une conversation de groupe où il est possible de discuter et d'échanger des images avec les autres utilisateurs inscrits à l'évenement auquel on s'est inscrit. La conversation est visible seulement pour les membres inscrits à l'évenement.
-+ Un formulaire pour ajouter un nouvel évnement.
++ Un formulaire pour ajouter un nouvel évenement.
 + Un "agenda" pour avoir accès aux évenements que l'on a proposé et ceux auquels on est inscrit.
 + Un profil où l'on peut modifier ses informations, accéder à sa liste d'amis, les demandes d'amis en attente et **se déconnecter**.
 
@@ -19,6 +19,20 @@ Notre réseau social s'appelle Eventum ! Sur celui-ci, on trouvera :
 + Les échanges de messages, champs de recherche, renvoi du thème se font avec AJAX.
 + La grande majorité des entrées utilisateurs sont protégées des injections SQL.
 + Pour se déconnecter il faut aller sur son profil.
++ En grande partie responsive
++ Chaque utilisateur à pour mail "la première lettre du prénom"@"la première lettre du nom" et pour mot de passe, son prénom en minuscule
+
+
+## Améliorations futures
+
++ Rajouter un vrai agenda dans la partie agenda
++ Rajouter plus d'options par rapport aux événements : 
+    + prix événements
+    + possibilités de covoiturage
+    + cocréation d'événements
++ Version mobile responsive
++ Notifications de messages
+
 
 ## Versions utilisées
 
@@ -27,68 +41,11 @@ Notre réseau social s'appelle Eventum ! Sur celui-ci, on trouvera :
 
 ## Auteurs
 
-+ Marius Diguat Matteus
++ Marius Diguat Mateus
 + Eliséo Vardanega
 
 ## Crédits
 
 Merci à **Antoine Litzler** de nous avoir autorisé la reprise de certaines fonctions (qui ont été modifiées ou non par la suite) du fichier database.php vues en TD.
 
----
 
-Projet pour l'uv we4a. L'idée est de faire un site web axé sur la proposition et recherche d'évènements.
-
-
-
-Nouvelles étapes :
-
-
-messagerie
-    ->saut de ligne messages
-    ->slider en bas
-    ->tri conversations
-
-accueil
-    ->evenements public / privés
-    ->affichage événements disponibles
-    ->affichage recherche
-
-
-autres infos sur événement
-    
-    ->max participants
-    ->prix
-    ->adresse
-
-
-    
-
-
-CSS 
-    
-    ->onglet actuel à marqué
-        ->javascript
-    
-    ->événement
-
-
-Petits bugs à corriger :
-
-bug accept_ami -> plusieurs amis ajoutés en 1 seul click
-
-Messagerie
-Selectionner conversation avec Ajax est pas post lors du clique sur l'ami
-Voir pour régler battement carte événement
-
-
-Nettoyage code :
-
-Rajouter beaucoup de commentaires
-Faire un script requête qui réunit les requêtes importantes
-
-
-Améliorations futures :
-
-rajoutés catégories pour utilisateurs
-voir pour co-création d'événements ?
-voir possibilité covoiturage ?

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="css/style_sidebar.css">
     
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 <body>
 

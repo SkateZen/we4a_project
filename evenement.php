@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/messagerie.css">
     <link rel="stylesheet" href="./css/formulaire.css">
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 <body>
 <main>

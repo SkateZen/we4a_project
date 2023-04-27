@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/evenement.css">
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 
 

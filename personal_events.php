@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="./css/evenement.css">
     <link rel="stylesheet" href="./css/user.css">
-    <title>Document</title>
+    <title>Eventum</title>
 </head>
 <body>
 
