@@ -32,7 +32,7 @@
     <div class="container-event">
     <?php
         include("./utils/gestion_event.php");
-        ShowEventWithIdCreator();
+        ShowEventWithIdCreator($userID);
     ?>
     </div>
 

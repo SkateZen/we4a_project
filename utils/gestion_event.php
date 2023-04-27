@@ -200,11 +200,11 @@ function ShowPublicEvent(){
     }
 }
 
-function ShowEventWithIdCreator(){
+function ShowEventWithIdCreator($id_user){
 
-    global $conn, $userID;
+    global $conn;
 
-    $query = "SELECT * FROM `evenement` WHERE id_createur = '$userID'";
+    $query = "SELECT * FROM `evenement` WHERE id_createur = '$id_user'";
     $result = $conn->query($query);
 
     if( mysqli_affected_rows($conn) == 0 )

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/formulaire.css">
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/user.css">
+    <link rel="stylesheet" href="./css/evenement.css">
     <title>Document</title>
 </head>
 
@@ -45,20 +46,50 @@
     
 
     <?php 
-
+        // Profil bar, partie supérieur de la page
         $row_user = PageProfil();
         DisplayProfil($row_user);
 
-        if ($row_user['id_utilisateur'] == $userID){
+        
         
     ?>
 
-    <div class="demande-amis">
-        <?php ShowDemandeAmis();?>
-    </div>
+    <!-- Profil contenu, partie inférieur -->
 
-    <?php
-        }?>
+    <div class="content-profil">
+
+        <?php
+        if ($row_user['id_utilisateur'] == $userID){
+        ?>
+
+        
+        <?php ShowDemandeAmis();?>
+        
+
+        <?php
+        }
+        ?>
+        
+        <div class="event-user">
+            <h2>Evenements proposés</h2>
+            <div class="container-event">
+            <?php
+                include("./utils/gestion_event.php");
+                ShowEventWithIdCreator($row_user['id_utilisateur']);
+            ?>
+            </div>
+        </div>
+    </div>
+    
+    
+
+   
+
+
+
+
+    <!-- Affichage amis par dessus page -->
+    
 
     <div id="amis-content" class="hide">
     

@@ -86,7 +86,7 @@
         <div id="results" class=""></div>
 
     
-        <h2 class="title">Événements disponibles</h2>
+        <h1 class="title">Événements disponibles</h1>
 
         <div class="container-event">
             <?php
@@ -97,12 +97,10 @@
     
 
     </main>
-    <aside class="rightside">
-        <p>right</p>
-    </aside>
+    
 
     <?php
-            
+        include("./pageparts/footer.php");      
 
         }
         elseif ($accountStatus[2]){

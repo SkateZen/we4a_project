@@ -122,7 +122,7 @@ function DisplayProfil($row){
                     <div class="profil-button">
                         
                         <!-- Bouton contact envoie vers la messagerie -->
-                        <form action="./messagerie.php" method="post">
+                        <form action="./messagerie.php" class="ecart-button" method="post">
                             <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
                             <button type="submit" name="contact_ami" id="contact_ami"> Contacter</button>
                         </form>

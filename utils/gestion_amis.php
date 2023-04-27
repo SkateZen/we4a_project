@@ -81,7 +81,8 @@ function ShowDemandeAmis(){
     }
     else{
         ?>
-        <h2>Amis en attente</h2>
+        <div class="demande-amis">
+            <h2>Amis en attente</h2>
         <?php
 
         while($row = mysqli_fetch_array($result)){
@@ -95,6 +96,7 @@ function ShowDemandeAmis(){
                 AcceptAmiButton($row);
             echo "</div>";
         }
+        echo "</div>";
     }
 }
 
