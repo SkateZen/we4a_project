@@ -43,25 +43,30 @@ if(isset($_GET['user'])){
             $row2 = $result2->fetch_row();
 
             if ($row2) {
-                echo "<br>".$row['pseudo'];
-                echo "<br>".$row['prenom'];
-                echo "<br>".$row['nom'];
+                // echo "<br>".$row['pseudo'];
+                // echo "<br>".$row['prenom'];
+                // echo "<br>".$row['nom'];
+                echo "<div>";
+                
+
+                CardAmiContact($row);
 
                 //requete qui récupère les messages privés entre l'utilisateur et l'ami
 
-                $query3 = "SELECT COUNT(*) FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami' OR 
-                                                                id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID')";
+                // $query3 = "SELECT COUNT(*) FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami' OR 
+                //                                                 id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID')";
 
-                $result3 = $conn->query($query3);
+                // $result3 = $conn->query($query3);
 
-                $row3 = $result3->fetch_row()[0];
+                // $row3 = $result3->fetch_row()[0];
 
-                if ($row3 > 0) {
-                    echo "Conversation déjà existante";
-                }
-                else{
-                    ContactAmiButton($row);
-                } 
+                // if ($row3 > 0) {
+                //     echo "Conversation déjà existante";
+                // }
+                // else{
+                //     ContactAmiButton($row);
+                // } 
+                // echo "</div>";
             }
         }
     }

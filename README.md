@@ -9,14 +9,12 @@ Nouvelles étapes :
 
 messagerie
     ->saut de ligne messages
+    ->slider en bas
 
 accueil
     ->affichage événements disponibles
     ->affichage recherche
 
-
-ajout / modifier event:
-    ->formulaire + javascript
 
 autres infos sur événement
     

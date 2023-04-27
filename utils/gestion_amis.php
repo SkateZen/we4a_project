@@ -186,14 +186,21 @@ function ShowAmisWithConversation(){
 
             //requete qui recupère les conversations avec l'ami
 
-            $query2 = "SELECT * FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami' OR 
+            $query_message = "SELECT COUNT(*) FROM `message_prive` WHERE (id_utilisateur_envoyeur = '$userID' AND id_utilisateur_destinataire = '$id_ami' OR 
                                                                 id_utilisateur_envoyeur = '$id_ami' AND id_utilisateur_destinataire = '$userID')";
 
-            $result2 = $conn->query($query2);
+            $result_message = $conn->query($query_message);
 
-            $row2 = $result2->fetch_row()[0];
+            $row_message = $result_message->fetch_row()[0];
 
-            if ($row2) {
+            $query_invite = "SELECT COUNT(*) FROM `invitation_evenement` WHERE (id_utilisateur = '$userID' AND id_inviteur = '$id_ami' OR 
+                                                                id_utilisateur = '$id_ami' AND id_inviteur = '$userID')";
+
+            $result_invite = $conn->query($query_invite);
+
+            $row_invite = $result_invite->fetch_row()[0];
+
+            if ($row_message || $row_invite) {
                 
                 SelectConversation($row);
                 
@@ -220,8 +227,14 @@ function ShowConversation(){
         $row = $result->fetch_assoc();
 
         if ($row){
+            
             ChatBox($row);
+            ?>
+            <script>
+                load_messages();
+            </script>
 
+            <?php
         }
         else{
             $error = "Aucun utilisateur trouvé";

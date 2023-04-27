@@ -30,6 +30,36 @@ function CardAmi($row){
     <?php
 }
 
+function CardAmiContact($row){
+
+    $id_ami = $row['id_utilisateur'];
+
+    $name = $row['nom'];
+    $firstname = $row['prenom'];
+    $pseudo = $row['pseudo'];
+    $avatar = $row['photo_profil'];
+
+    ?>
+    <form action="./messagerie.php" method="post">
+        <button type="submit" class="row-user">
+
+            <!-- <input type="hidden" name="pseudo" value="<?php echo $pseudo?>"> -->
+            <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
+
+            
+            <img src="<?php echo $avatar; ?>" width="55px" height="55px" alt="avatar">
+            
+            <div class="infos-user">
+                <h3> <?php echo $pseudo; ?></h3>
+
+                <p> <?php echo $firstname." ".$name; ?></p>
+            </div>
+
+        </button>
+    </form>
+    <?php
+}
+
 
 function AjoutAmiButton($row){
     ?>
@@ -73,12 +103,14 @@ function SelectConversation($row){
     $pseudo = $row['pseudo'];
     $avatar = $row['photo_profil'];
 
+    
     ?>
+    
     <form action="" method="post">
 
         <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
 
-        <button type="submit" name="select_conversation" id="select_conversation" class="row-user"> 
+        <button type="submit" name="select_conversation" id="select-conversation" class="row-user"> 
             <input type="hidden" name="pseudo" value="<?php echo $pseudo?>">
 
             

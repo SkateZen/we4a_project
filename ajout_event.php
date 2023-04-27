@@ -49,13 +49,13 @@
 
         <textarea class="ecart" name="description" id="description" placeholder="Description"></textarea>
 
-        <label class="ecart" for="">
+        <label class="ecart " for="">
             Image:
             <input type="file" name="image_event" placeholder="Image">
         </label>
 
         <label class="ecart" for="">Categorie : 
-            <select name="categorie"  id="categorie" required>
+            <select name="categorie" class="middle-button"  id="categorie" required>
                 <?php 
                     ShowCategories();
                 ?>
@@ -77,7 +77,7 @@
 
             <!-- Evenements publics ou privés à actualiser avec ajax -->
 
-        <select class="ecart" name="is_public" id="is_public" required>
+        <select class="ecart middle-button" name="is_public" id="is_public" required>
             <option value="1"> 
                 public
             </option>
@@ -86,7 +86,7 @@
             </option>
         </select>
 
-        <button class="ecart" type="button" id="invite_button">Inviter amis</button>
+        <button class="ecart middle-button" type="button" id="invite_button">Inviter amis</button>
         <!-- <div id="invitation_amis" class="hide">
         <?php
             //ShowInvitationAmis();
@@ -94,7 +94,7 @@
         </div> -->
         
 
-        <button class="ecart" type="button" id="max_button">Max participants</button>
+        <button class="ecart middle-button" type="button" id="max_button">Max participants</button>
         <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
 
         
