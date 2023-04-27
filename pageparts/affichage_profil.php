@@ -94,6 +94,8 @@ function DisplayProfil($row){
 
             <div class="profil-button">
 
+                <button id="amis-button" class="ecart-button">Amis</button>
+
                 <button id="modify-button" class="ecart-button">Modifier</button>
                 
                 <form action="./logout.php" method="POST">
@@ -123,6 +125,13 @@ function DisplayProfil($row){
                         <form action="./messagerie.php" method="post">
                             <input type="hidden" id="pseudo_ami" name="pseudo_ami" value="<?php echo $row['pseudo']; ?>">
                             <button type="submit" name="contact_ami" id="contact_ami"> Contacter</button>
+                        </form>
+
+                        <!-- Bouton pour retirer ami -->
+
+                        <form action="" method="post">
+                            <input type="hidden" name="id_ami" value="<?php echo $id_ami; ?>">
+                            <button type="submit"  name="retire_ami"> Retirer</button>
                         </form>
 
                     </div>

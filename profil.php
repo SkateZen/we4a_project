@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="./css/profil.css">
     <link rel="stylesheet" href="./css/formulaire.css">
     <link rel="stylesheet" href="./css/effect.css">
+    <link rel="stylesheet" href="./css/user.css">
     <title>Document</title>
 </head>
 
 
 
 <body>
+
+<main id="page-profil">
 
     <?php
         include("./utils/database.php");
@@ -36,41 +39,40 @@
 
             AjoutAmi();
             AcceptAmi();
+            RetireAmi();
     ?>
 
-    <main id="page-profil">
+    
 
     <?php 
 
         $row_user = PageProfil();
         DisplayProfil($row_user);
 
+        if ($row_user['id_utilisateur'] == $userID){
         
     ?>
-    
-<!-- 
-    <div>
-        <form action="./logout.php" method="POST">
-            
-            <div id="ID_logout">
-                <input type="hidden" value="logout" name="logout"></input>
-                <button type="submit">Se déconnecter</button>
-            </div>
-            
-        </form>
-    </div> -->
 
-    <div>
-        <h2>Amis</h2>
-        <?php ShowAmis();?>
-
-        <h2>Amis en attente</h2>
-
+    <div class="demande-amis">
         <?php ShowDemandeAmis();?>
     </div>
+
     <?php
-            
+        }?>
+
+    <div id="amis-content" class="hide">
     
+        <div class="invitation_amis">
+            <button id="exit-button-amis" class="exit-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px">
+                    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </button>
+            <h2>Amis</h2>
+            <?php ShowAmis();?>
+        </div>
+    </div>
+    <?php
         }
         elseif ($accountStatus[2]){
             echo '<h3 class="errorMessage">'.$accountStatus[2].'</h3>';

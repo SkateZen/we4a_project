@@ -95,11 +95,14 @@
         
 
         <button class="ecart middle-button" type="button" id="max_button">Max participants</button>
-        <input type="number" class="hide" name="max_participants" id="max_participants" value='0' placeholder="Max participants">
+        <div id="max_participants" class="hide">
+            <input type="number"  name="max_participants"  value='0' placeholder="Max participants">
+
+        </div >
 
         
         
-
+            
         <button class="submit-button" type="submit" name="ajout_event" id="ajout_event"> Ajouter</button>
         </form>
     </div>

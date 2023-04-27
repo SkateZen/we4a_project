@@ -59,7 +59,8 @@ function ShowAmis(){
             
             //fonction qui affiche les events
             $id_ami = $row['id_utilisateur'];
-            echo "<br>".$row['pseudo'];
+            // echo "<br>".$row['pseudo'];
+            CardAmi($row);
         }
     }
 }
@@ -79,12 +80,20 @@ function ShowDemandeAmis(){
         $error = "Aucun utilisateur trouvé";
     }
     else{
+        ?>
+        <h2>Amis en attente</h2>
+        <?php
+
         while($row = mysqli_fetch_array($result)){
             
             //fonction qui affiche les events
             $id_ami = $row['id_utilisateur'];
-            echo "<br>".$row['pseudo'];
-            AcceptAmiButton($row);
+            
+            echo "<div class='demande'>" ; 
+            
+                CardAmi($row);
+                AcceptAmiButton($row);
+            echo "</div>";
         }
     }
 }
@@ -106,8 +115,33 @@ function AcceptAmi(){
             echo $error;
         }    
         else{
-            echo "Inscription réussie";
+            // echo "Ami accepté";
         }
+    }
+}
+
+function RetireAmi(){
+    global $conn, $userID;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["retire_ami"])){
+
+
+        $id_ami = $_POST["id_ami"];
+
+        echo "id ami :".$id_ami;
+
+        $query = "DELETE FROM `relation` WHERE (id_utilisateur1 = '$id_ami' AND id_utilisateur2 = '$userID') OR 
+                                        (id_utilisateur1 = '$userID' AND id_utilisateur2 = '$id_ami')";
+
+        $result = $conn->query($query);
+
+        if (!$result) {
+            $error = "Erreur lors de l'insertion SQL.";
+            echo $error;
+        }    
+        // else{
+        //     echo "Ami retiré";
+        // }
     }
 }
 

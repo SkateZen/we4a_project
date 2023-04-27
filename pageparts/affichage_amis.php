@@ -86,9 +86,13 @@ function ContactAmiButton($row){
 
 function AcceptAmiButton($row){
     ?>
-    <form action="" method="post">
+    <form action=""  method="post">
         <input type="hidden" name="id_ami" value="<?php echo $row['id_utilisateur']; ?>">
-        <button type="submit" name="accept_ami" id="accept_ami"> Accepter</button>
+        <button type="submit" class="accept-amis" name="accept_ami" id="accept_ami">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+
+        </button>
     </form>
 
     <?php

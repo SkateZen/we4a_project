@@ -164,6 +164,42 @@ button.exit-button{
     padding-bottom: 30px;
 }
 
+
+/* Formulaire pour afficher utilisateurs par dessus page */
+
+.invitation_amis{
+    position: fixed;
+    z-index: 1;
+
+    top: 0;
+    /* margin: auto; */
+
+    margin-top: 50px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: var(--color1);
+    padding: 40px 60px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--ligneSection);
+}
+
+.invitation_amis h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.invitation_amis .ecart-right{
+    margin: 10px 0;
+    margin-right : 20px;
+}
+
 /* ---------------------------------------------------------------- */
 /*              Formulaires Ajout événement              */
 /* ---------------------------------------------------------------- */
