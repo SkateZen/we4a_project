@@ -1,5 +1,6 @@
 <?php
 
+include("./database.php");
 include("pageparts/affichage_event.php");
 
 
@@ -18,14 +19,14 @@ function AjoutEvent(){
         echo "creation event attempted";
         $creationAttempted = true;
 
-        $titre = $_POST["titre"];
-        $id_categorie = $_POST["categorie"];
-        $description = $_POST["description"];
+        $titre = SecurizeString_ForSQL($_POST["titre"]);
+        $id_categorie = SecurizeString_ForSQL($_POST["categorie"]);
+        $description = SecurizeString_ForSQL($_POST["description"]);
         $date = $_POST["date"];
         $heure = $_POST["heure"];
-        $lieu = $_POST["lieu"];
+        $lieu = SecurizeString_ForSQL($_POST["lieu"]);
         $is_public = $_POST["is_public"];
-        $max_participants = $_POST["max_participants"];
+        $max_participants = SecurizeString_ForSQL($_POST["max_participants"]);
 
         //Gestion image profil
 
