@@ -7,6 +7,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./javascript/script_ajout_event.js"></script>
+    <script src="./javascript/theme_mode.js"></script>
 
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/formulaire.css">
@@ -25,12 +26,15 @@
         connect_db();
         $accountStatus = CheckLogin(); // <-- array($creationAttempted, $creationSuccessful, $error)
 
-        AjoutEvent();
-
+        
         if($accountStatus[0]){
             // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
-
-            include("./pageparts/header.php");  
+            
+            include("./pageparts/header.php");
+            
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";  
+            
+            AjoutEvent();
     ?>
 
     

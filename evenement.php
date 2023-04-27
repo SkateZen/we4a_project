@@ -8,6 +8,7 @@
 
     <script src="./javascript/script_evenement.js"></script>
     <script src="./javascript/script_ajout_event.js"></script>
+    <script src="./javascript/theme_mode.js"></script>
 
     <link rel="stylesheet" href="./css/effect.css">
     <link rel="stylesheet" href="./css/evenement.css">
@@ -29,6 +30,7 @@
             include("./utils/gestion_event.php");
             include("./utils/gestion_amis.php");
             
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";
 
             InscriptionIntoEvent();
             DesinscriptionFromEvent();

@@ -7,6 +7,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./javascript/script_profil.js"></script>
+    <script src="./javascript/theme_mode.js"></script>
 
     <link rel="stylesheet" href="./css/profil.css">
     <link rel="stylesheet" href="./css/formulaire.css">
@@ -33,6 +34,8 @@
             include("./pageparts/header.php");  
             include("./utils/gestion_amis.php");
             include("./pageparts/affichage_profil.php");  
+
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";
 
             AjoutAmi();
             AcceptAmi();

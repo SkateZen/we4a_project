@@ -1,6 +1,4 @@
 
-
-
 /* ---------------------------------------------------------------- */
 /*              Formulaires Inscription et Connexion                */
 /* ---------------------------------------------------------------- */
@@ -161,14 +159,16 @@ form a:hover {
 .formulaire-event textarea{
     width: 80%;
     height: 100px;
-    
+}
+
+.formulaire-event input, label, select, button, textarea {
+    color: var(--black);
 }
 
 .formulaire-event .lieu{
     
     width: 40%;
     height: 30px;
-
     font-size: 16px;
 }
 

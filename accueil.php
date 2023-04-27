@@ -28,7 +28,9 @@
         if($accountStatus[0]){
             // echo '<h3 class="successMessage">Connexion réalisée avec succès !</h3>';
     
-            include("./pageparts/header.php");  
+            include("./pageparts/header.php");
+            
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";
     ?>
 
     <main>
