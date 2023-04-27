@@ -30,6 +30,11 @@ function setThemeMode(theme) {
         // Changer la couleur du background
         document.documentElement.style.setProperty('--color1', '#fcfaff');
 
+        // Changer la visibilité des icones associés au thème clair
+        const icons = document.getElementsByClassName("theme-mode");
+        icons[1].setAttribute("class", "theme-mode show");
+        icons[0].setAttribute("class", "theme-mode hide");
+
     } else {
         // Thème sombre
 
@@ -45,5 +50,11 @@ function setThemeMode(theme) {
         // Changer la couleur du background
         document.documentElement.style.setProperty('--color1', '#262626');
 
+        // Changer la visibilité des icones associés au thème clair
+        const icons = document.getElementsByClassName("theme-mode");
+        icons[1].setAttribute("class", "theme-mode hide");
+        icons[0].setAttribute("class", "theme-mode show");
+
     }
+    
 }
