@@ -107,7 +107,7 @@
         <div id="results_event" class="container-event"></div>
 
         <!-- div resultat recherche utilisateurs -->
-        <div id="results" class=""></div>
+        <div id="results" class="hide"></div>
 
     
         <h1 class="title">Événements disponibles</h1>
@@ -118,6 +118,10 @@
             ShowPublicEvent();
             ?>
         </div>
+
+        <?php 
+            echo "<script>setThemeMode(".getThemeFromDB().");</script>";
+        ?>
     
 
     </main>
@@ -125,7 +129,8 @@
 
     <?php
         include("./pageparts/footer.php");      
-        echo "<script>setThemeMode(".getThemeFromDB().");</script>";
+
+       
         }
         
         else{
@@ -293,10 +298,6 @@
                 <?php
                     }
                 ?>
-                
-
-                
-                
 
             </main>
             <aside class="rightside ">

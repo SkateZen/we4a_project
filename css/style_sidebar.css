@@ -16,6 +16,13 @@
     /* border : 1px solid #352f2f8a; */
 
     align-self: center;
+    
+}
+
+.logo img{
+    
+    width: 110px;
+    /* border : 1px solid #352f2f8a; */
 }
 
 .logo:hover{
@@ -106,8 +113,12 @@
         border-radius: 50%;
     }
 
+    
     .logo img{
-        width: 100px;
+        width: 110px;
+        padding: 20px;
+        
+        /* border : 1px solid #352f2f8a; */
     }
 }
 

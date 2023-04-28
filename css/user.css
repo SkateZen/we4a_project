@@ -2,6 +2,25 @@
 
 /* Affichage des autres utilisateurs */
 
+.user-column{
+    display: flex;
+
+    width: 40%;
+    max-height: 400px;
+    overflow-y: auto;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+
+    padding: 10px;
+
+    margin: 0 auto;
+
+    background: none;
+    border: none;
+    /* border: 1px solid var(--ligneSection); */
+}
+
 .row-user{
     display: flex;
 

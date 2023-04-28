@@ -237,11 +237,14 @@ function CheckLogin(){
 //--------------------------------------------------------------------------------
 function getThemeFromDB() {
     global $conn;
-    $mail = $_COOKIE['mail'];
-    $query = "SELECT is_darkmode FROM utilisateur WHERE email = '$mail'";
-    $result = $conn->query($query);
-    $theme = $result->fetch_assoc()["is_darkmode"];
-    return intval($theme);
+    if (isset($_COOKIE['mail'])){
+        $mail = $_COOKIE['mail'];
+        $query = "SELECT is_darkmode FROM utilisateur WHERE email = '$mail'";
+        $result = $conn->query($query);
+        $theme = $result->fetch_assoc()["is_darkmode"];
+        return intval($theme);
+    }
+    
 }
 
 

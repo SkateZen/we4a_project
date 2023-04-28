@@ -16,7 +16,7 @@
 
     --color2-text: #fff;
 
-    --color2-hover: #621768;
+    --color2-hover: #8c4492;
     --color2-border: #3c0444;
 
     /* Color bleu */
@@ -57,6 +57,10 @@ a {
 
 li {
     list-style: none;
+}
+
+button, a {
+    transition: 0.2s;
 }
 
 

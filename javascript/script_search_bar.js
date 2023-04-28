@@ -117,7 +117,7 @@ $(document).ready(function() {
             resultEvent.classList.replace( "hide", "container-event");
 
             // resultEvent.classList.remove("hide");
-            resultUser.classList.add("hide");
+            resultUser.classList.replace("user-column", "hide");
             
         }
     });
@@ -140,7 +140,7 @@ $(document).ready(function() {
             resultEvent.classList.replace("container-event", "hide");
 
             // resultEvent.classList.add("hide");
-            resultUser.classList.remove("hide");
+            resultUser.classList.replace( "hide", "user-column");
             //searchEvent.classList.add("show");
         }
     });

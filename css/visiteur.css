@@ -30,7 +30,11 @@ p {
     width: 40%;
     height: 40%;
 
-    padding: 100px;
+    max-width: 400px;
+
+    padding: 5%;
+
+
     /* margin-right: 50px; */
 }
 
